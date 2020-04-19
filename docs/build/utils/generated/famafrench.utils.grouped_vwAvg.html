@@ -1,0 +1,253 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>famafrench.utils.grouped_vwAvg &mdash; famafrench 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="famafrench.utils.portRetAvg" href="famafrench.utils.portRetAvg.html" />
+    <link rel="prev" title="famafrench.utils.priormonthToDay" href="famafrench.utils.priormonthToDay.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> famafrench
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/whatsnew.html">What's New?!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted/gettingstarted.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted/gettingstarted.html#creating-an-instance-of-the-famafrench-class">Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wrdsconnection/wrdsconnection.html">Connecting to the WRDS cloud server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wrdscloudquery/wrdscloudquery.html">WRDS Query Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../portfolios/factorregressions.html">Estimating Market Betas and Rolling Residual Variances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../portfolios/portfoliosorting.html">Constructing Portfolios and Return-Based Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kflibrary/kflibrary.html">Comparing to Ken French's Online Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics-diagnostics/statistics.html">Summary Statistics and Diagnostics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../utils.html">Auxiliary Functions and Utilities</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.lru_cached_method.html">famafrench.utils.lru_cached_method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.get_kfpriorfactors_directly.html">famafrench.utils.get_kfpriorfactors_directly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.timing.html">famafrench.utils.timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.any_in.html">famafrench.utils.any_in</a></li>
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.priormonthToDay.html">famafrench.utils.priormonthToDay</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">famafrench.utils.grouped_vwAvg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.portRetAvg.html">famafrench.utils.portRetAvg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="famafrench.utils.get_statsTable.html">famafrench.utils.get_statsTable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">famafrench</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../utils.html">Overview</a> &raquo;</li>
+        
+      <li>famafrench.utils.grouped_vwAvg</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/utils/generated/famafrench.utils.grouped_vwAvg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="famafrench-utils-grouped-vwavg">
+<h1>famafrench.utils.grouped_vwAvg<a class="headerlink" href="#famafrench-utils-grouped-vwavg" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="famafrench.utils.grouped_vwAvg">
+<code class="sig-prename descclassname">famafrench.utils.</code><code class="sig-name descname">grouped_vwAvg</code><span class="sig-paren">(</span><em class="sig-param">df0</em>, <em class="sig-param">col_values</em>, <em class="sig-param">col_weights</em>, <em class="sig-param">*groupby_args</em>, <em class="sig-param">**groupby_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/famafrench/utils.html#grouped_vwAvg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#famafrench.utils.grouped_vwAvg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate (net) weighted portfolio return for portfolio with weights <code class="docutils literal notranslate"><span class="pre">col_weights</span></code> within a group or groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df0</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.0.3)"><em>pandas.DataFrame</em></a>) – Dataset containing firm-level stock returns and portfolio weights, both indexed by dates and firm identifiers when required.</p></li>
+<li><p><strong>col_values</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Column(s) to average over.</p></li>
+<li><p><strong>col_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Column containing the portfolio weights.</p></li>
+<li><p><strong>group_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>[</em><em>optional</em><em>]</em>) – args to pass into <cite>groupby</cite> (ie the level to group on).</p></li>
+<li><p><strong>group_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>[</em><em>optional</em><em>]</em>) – kwargs to pass into <cite>groupby</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>df1</strong> – Original dataset augmented w/ value-weighted returns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v1.0.3)">pandas.Series</a>, or <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.0.3)">pandas.DataFrame</a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Function is <strong>FASTER</strong> than <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.core.groupby.GroupBy.apply()</span></code> since it avoids non-optimized aggregation.</p>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="famafrench.utils.portRetAvg.html" class="btn btn-neutral float-right" title="famafrench.utils.portRetAvg" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="famafrench.utils.priormonthToDay.html" class="btn btn-neutral float-left" title="famafrench.utils.priormonthToDay" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christian Jauregui
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

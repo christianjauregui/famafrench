@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="40ec3282-466a-4046-9385-61be42d85405" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1akJpUJmAZl0S7p6CPHhpZV4hUK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="famafrench" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40ec3282-466a-4046-9385-61be42d85405" name="Default Changelist" comment="" />
+      <created>1587273840079</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587273840079</updated>
+      <workItem from="1587273841479" duration="13000" />
+      <workItem from="1587273909444" duration="734000" />
+      <workItem from="1587274687183" duration="196000" />
+      <workItem from="1587274972766" duration="114000" />
+      <workItem from="1587275127989" duration="114000" />
+      <workItem from="1587275245086" duration="881000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1403" y="135" key="CommitChangelistDialog2" timestamp="1587276092321">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1403" y="135" key="CommitChangelistDialog2/-1920.23.1920.1057/0.23.1680.944@-1920.23.1920.1057" timestamp="1587276092321" />
+    <state x="-1519" y="122" key="SettingsEditor" timestamp="1587276127452">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1519" y="122" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.944@-1920.23.1920.1057" timestamp="1587276127452" />
+    <state x="-1272" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1587276119717">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1272" y="258" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1057/0.23.1680.944@-1920.23.1920.1057" timestamp="1587276119717" />
+  </component>
+</project>
