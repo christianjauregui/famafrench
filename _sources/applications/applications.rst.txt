@@ -1,0 +1,259 @@
+.. _applications:
+
+**************************
+Applications and Examples
+**************************
+
+.. module:: famafrench
+   :noindex:
+
+.. currentmodule:: famafrench
+
+
+Below are some examples of how the package can be used to construct datasets from `Ken French's online library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ as well as many other similar datasets. Throughout, the constructed datasets are compared to those provided by `Ken French <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html>`_.
+
+Let's start by importing this package as well as other required Python libraries:
+
+.. code-block:: ipython
+   
+   In [1]: import datetime as dt
+   In [2]: import famafrench.famafrench as ff
+
+
+Let's create all our datasets from 1950 to the present or the most recent date for which there is stock returns data. We set :attr:`runQuery` to ``True`` and query all datafiles directly from `wrds-cloud`. 
+
+.. code-block:: ipython
+
+   In [3]: startDate = dt.date(1970, 1, 1)
+   In [4]: endDate = dt.date.today()
+   In [5]: runQuery = True
+
+
+
+Anomaly/Risk-based Factors
+###########################
+
+
+Fama-French 3 Factors : Daily
+*****************************
+
+.. code-block:: ipython
+   
+   In [6]: ffFreq = 'D'
+   In [7]: ffsortCharac = ['ME', 'BM']
+   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [9]: ff3_D = ff.FamaFrench(runQuery=runQuery, freqType=ffFreq, sortCharacsId=ffsortCharac, factorsId=ffFactors) 
+   
+   In [10]: # Summary statistics
+	    ff3_D.getFamaFrenchStats(dataType='Factors', dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+   
+   CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 2/2 [02:45<00:00, 82.68s/it]
+   Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   *********************************** Summary Statistics: Fama-French Factors ***********************************
+       *********************** Observation frequency: D ************************
+                     mkt      mkt-rf         smb         hml
+   startdate  1970-01-02  1970-01-02  1970-01-02  1970-01-02
+   enddate    2020-02-28  2020-02-28  2020-02-28  2020-02-28
+   count           12653       12653       12653       12653
+   mean            0.04%       0.03%        0.0%       0.02%
+   std             1.02%       1.02%       0.55%       0.55%
+   min           -17.45%     -17.47%     -11.64%      -4.39%
+   1%             -2.77%      -2.78%       -1.4%       -1.5%
+   10%            -1.05%      -1.07%       -0.6%      -0.52%
+   25%            -0.41%      -0.43%      -0.29%      -0.24%
+   50%             0.07%       0.05%       0.02%       0.01%
+   75%             0.54%       0.53%        0.3%       0.26%
+   90%              1.1%       1.08%        0.6%       0.56%
+   99%             2.75%       2.72%        1.4%       1.64%
+   max            11.36%      11.36%       6.27%       4.91%
+   skew           -0.53%      -0.52%      -0.97%       0.32%
+   kurt           14.53%      14.53%      21.77%       9.86%
+   mad             0.69%        0.7%       0.39%       0.36%
+
+   [17 rows x 6 columns] 
+   
+   In [11]: # Compare daily Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
+            _, _, _, = ff3_D.comparePortfolios('Factors', ffFreq, startDate, endDate)
+
+   CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 2/2 [03:30<00:00, 105.19s/it]
+   Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 2/2 [03:03<00:00, 91.90s/it]
+   *********************************** Factor Returns: 1970-01-02 to 2020-02-28 ***********************************
+       
+      *********************** Observation frequency: D ************************
+   Fama-French factors: Correlation matrix:
+           mkt  mkt-rf    smb    hml
+   corr:  1.0     1.0  0.976  0.963 
+   
+   Fama-French factors: Average matrix:
+                          mkt        mkt-rf         smb           hml
+   [wrds, kflib]:  [0.04, 0.04]  [0.03, 0.03]  [0.0, 0.0]  [0.02, 0.02] 
+   
+   Fama-French factors: Std Deviation matrix:
+                             mkt        mkt-rf           smb           hml
+   [wrds, kflib]:  [1.02, 1.02]  [1.02, 1.02]  [0.55, 0.54]  [0.55, 0.52] 
+   
+   Elapsed time:  169.73  seconds.
+
+
+
+Fama-French 3 Factors : Annual
+******************************
+
+.. code-block:: ipython
+   
+   In [6]: ffFreq = 'A'
+   In [7]: ffsortCharac = ['ME', 'BM']
+   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [9]: ff3_A = ff.FamaFrench(runQuery=runQuery, freqType=ffFreq, sortCharacsId=ffsortCharac, factorsId=ffFactors) 
+
+   In [10]: # Summary statistics
+	    ff3_A.getFamaFrenchStats(dataType='Factors', dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+
+   CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:04<00:00,  2.38s/it]
+   Historical risk-free interest rate (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   **************************** Summary Statistics: Fama-French Factors ***********************************
+       *********************** Observation frequency: A ************************
+                     mkt      mkt-rf         smb         hml
+   startdate  1970-12-31  1970-12-31  1970-12-31  1970-12-31
+   enddate    2020-12-31  2020-12-31  2020-12-31  2020-12-31
+   count              51          51          50          50
+   mean           11.67%       7.07%       1.49%       4.76%
+   std            17.63%       17.8%      11.33%      14.48%
+   min           -36.65%     -38.24%     -25.74%     -30.85%
+   1%            -32.19%     -36.99%      -24.2%     -28.01%
+   10%           -11.24%      -17.6%     -10.61%     -11.57%
+   25%             0.04%       -5.1%      -7.31%      -4.62%
+   50%            15.41%      10.73%       0.42%       6.44%
+   75%            24.58%       20.3%       8.84%      14.79%
+   90%            32.58%       28.3%      15.29%      21.41%
+   99%            37.51%      33.82%      24.86%      36.02%
+   max            38.23%      35.22%      26.79%      47.04%
+   skew           -0.65%      -0.65%      -0.02%       0.04%
+   kurt             0.0%      -0.07%      -0.22%       0.59%
+   mad            14.26%      14.44%        9.3%       11.5% 
+
+   In [11]: # Compare annual Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
+            _, _, _, = ff3_A.comparePortfolios(kfType='Factors', kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+
+   Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:05<00:00,  2.79s/it]
+   *********************************** Factor Returns: 1970-12-31 to 2019-12-31 ***********************************
+       
+      *********************** Observation frequency: A ************************
+   Fama-French factors: Correlation matrix:
+           mkt  mkt-rf    smb    hml
+   corr:  1.0     1.0  0.995  0.977 
+   
+   Fama-French factors: Average matrix:
+                               mkt        mkt-rf           smb           hml
+   [wrds, kflib]:  [12.07, 12.07]  [7.37, 7.37]  [1.49, 1.59]  [4.76, 4.28] 
+
+   Fama-French factors: Std Deviation matrix:
+                              mkt          mkt-rf            smb             hml
+   [wrds, kflib]:  [17.59, 17.6]  [17.84, 17.86]  [11.33, 11.5]  [14.48, 14.36] 
+
+   Elapsed time:  7.354  seconds.
+
+
+Fama-French 5 Factors : Daily
+*****************************
+
+.. code-block:: ipython
+   
+   In [6]: ffFreq = 'D'
+   In [7]: ffsortCharac = ['ME', 'BM']
+   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
+   In [9]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
+   In [10]: ff5_D = ff.FamaFrench(runQuery=runQuery, freqType=ffFreq, sortCharacsId=ffsortCharac, factorsId=ffFactors, mainCharacsId=ffportCharac) 
+
+   In [11]: # Summary statistics
+	    ff5_D.getFamaFrenchStats(dataType='Factors', dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+
+   CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 5/5 [08:02<00:00, 96.59s/it] 
+   Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   *********************************** Summary Statistics: Fama-French Factors ***********************************
+       *********************** Observation frequency: D ************************
+                     mkt      mkt-rf  ...         rmw         hml
+   startdate  1970-01-02  1970-01-02  ...  1970-01-02  1970-01-02
+   enddate    2020-02-28  2020-02-28  ...  2020-02-28  2020-02-28
+   count           12653       12653  ...       12653       12653
+   mean            0.04%       0.03%  ...       0.01%       0.02%
+   std             1.02%       1.02%  ...       0.43%       0.55%
+   min           -17.45%     -17.47%  ...      -7.67%      -4.39%
+   1%             -2.77%      -2.78%  ...      -1.17%       -1.5%
+   10%            -1.05%      -1.07%  ...      -0.37%      -0.52%
+   25%            -0.41%      -0.43%  ...      -0.17%      -0.24%
+   50%             0.07%       0.05%  ...       0.01%       0.01%
+   75%             0.54%       0.53%  ...       0.19%       0.26%
+   90%              1.1%       1.08%  ...       0.41%       0.56%
+   99%             2.75%       2.72%  ...       1.25%       1.64%
+   max            11.36%      11.36%  ...       6.01%       4.91%
+   skew           -0.53%      -0.52%  ...       -0.0%       0.32%
+   kurt           14.53%      14.53%  ...      22.14%       9.86%
+   mad             0.69%        0.7%  ...       0.27%       0.36%
+   
+   [17 rows x 6 columns] 
+   
+   In [12]: # Compare daily Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
+            _, _, _, = ff5_D.comparePortfolios(kfType='Factors', kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+
+
+
+Fama-French 5 Factors : Monthly
+*******************************
+
+.. code-block:: ipython
+   
+   In [6]: ffFreq = 'M'
+   In [7]: ffsortCharac = ['ME', 'BM']
+   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
+   In [9]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
+   In [10]: ff5_M = ff.FamaFrench(runQuery=runQuery, freqType=ffFreq, sortCharacsId=ffsortCharac, factorsId=ffFactors, mainCharacsId=ffportCharac) 
+
+   In [11]: # Summary statistics
+	    ff5_M.getFamaFrenchStats(dataType='Factors', dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+   
+   In [12]: # Compare monthly Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
+            _, _, _, = ff5_M.comparePortfolios(kfType='Factors', kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)
+
+
+
+Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Daily
+********************************************************************
+
+.. code-block:: ipython
+   
+
+
+
+
+Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Monthly
+**********************************************************************
+
+.. code-block:: ipython
+   
+
+
+Portfolios Sorted on `Size` ``ME``
+##################################
+
+
+
+
+Portfolios Sorted on `Book-to-Market` ``BM``
+############################################
+
+
+    

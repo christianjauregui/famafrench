@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Applications and Examples &mdash; famafrench 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Connecting to wrds-cloud" href="../wrdsconnection/wrdsconnection.html" />
+    <link rel="prev" title="famafrench.FamaFrench" href="../gettingstarted/generated/famafrench.FamaFrench.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> famafrench
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/whatsnew.html">What's New?!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/gettingstarted.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/gettingstarted.html#creating-an-instance-of-the-famafrench-class">Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#anomaly-risk-based-factors">Anomaly/Risk-based Factors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fama-french-3-factors-daily">Fama-French 3 Factors : Daily</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fama-french-3-factors-annual">Fama-French 3 Factors : Annual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fama-french-5-factors-daily">Fama-French 5 Factors : Daily</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fama-french-5-factors-monthly">Fama-French 5 Factors : Monthly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#momentum-short-term-reversal-and-long-term-reversal-factor-daily">Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Daily</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#momentum-short-term-reversal-and-long-term-reversal-factor-monthly">Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Monthly</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#portfolios-sorted-on-size-me">Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#portfolios-sorted-on-book-to-market-bm">Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../wrdsconnection/wrdsconnection.html">Connecting to the WRDS cloud server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrdscloudquery/wrdscloudquery.html">WRDS Query Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolios/factorregressions.html">Estimating Market Betas and Rolling Residual Variances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolios/portfoliosorting.html">Constructing Portfolios and Return-Based Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kflibrary/kflibrary.html">Comparing to Ken French's Online Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics-diagnostics/statistics.html">Summary Statistics and Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">Auxiliary Functions and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">famafrench</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Applications and Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/applications/applications.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="applications-and-examples">
+<span id="applications"></span><h1>Applications and Examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h1>
+<p>Below are some examples of how the package can be used to construct datasets from <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a> as well as many other similar datasets. Throughout, the constructed datasets are compared to those provided by <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html">Ken French</a>.</p>
+<p>Let’s start by importing this package as well as other required Python libraries:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">famafrench.famafrench</span> <span class="k">as</span> <span class="nn">ff</span>
+</pre></div>
+</div>
+<p>Let’s create all our datasets from 1950 to the present or the most recent date for which there is stock returns data. We set <code class="xref py py-attr docutils literal notranslate"><span class="pre">runQuery</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> and query all datafiles directly from <cite>wrds-cloud</cite>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [4]: </span><span class="n">endDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="gp">In [5]: </span><span class="n">runQuery</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="section" id="anomaly-risk-based-factors">
+<h2>Anomaly/Risk-based Factors<a class="headerlink" href="#anomaly-risk-based-factors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fama-french-3-factors-daily">
+<h3>Fama-French 3 Factors : Daily<a class="headerlink" href="#fama-french-3-factors-daily" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
+<span class="gp">In [9]: </span><span class="n">ff3_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">)</span>
+
+<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<span class="go">         ff3_D.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [02:45&lt;00:00, 82.68s/it]</span>
+<span class="go">Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">*********************************** Summary Statistics: Fama-French Factors ***********************************</span>
+<span class="go">    *********************** Observation frequency: D ************************</span>
+<span class="go">                  mkt      mkt-rf         smb         hml</span>
+<span class="go">startdate  1970-01-02  1970-01-02  1970-01-02  1970-01-02</span>
+<span class="go">enddate    2020-02-28  2020-02-28  2020-02-28  2020-02-28</span>
+<span class="go">count           12653       12653       12653       12653</span>
+<span class="go">mean            0.04%       0.03%        0.0%       0.02%</span>
+<span class="go">std             1.02%       1.02%       0.55%       0.55%</span>
+<span class="go">min           -17.45%     -17.47%     -11.64%      -4.39%</span>
+<span class="go">1%             -2.77%      -2.78%       -1.4%       -1.5%</span>
+<span class="go">10%            -1.05%      -1.07%       -0.6%      -0.52%</span>
+<span class="go">25%            -0.41%      -0.43%      -0.29%      -0.24%</span>
+<span class="go">50%             0.07%       0.05%       0.02%       0.01%</span>
+<span class="go">75%             0.54%       0.53%        0.3%       0.26%</span>
+<span class="go">90%              1.1%       1.08%        0.6%       0.56%</span>
+<span class="go">99%             2.75%       2.72%        1.4%       1.64%</span>
+<span class="go">max            11.36%      11.36%       6.27%       4.91%</span>
+<span class="go">skew           -0.53%      -0.52%      -0.97%       0.32%</span>
+<span class="go">kurt           14.53%      14.53%      21.77%       9.86%</span>
+<span class="go">mad             0.69%        0.7%       0.39%       0.36%</span>
+
+<span class="go">[17 rows x 6 columns]</span>
+
+<span class="gp">In [11]: </span><span class="c1"># Compare daily Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="go">         _, _, _, = ff3_D.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
+
+<span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [03:30&lt;00:00, 105.19s/it]</span>
+<span class="go">Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [03:03&lt;00:00, 91.90s/it]</span>
+<span class="go">*********************************** Factor Returns: 1970-01-02 to 2020-02-28 ***********************************</span>
+
+<span class="go">   *********************** Observation frequency: D ************************</span>
+<span class="go">Fama-French factors: Correlation matrix:</span>
+<span class="go">        mkt  mkt-rf    smb    hml</span>
+<span class="go">corr:  1.0     1.0  0.976  0.963</span>
+
+<span class="go">Fama-French factors: Average matrix:</span>
+<span class="go">                       mkt        mkt-rf         smb           hml</span>
+<span class="go">[wrds, kflib]:  [0.04, 0.04]  [0.03, 0.03]  [0.0, 0.0]  [0.02, 0.02]</span>
+
+<span class="go">Fama-French factors: Std Deviation matrix:</span>
+<span class="go">                          mkt        mkt-rf           smb           hml</span>
+<span class="go">[wrds, kflib]:  [1.02, 1.02]  [1.02, 1.02]  [0.55, 0.54]  [0.55, 0.52]</span>
+
+<span class="go">Elapsed time:  169.73  seconds.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fama-french-3-factors-annual">
+<h3>Fama-French 3 Factors : Annual<a class="headerlink" href="#fama-french-3-factors-annual" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
+<span class="gp">In [9]: </span><span class="n">ff3_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">)</span>
+
+<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<span class="go">         ff3_A.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:04&lt;00:00,  2.38s/it]</span>
+<span class="go">Historical risk-free interest rate (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">**************************** Summary Statistics: Fama-French Factors ***********************************</span>
+<span class="go">    *********************** Observation frequency: A ************************</span>
+<span class="go">                  mkt      mkt-rf         smb         hml</span>
+<span class="go">startdate  1970-12-31  1970-12-31  1970-12-31  1970-12-31</span>
+<span class="go">enddate    2020-12-31  2020-12-31  2020-12-31  2020-12-31</span>
+<span class="go">count              51          51          50          50</span>
+<span class="go">mean           11.67%       7.07%       1.49%       4.76%</span>
+<span class="go">std            17.63%       17.8%      11.33%      14.48%</span>
+<span class="go">min           -36.65%     -38.24%     -25.74%     -30.85%</span>
+<span class="go">1%            -32.19%     -36.99%      -24.2%     -28.01%</span>
+<span class="go">10%           -11.24%      -17.6%     -10.61%     -11.57%</span>
+<span class="go">25%             0.04%       -5.1%      -7.31%      -4.62%</span>
+<span class="go">50%            15.41%      10.73%       0.42%       6.44%</span>
+<span class="go">75%            24.58%       20.3%       8.84%      14.79%</span>
+<span class="go">90%            32.58%       28.3%      15.29%      21.41%</span>
+<span class="go">99%            37.51%      33.82%      24.86%      36.02%</span>
+<span class="go">max            38.23%      35.22%      26.79%      47.04%</span>
+<span class="go">skew           -0.65%      -0.65%      -0.02%       0.04%</span>
+<span class="go">kurt             0.0%      -0.07%      -0.22%       0.59%</span>
+<span class="go">mad            14.26%      14.44%        9.3%       11.5%</span>
+
+<span class="gp">In [11]: </span><span class="c1"># Compare annual Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="go">         _, _, _, = ff3_A.comparePortfolios(kfType=&#39;Factors&#39;, kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:05&lt;00:00,  2.79s/it]</span>
+<span class="go">*********************************** Factor Returns: 1970-12-31 to 2019-12-31 ***********************************</span>
+
+<span class="go">   *********************** Observation frequency: A ************************</span>
+<span class="go">Fama-French factors: Correlation matrix:</span>
+<span class="go">        mkt  mkt-rf    smb    hml</span>
+<span class="go">corr:  1.0     1.0  0.995  0.977</span>
+
+<span class="go">Fama-French factors: Average matrix:</span>
+<span class="go">                            mkt        mkt-rf           smb           hml</span>
+<span class="go">[wrds, kflib]:  [12.07, 12.07]  [7.37, 7.37]  [1.49, 1.59]  [4.76, 4.28]</span>
+
+<span class="go">Fama-French factors: Std Deviation matrix:</span>
+<span class="go">                           mkt          mkt-rf            smb             hml</span>
+<span class="go">[wrds, kflib]:  [17.59, 17.6]  [17.84, 17.86]  [11.33, 11.5]  [14.48, 14.36]</span>
+
+<span class="go">Elapsed time:  7.354  seconds.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fama-french-5-factors-daily">
+<h3>Fama-French 5 Factors : Daily<a class="headerlink" href="#fama-french-5-factors-daily" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ff5_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">mainCharacsId</span><span class="o">=</span><span class="n">ffportCharac</span><span class="p">)</span>
+
+<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="go">         ff5_D.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [08:02&lt;00:00, 96.59s/it]</span>
+<span class="go">Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">*********************************** Summary Statistics: Fama-French Factors ***********************************</span>
+<span class="go">    *********************** Observation frequency: D ************************</span>
+<span class="go">                  mkt      mkt-rf  ...         rmw         hml</span>
+<span class="go">startdate  1970-01-02  1970-01-02  ...  1970-01-02  1970-01-02</span>
+<span class="go">enddate    2020-02-28  2020-02-28  ...  2020-02-28  2020-02-28</span>
+<span class="go">count           12653       12653  ...       12653       12653</span>
+<span class="go">mean            0.04%       0.03%  ...       0.01%       0.02%</span>
+<span class="go">std             1.02%       1.02%  ...       0.43%       0.55%</span>
+<span class="go">min           -17.45%     -17.47%  ...      -7.67%      -4.39%</span>
+<span class="go">1%             -2.77%      -2.78%  ...      -1.17%       -1.5%</span>
+<span class="go">10%            -1.05%      -1.07%  ...      -0.37%      -0.52%</span>
+<span class="go">25%            -0.41%      -0.43%  ...      -0.17%      -0.24%</span>
+<span class="go">50%             0.07%       0.05%  ...       0.01%       0.01%</span>
+<span class="go">75%             0.54%       0.53%  ...       0.19%       0.26%</span>
+<span class="go">90%              1.1%       1.08%  ...       0.41%       0.56%</span>
+<span class="go">99%             2.75%       2.72%  ...       1.25%       1.64%</span>
+<span class="go">max            11.36%      11.36%  ...       6.01%       4.91%</span>
+<span class="go">skew           -0.53%      -0.52%  ...       -0.0%       0.32%</span>
+<span class="go">kurt           14.53%      14.53%  ...      22.14%       9.86%</span>
+<span class="go">mad             0.69%        0.7%  ...       0.27%       0.36%</span>
+
+<span class="go">[17 rows x 6 columns]</span>
+
+<span class="gp">In [12]: </span><span class="c1"># Compare daily Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="go">         _, _, _, = ff5_D.comparePortfolios(kfType=&#39;Factors&#39;, kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fama-french-5-factors-monthly">
+<h3>Fama-French 5 Factors : Monthly<a class="headerlink" href="#fama-french-5-factors-monthly" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ff5_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">mainCharacsId</span><span class="o">=</span><span class="n">ffportCharac</span><span class="p">)</span>
+
+<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="go">         ff5_M.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="gp">In [12]: </span><span class="c1"># Compare monthly Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="go">         _, _, _, = ff5_M.comparePortfolios(kfType=&#39;Factors&#39;, kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="momentum-short-term-reversal-and-long-term-reversal-factor-daily">
+<h3>Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Daily<a class="headerlink" href="#momentum-short-term-reversal-and-long-term-reversal-factor-daily" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="momentum-short-term-reversal-and-long-term-reversal-factor-monthly">
+<h3>Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Monthly<a class="headerlink" href="#momentum-short-term-reversal-and-long-term-reversal-factor-monthly" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="portfolios-sorted-on-size-me">
+<h2>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code><a class="headerlink" href="#portfolios-sorted-on-size-me" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="portfolios-sorted-on-book-to-market-bm">
+<h2>Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code><a class="headerlink" href="#portfolios-sorted-on-book-to-market-bm" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../wrdsconnection/wrdsconnection.html" class="btn btn-neutral float-right" title="Connecting to wrds-cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../gettingstarted/generated/famafrench.FamaFrench.html" class="btn btn-neutral float-left" title="famafrench.FamaFrench" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christian Jauregui
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
