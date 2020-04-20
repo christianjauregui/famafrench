@@ -1,9 +1,9 @@
 .. _wrdscloudquery:
 
 
-********************
+*********************
 ``FamaFrench`` Tools
-********************
+*********************
 
 .. module:: famafrench
    :noindex:

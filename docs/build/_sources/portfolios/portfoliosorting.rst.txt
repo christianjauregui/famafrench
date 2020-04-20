@@ -1,8 +1,8 @@
 .. _portfoliosorting:
 
-********
+*********
 Overview
-********
+*********
 
 .. module:: famafrench
    :noindex:

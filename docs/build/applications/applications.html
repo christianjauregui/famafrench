@@ -91,12 +91,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#fama-french-3-factors-annual">Fama-French 3 Factors : Annual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fama-french-5-factors-daily">Fama-French 5 Factors : Daily</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fama-french-5-factors-monthly">Fama-French 5 Factors : Monthly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fama-french-5-factors-annual">Fama-French 5 Factors : Annual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#momentum-short-term-reversal-and-long-term-reversal-factor-daily">Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Daily</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#momentum-short-term-reversal-and-long-term-reversal-factor-monthly">Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Monthly</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#portfolios-sorted-on-size-me">Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#portfolios-sorted-on-book-to-market-bm">Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#portfolios-sorted-on-size-me-monthly">Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> : Monthly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#portfolios-sorted-on-book-to-market-bm-monthly">Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code> : Monthly</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../wrdsconnection/wrdsconnection.html">Connecting to the WRDS cloud server</a></li>
@@ -353,6 +354,30 @@
 
 <span class="gp">In [12]: </span><span class="c1"># Compare daily Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff5_D.comparePortfolios(kfType=&#39;Factors&#39;, kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [08:00&lt;00:00, 96.11s/it]</span>
+<span class="go">Historical risk-free interest rate (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [08:34&lt;00:00, 102.94s/it]</span>
+<span class="go">*********************************** Factor Returns: 1970-01-02 to 2020-02-28 ***********************************</span>
+<span class="go">    *********************** Observation frequency: D ************************</span>
+<span class="go">Fama-French factors: Correlation matrix:</span>
+<span class="go">        mkt  mkt-rf    smb    cma    rmw    hml</span>
+<span class="go">corr:  1.0     1.0  0.976  0.917  0.902  0.963</span>
+
+<span class="go">Fama-French factors: Average matrix:</span>
+<span class="go">                          mkt        mkt-rf  ...           rmw           hml</span>
+<span class="go">[wrds, kflib]:  [0.04, 0.04]  [0.03, 0.03]  ...  [0.01, 0.01]  [0.02, 0.02]</span>
+<span class="go">[1 rows x 6 columns]</span>
+
+<span class="go">Fama-French factors: Std Deviation matrix:</span>
+<span class="go">                          mkt        mkt-rf  ...           rmw           hml</span>
+<span class="go">[wrds, kflib]:  [1.02, 1.02]  [1.02, 1.02]  ...  [0.43, 0.38]  [0.55, 0.52]</span>
+<span class="go">[1 rows x 6 columns]</span>
+
+<span class="go">Elapsed time:  518.612  seconds.</span>
 </pre></div>
 </div>
 </div>
@@ -367,8 +392,129 @@
 <span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff5_M.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
 
+<span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14&lt;00:00,  2.88s/it]</span>
+<span class="go">Historical risk-free interest rate (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">*********************************** Summary Statistics: Fama-French Factors ***********************************</span>
+<span class="go">    *********************** Observation frequency: M ************************</span>
+<span class="go">                  mkt      mkt-rf  ...         hml         cma</span>
+<span class="go">startdate  1970-01-31  1970-01-31  ...  1970-01-31  1970-01-31</span>
+<span class="go">enddate    2020-02-29  2020-02-29  ...  2020-02-29  2020-02-29</span>
+<span class="go">count             602         602  ...         602         602</span>
+<span class="go">mean            0.93%       0.55%  ...       0.31%       0.28%</span>
+<span class="go">std              4.5%       4.51%  ...       3.01%       1.93%</span>
+<span class="go">min           -22.66%     -23.26%  ...      -11.9%      -7.08%</span>
+<span class="go">1%            -10.96%     -11.76%  ...      -8.43%      -4.38%</span>
+<span class="go">10%            -4.53%      -4.94%  ...      -2.87%      -1.89%</span>
+<span class="go">25%            -1.71%       -2.0%  ...      -1.45%      -0.93%</span>
+<span class="go">50%             1.28%       0.94%  ...       0.24%       0.17%</span>
+<span class="go">75%              3.9%        3.5%  ...       1.79%       1.43%</span>
+<span class="go">90%             6.06%       5.57%  ...       3.95%       2.67%</span>
+<span class="go">99%            11.35%      11.14%  ...       8.33%       5.72%</span>
+<span class="go">max             16.6%      16.09%  ...      12.43%       8.55%</span>
+<span class="go">skew           -0.54%      -0.56%  ...       0.06%       0.33%</span>
+<span class="go">kurt            1.92%       1.91%  ...       2.13%       1.43%</span>
+<span class="go">mad             3.41%       3.43%  ...        2.2%       1.47%</span>
+
+<span class="go">[17 rows x 6 columns]</span>
+
 <span class="gp">In [12]: </span><span class="c1"># Compare monthly Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff5_M.comparePortfolios(kfType=&#39;Factors&#39;, kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14&lt;00:00,  2.84s/it]</span>
+<span class="go">*********************************** Factor Returns: 1970-01-31 to 2020-02-29 ***********************************</span>
+
+<span class="go">    *********************** Observation frequency: M ************************</span>
+<span class="go">Fama-French factors: Correlation matrix:</span>
+<span class="go">        mkt  mkt-rf    smb    rmw    hml    cma</span>
+<span class="go">corr:  1.0     1.0  0.984  0.975  0.977  0.957</span>
+
+<span class="go">Fama-French factors: Average matrix:</span>
+<span class="go">                          mkt        mkt-rf  ...          hml           cma</span>
+<span class="go">[wrds, kflib]:  [0.93, 0.93]  [0.55, 0.55]  ...  [0.31, 0.3]  [0.28, 0.31]</span>
+
+<span class="go">[1 rows x 6 columns]</span>
+
+<span class="go">Fama-French factors: Std Deviation matrix:</span>
+<span class="go">                        mkt        mkt-rf  ...           hml           cma</span>
+<span class="go">[wrds, kflib]:  [4.5, 4.5]  [4.51, 4.51]  ...  [3.01, 2.92]  [1.93, 1.99]</span>
+
+<span class="go">[1 rows x 6 columns]</span>
+
+<span class="go">Elapsed time:  15.183  seconds.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fama-french-5-factors-annual">
+<h3>Fama-French 5 Factors : Annual<a class="headerlink" href="#fama-french-5-factors-annual" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ff5_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">mainCharacsId</span><span class="o">=</span><span class="n">ffportCharac</span><span class="p">)</span>
+
+<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="go">         ff5_A.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14&lt;00:00,  2.92s/it]</span>
+<span class="go">Historical risk-free interest rate (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">*********************************** Summary Statistics: Fama-French Factors ***********************************</span>
+<span class="go">    *********************** Observation frequency: A ************************</span>
+<span class="go">                  mkt      mkt-rf  ...         rmw         cma</span>
+<span class="go">startdate  1970-12-31  1970-12-31  ...  1970-12-31  1970-12-31</span>
+<span class="go">enddate    2020-12-31  2020-12-31  ...  2020-12-31  2020-12-31</span>
+<span class="go">count              51          51  ...          50          50</span>
+<span class="go">mean           11.67%       7.07%  ...       3.51%       3.74%</span>
+<span class="go">std            17.63%       17.8%  ...       9.34%       8.82%</span>
+<span class="go">min           -36.65%     -38.24%  ...     -25.27%     -14.95%</span>
+<span class="go">1%            -32.19%     -36.99%  ...     -23.54%     -13.26%</span>
+<span class="go">10%           -11.24%      -17.6%  ...      -6.06%      -7.29%</span>
+<span class="go">25%             0.04%       -5.1%  ...      -0.87%      -1.99%</span>
+<span class="go">50%            15.41%      10.73%  ...       3.35%       3.15%</span>
+<span class="go">75%            24.58%       20.3%  ...       8.66%       8.97%</span>
+<span class="go">90%            32.58%       28.3%  ...      14.68%      14.68%</span>
+<span class="go">99%            37.51%      33.82%  ...      22.08%      25.39%</span>
+<span class="go">max            38.23%      35.22%  ...       22.2%       26.0%</span>
+<span class="go">skew           -0.65%      -0.65%  ...       -0.6%       0.34%</span>
+<span class="go">kurt             0.0%      -0.07%  ...       1.56%        0.2%</span>
+<span class="go">mad            14.26%      14.44%  ...       6.88%       6.88%</span>
+
+<span class="go">[17 rows x 6 columns]</span>
+
+<span class="gp">In [12]: </span><span class="c1"># Compare annual Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="go">         _, _, _, = ff5_A.comparePortfolios(kfType=&#39;Factors&#39;, kfFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:16&lt;00:00,  3.32s/it]</span>
+<span class="go">Historical risk-free interest rate (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:17&lt;00:00,  3.56s/it]</span>
+<span class="go">*********************************** Factor Returns: 1970-12-31 to 2019-12-31 ***********************************</span>
+
+<span class="go">    *********************** Observation frequency: A ************************</span>
+<span class="go">Fama-French factors: Correlation matrix:</span>
+<span class="go">        mkt  mkt-rf    smb    hml    rmw    cma</span>
+<span class="go">corr:  1.0     1.0  0.996  0.978  0.986  0.977</span>
+
+<span class="go">Fama-French factors: Average matrix:</span>
+<span class="go">                            mkt        mkt-rf  ...           rmw           cma</span>
+<span class="go">[wrds, kflib]:  [12.07, 12.07]  [7.37, 7.37]  ...  [3.42, 3.64]  [3.88, 3.98]</span>
+
+<span class="go">[1 rows x 6 columns]</span>
+
+<span class="go">Fama-French factors: Std Deviation matrix:</span>
+<span class="go">                           mkt          mkt-rf  ...           rmw           cma</span>
+<span class="go">[wrds, kflib]:  [17.59, 17.6]  [17.84, 17.86]  ...  [9.43, 9.54]  [9.21, 9.76]</span>
+
+<span class="go">[1 rows x 6 columns]</span>
+
+<span class="go">Elapsed time:  18.957  seconds.</span>
 </pre></div>
 </div>
 </div>
@@ -385,11 +531,11 @@
 </div>
 </div>
 </div>
-<div class="section" id="portfolios-sorted-on-size-me">
-<h2>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code><a class="headerlink" href="#portfolios-sorted-on-size-me" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="portfolios-sorted-on-size-me-monthly">
+<h2>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> : Monthly<a class="headerlink" href="#portfolios-sorted-on-size-me-monthly" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="portfolios-sorted-on-book-to-market-bm">
-<h2>Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code><a class="headerlink" href="#portfolios-sorted-on-book-to-market-bm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="portfolios-sorted-on-book-to-market-bm-monthly">
+<h2>Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code> : Monthly<a class="headerlink" href="#portfolios-sorted-on-book-to-market-bm-monthly" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

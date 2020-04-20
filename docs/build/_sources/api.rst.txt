@@ -1,8 +1,8 @@
 .. _api:
 
-*****************************
+******************************
 API Reference
-*****************************
+******************************
 This is a comprehensive reference for everything you get when you ``import famafrench``.
 
 .. contents:: Table of Contents

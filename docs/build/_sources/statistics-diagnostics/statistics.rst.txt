@@ -1,8 +1,8 @@
 .. _statistics:
 
-********
+*********
 Overview
-********
+*********
 
 .. module:: famafrench
    :noindex:
