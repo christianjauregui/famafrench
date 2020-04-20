@@ -280,7 +280,7 @@
 <span class="s2">            * ``SMB`` : Small Minus Big</span>
 <span class="s2">            * ``HML`` : High Minus Low</span>
 <span class="s2">            * ``RMW`` : Robust Minus Weak</span>
-<span class="s2">            * ``RMWc`` : Cash-based Robust Minus Weak (TODO)</span>
+<span class="s2">            * ``RMWc`` : Cash-based Robust Minus Weak (**Todo**)</span>
 <span class="s2">            * ``CMA`` : Conservative Minus Aggressive</span>
 <span class="s2">            * ``MOM`` : Momentum - based on Prior (2-12) returns</span>
 <span class="s2">            * ``ST_Rev`` : Short-Term Reversal - based on Prior (1-1) returns</span>
@@ -1625,7 +1625,7 @@
 
 <span class="sd">        Todo</span>
 <span class="sd">        ______</span>
-<span class="sd">        Extend the Dimson (1979) methodology based on Scholes-Williams (1977) to other factor quantities of risk including</span>
+<span class="sd">        Extend the Dimson (1979) methodology based on Scholes-Williams (1977) to other factor quantities of risk</span>
 <span class="sd">        beyond the `market (CAPM)` beta (eg, `SMB` and `HML` quantities of risk)</span>
 
 <span class="sd">        References</span>
@@ -1914,7 +1914,7 @@
                             <span class="c1"># METHOD 2: Directly estimate acf(1) using OLS regression for de-meaned process (i.e. can omit intercept)</span>
                             <span class="n">autocorr</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">((</span><span class="n">l1x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">l1x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">l1x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TODO&#39;</span><span class="p">)</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TODO: Apply Dimson (1997) method based on Scholes-Williams (1977) to other quantities of risk beyond the CAPM beta.&#39;</span><span class="p">)</span>
                         <span class="c1"># Construct the Scholes-Williams (1977) inspired market beta estimates.</span>
                         <span class="n">sw_adj</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">sw_adj</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">autocorr</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
                         <span class="n">params</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">/</span> <span class="n">sw_adj</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
@@ -4942,7 +4942,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        ________</span>
 <span class="sd">        dfcorrTable : `pandas.DataFrame` or `list`, `pandas.DataFrame` if ``len(kfDim) == 3``</span>
-<span class="sd">            Table w/ `correlations` between `wrds-cloud` constructed and Ken French online library portfolio variables</span>
+<span class="sd">            Table w/ `Pearson correlations` between `wrds-cloud` constructed and Ken French online library portfolio variables</span>
 <span class="sd">            at a given frequency and over a given sample period.</span>
 <span class="sd">        dfmeanTable :` pandas.DataFrame` or `list`, `pandas.DataFrame` if ``len(kfDim) == 3``</span>
 <span class="sd">            Table w/ `mean statistics` for `wrds-cloud` constructed and Ken French online library portfolio variables</span>

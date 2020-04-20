@@ -1,8 +1,8 @@
 .. _factorregressions:
 
-********
+*********
 Overview
-********
+*********
 
 .. module:: famafrench
    :noindex:

@@ -1,8 +1,8 @@
 .. _whatsnew:
 
-************
+*************
 What's New?!
-************
+*************
 
 .. module:: famafrench
    :noindex:

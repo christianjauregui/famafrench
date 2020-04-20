@@ -1,8 +1,8 @@
 .. _utils:
 
-********
+*********
 Overview
-********
+*********
 
 .. module:: famafrench
    :noindex:

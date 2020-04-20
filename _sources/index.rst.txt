@@ -1,9 +1,8 @@
 .. _overview:
 
-
-***************************************
+****************************************
 ``famafrench`` - Package Documentation
-***************************************
+****************************************
 
 Toolbox for constructing and replicating datasets from `Ken French's online data library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ by accessing WRDS remotely through its cloud server.  
 

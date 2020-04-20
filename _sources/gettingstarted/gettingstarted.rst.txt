@@ -1,8 +1,8 @@
 .. _gettingstarted:
 
-*********
+**********
 Overview
-*********
+**********
 
 The main tool provided by the package is the ``FamaFrench`` class that enables its user to construct 
 a multitude of datasets found in `Ken French's online library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ as well as many others. 
