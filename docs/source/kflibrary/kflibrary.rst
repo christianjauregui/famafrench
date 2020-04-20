@@ -1,8 +1,8 @@
 .. _kflibrary:
 
-********
+*********
 Overview
-********
+*********
 
 .. module:: famafrench
    :noindex:
