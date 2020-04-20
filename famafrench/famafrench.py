@@ -123,7 +123,7 @@ class FamaFrench:
             * ``SMB`` : Small Minus Big
             * ``HML`` : High Minus Low
             * ``RMW`` : Robust Minus Weak
-            * ``RMWc`` : Cash-based Robust Minus Weak (TODO)
+            * ``RMWc`` : Cash-based Robust Minus Weak (**Todo**)
             * ``CMA`` : Conservative Minus Aggressive
             * ``MOM`` : Momentum - based on Prior (2-12) returns
             * ``ST_Rev`` : Short-Term Reversal - based on Prior (1-1) returns
@@ -1468,7 +1468,7 @@ class FamaFrench:
 
         Todo
         ______
-        Extend the Dimson (1979) methodology based on Scholes-Williams (1977) to other factor quantities of risk including
+        Extend the Dimson (1979) methodology based on Scholes-Williams (1977) to other factor quantities of risk
         beyond the `market (CAPM)` beta (eg, `SMB` and `HML` quantities of risk)
 
         References
@@ -1757,7 +1757,7 @@ class FamaFrench:
                             # METHOD 2: Directly estimate acf(1) using OLS regression for de-meaned process (i.e. can omit intercept)
                             autocorr[r, 1:] = np.linalg.lstsq((l1x[:, 2] - l1x[:, 2].mean()).reshape(l1x.shape[0], 1), (x[:, 2] - x[:, 2].mean()).reshape(x.shape[0], 1))[0].item()
                         else:
-                            print('TODO')
+                            print('TODO: Apply Dimson (1997) method based on Scholes-Williams (1977) to other quantities of risk beyond the CAPM beta.')
                         # Construct the Scholes-Williams (1977) inspired market beta estimates.
                         sw_adj[r, 1:] = sw_adj[r, 1:] + 2 * autocorr[r, 1]
                         params[r, 2:] = params[r, 2:] / sw_adj[r, 1:]
@@ -4785,7 +4785,7 @@ class FamaFrench:
         Returns
         ________
         dfcorrTable : `pandas.DataFrame` or `list`, `pandas.DataFrame` if ``len(kfDim) == 3``
-            Table w/ `correlations` between `wrds-cloud` constructed and Ken French online library portfolio variables
+            Table w/ `Pearson correlations` between `wrds-cloud` constructed and Ken French online library portfolio variables
             at a given frequency and over a given sample period.
         dfmeanTable :` pandas.DataFrame` or `list`, `pandas.DataFrame` if ``len(kfDim) == 3``
             Table w/ `mean statistics` for `wrds-cloud` constructed and Ken French online library portfolio variables
