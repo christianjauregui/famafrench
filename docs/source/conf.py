@@ -33,7 +33,7 @@ author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
 # Define __version__
-exec(open("famafrench/version.py").read())
+exec(open("./famafrench/version.py").read())
 version = __version__
 release = version
 
