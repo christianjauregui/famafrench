@@ -19,6 +19,7 @@ packages = [
 ]
 
 requires = [
+    'IPython >= 7.12.0',
     'numpy >= 1.16.1',
     'numpydoc >=0.9.2',
     'numba >= 0.48.0',

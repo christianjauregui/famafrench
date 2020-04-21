@@ -13,15 +13,13 @@
 #       In this case, since you start in the source folder, it is two levels up.
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
 import sphinx_rtd_theme
+sys.path.insert(0, os.path.abspath('../..'))
 try:
     import IPython
     print("ipython: %s, %s" % (IPython.__version__, IPython.__file__))
 except ImportError:
     print("no ipython")
-
-
 
 # -- Project information -----------------------------------------------------
 
@@ -32,7 +30,6 @@ author = 'Christian Jauregui'
 # The full version, including alpha/beta/rc tags
 version = '0.1.0'
 release = version
-
 
 # -- General configuration ---------------------------------------------------
 
