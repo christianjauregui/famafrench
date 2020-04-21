@@ -20,11 +20,12 @@ packages = [
 
 requires = [
     'numpy >= 1.16.1',
+    'numpydoc >=0.9.2'
     'numba >= 0.48.0',
     'methodtools >= 0.1.0',
     'pandas >= 0.24.2',
     'pandas_datareader >= 0.7.0',
-    'pandas_market_calendars' >= '1.1',
+    'pandas_market_calendars >= 1.1',
     'termcolor >= 1.1.0',
     'tqdm >= 4.41.1'
 ]
@@ -83,7 +84,7 @@ setup(
     ],
 
     project_urls={
-        'Documentation': 'https://github.com/christianjauregui/famafrench',
+        'Documentation': 'https://christianjauregui.github.io/famafrench/',
         'Source': 'https://github.com/christianjauregui/famafrench',
         'Tracker': 'https://github.com/christianjauregui/famafrench/issues',
     },
