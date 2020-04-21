@@ -44,8 +44,6 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.todo',
               'sphinx.ext.viewcode',
               'numpydoc',
-              'IPython.sphinxext.ipython_directive',
-              'IPython.sphinxext.ipython_console_highlighting',
               ]
 # Example NumPy Style Python Docstrings:
 # https://www.sphinx-doc.org/en/master/usage/extensions/example_numpy.html#example-numpy
