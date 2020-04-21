@@ -26,8 +26,10 @@ requires = [
     'pandas >= 0.24.2',
     'pandas_datareader >= 0.7.0',
     'pandas_market_calendars >= 1.1',
+    'sqlalchemy >= 1.3.13',
     'termcolor >= 1.1.0',
-    'tqdm >= 4.41.1'
+    'tqdm >= 4.41.1',
+    'wrds >= 3.0.8'
 ]
 
 setup(
@@ -35,7 +37,7 @@ setup(
     name=NAME,
     version='0.1.0',
     author='Christian Jauregui',
-    author_email='cjauregui@econ.berkeley.edu',
+    author_email='chris.jauregui@berkeley.edu',
     description='Python package designed to construct and replicate datasets from Ken French\'s '
                 'online library (https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) '
                 'via remote access to wrds-cloud. ',
