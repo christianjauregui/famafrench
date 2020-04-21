@@ -65,8 +65,10 @@ setup(
     license='2-clause BSD',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    # See https://packaging.python.org/tutorials/packaging-projects/#classifiers
+    # https://www.python.org/dev/peps/pep-0440/
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
