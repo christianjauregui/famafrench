@@ -15,9 +15,9 @@ __all__ = ["wrdsConnection"]
 # Standard Imports
 import os
 import sys
-from sys import version_info
 import pandas as pd
 import sqlalchemy as sa
+from sys import version_info
 from wrds import __version__ as wrds_version
 
 

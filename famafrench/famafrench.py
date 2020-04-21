@@ -16,35 +16,32 @@ __all__ = ["Error", "FamaFrench"]
 # Standard Imports
 import pickle
 import copy
+import sqlalchemy
+
+import pandas as pd
+import numpy as np
+import pandas_datareader.data as web
+import pandas_market_calendars as mcal
+
 from pathlib import Path
 from termcolor import cprint
 from re import sub, compile
 from dateutil.relativedelta import relativedelta
-import numpy as np
-
-np.seterr(divide='raise')  # warn/error if taking np.log() if non-positive number.
-
-import pandas as pd
-
-pd.options.mode.chained_assignment = 'raise'
-pd.options.mode.use_inf_as_na = True
-import pandas_datareader.data as web
 from pandas_datareader._utils import RemoteDataError
-import sqlalchemy
-
 from pandas.tseries.offsets import *
 from importlib import reload
 from tqdm import tqdm
 
-import pandas_market_calendars as mcal
 nyse_cal = mcal.get_calendar('NYSE')
+np.seterr(divide='raise')  # warn/error if taking np.log() if non-positive number.
+pd.options.mode.chained_assignment = 'raise'
+pd.options.mode.use_inf_as_na = True
 
 # Reloads the .env file in your home directory.
 from dotenv import load_dotenv
 load_dotenv()
 from famafrench import wrdsconnect as wrds
 reload(wrds)
-
 # import 'utils' module w/ auxilary functions
 from famafrench import utils
 

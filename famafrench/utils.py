@@ -41,8 +41,8 @@ __all__ = [
 ]
 
 # Standard Imports
-import pandas as pd
 import weakref
+import pandas as pd
 from functools import wraps
 from methodtools import lru_cache  # see documentation: https://pypi.org/project/methodtools/
 from time import time
