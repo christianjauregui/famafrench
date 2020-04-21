@@ -20,7 +20,7 @@ packages = [
 
 requires = [
     'numpy >= 1.16.1',
-    'numpydoc >=0.9.2'
+    'numpydoc >=0.9.2',
     'numba >= 0.48.0',
     'methodtools >= 0.1.0',
     'pandas >= 0.24.2',
