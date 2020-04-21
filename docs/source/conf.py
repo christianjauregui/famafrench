@@ -15,7 +15,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 import sphinx_rtd_theme
-import famafrench
+#import famafrench.famafrench
 try:
     import IPython
     print("ipython: %s, %s" % (IPython.__version__, IPython.__file__))
@@ -31,7 +31,7 @@ copyright = '2020, Christian Jauregui'
 author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
-version = famafrench.__version__
+version = '0.1.0'
 release = version
 
 
