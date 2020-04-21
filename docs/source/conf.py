@@ -24,7 +24,6 @@ try:
     print("ipython: %s, %s" % (IPython.__version__, IPython.__file__))
 except ImportError:
     print("no ipython")
-from famafrench import version
 
 # -- Project information -----------------------------------------------------
 
@@ -33,8 +32,7 @@ copyright = '2020, Christian Jauregui'
 author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
-# Define __version__
-version = version.__version__
+version = '0.1.0'
 release = version
 
 # -- General configuration ---------------------------------------------------
