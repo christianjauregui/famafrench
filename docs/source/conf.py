@@ -32,9 +32,9 @@ copyright = '2020, Christian Jauregui'
 author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
-from famafrench import __version__
+# Define __version__
+exec(open("famafrench/version.py").read())
 version = __version__
-# The full version, including alpha/beta/rc tags.
 release = version
 
 # -- General configuration ---------------------------------------------------

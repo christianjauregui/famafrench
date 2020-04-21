@@ -53,7 +53,7 @@ requires = [
 setup(
     # Package meta-data
     name=NAME,
-    version=__version__,
+    version= __version__,
     author='Christian Jauregui',
     author_email='chris.jauregui@berkeley.edu',
     description='Python package designed to construct and replicate datasets from Ken French\'s '
@@ -71,7 +71,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: Financial and Insurance Industry',
