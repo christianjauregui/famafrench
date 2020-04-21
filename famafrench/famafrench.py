@@ -31,6 +31,8 @@ from pandas_datareader._utils import RemoteDataError
 from pandas.tseries.offsets import *
 from importlib import reload
 from tqdm import tqdm
+from dotenv import load_dotenv
+from famafrench import wrdsconnect as wrds
 
 nyse_cal = mcal.get_calendar('NYSE')
 np.seterr(divide='raise')  # warn/error if taking np.log() if non-positive number.
@@ -38,10 +40,9 @@ pd.options.mode.chained_assignment = 'raise'
 pd.options.mode.use_inf_as_na = True
 
 # Reloads the .env file in your home directory.
-from dotenv import load_dotenv
 load_dotenv()
-from famafrench import wrdsconnect as wrds
 reload(wrds)
+
 # import 'utils' module w/ auxilary functions
 from famafrench import utils
 
