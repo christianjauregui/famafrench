@@ -1,2 +1,9 @@
-doctrees/.buildinfo
-build
+# OS generated files #
+######################
+.DS_Store?
+.iml?
+.xml?
+
+
+# Distribution / packaging
+docs/build/

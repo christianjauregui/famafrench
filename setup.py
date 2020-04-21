@@ -78,6 +78,7 @@ setup(
         'econometrics',
         'factor-model',
         'factor-returns',
+        'factor-investing',
         'fama-french',
         'finance',
         'growth',
@@ -90,7 +91,7 @@ setup(
     ],
 
     project_urls={
-        'Documentation': 'https://christianjauregui.github.io/famafrench/',
+        'Documentation': 'https://famafrench.readthedocs.io/en/latest/',
         'Source': 'https://github.com/christianjauregui/famafrench',
         'Tracker': 'https://github.com/christianjauregui/famafrench/issues',
     },
