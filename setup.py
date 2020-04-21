@@ -19,7 +19,6 @@ packages = [
 ]
 
 requires = [
-    'dateutil >= 2.8.1',
     'numpy >= 1.16.1',
     'numpydoc >=0.9.2'
     'numba >= 0.48.0',
@@ -27,8 +26,8 @@ requires = [
     'pandas >= 0.24.2',
     'pandas_datareader >= 0.7.0',
     'pandas_market_calendars >= 1.1',
-    'python-dateutil >= 2.8.1',
-    'python-dotenv >= 0.13.0',
+    'python_dateutil >= 2.8.1',
+    'python_dotenv >= 0.13.0',
     'sqlalchemy >= 1.3.13',
     'termcolor >= 1.1.0',
     'tqdm >= 4.41.1',
