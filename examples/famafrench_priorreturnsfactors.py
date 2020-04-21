@@ -1,7 +1,11 @@
 """
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
 Filename
 ________
-famafrench_priorreturnsfactors.py
+`examples/famafrench_priorreturnsfactors.py`
 
 Construct Fama/French Factors based on Prior Returns:
 * Momentum: prior (2-12) returns (MOM)

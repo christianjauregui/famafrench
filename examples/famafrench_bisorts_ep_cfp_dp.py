@@ -1,7 +1,11 @@
 """
-Filename:
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
 _________
-`famafrenchbisorts_ep_cfp_dp.py`
+`examples/famafrenchbisorts_ep_cfp_dp.py`
 
 Construct portfolio returns based using bivariate sorts on
 * Earnings/Price (EP)

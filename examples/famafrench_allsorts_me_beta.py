@@ -1,7 +1,11 @@
 """
-Filename:
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
 _________
-`famafrench_allsorts_me_beta.py`
+`examples/famafrench_allsorts_me_beta.py`
 
 Construct portfolio returns based using univariate or bivariate sorts on
 * Size (ME)
@@ -26,7 +30,7 @@ endDate = dt.date.today()  # "default" endDate
 #endDate = dt.date(2019, 12, 31)
 
 
-#%%
+
 #***************************************************************************#
 #***************************************************************************#
 #*****************           Market Beta (BETA)          *******************#
@@ -64,7 +68,7 @@ ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 #**********************************************************************************************#
 # Monthly Portfolios Formed on Market Beta (BETA)
 #**********************************************************************************************#
-runQuery, runEstimation = True, True
+runQuery, runEstimation = False, True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['BETA'], ['ME', 'BETA']
 ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac, runEstimation)
@@ -99,7 +103,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 #**********************************************************************************************#
 # Annual Portfolios Formed on Market Beta (BETA)
 #**********************************************************************************************#
-runQuery, runEstimation = True, True
+runQuery, runEstimation = False, True
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['BETA'], ['ME', 'BETA']
 ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac, runEstimation)

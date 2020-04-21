@@ -1,7 +1,11 @@
 """
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
 Filename
 ________
-`famafrench_3factors.py`
+`examples/famafrench_3factors.py`
 
 Construct Fama/French 3 Factors:
 * Market premium (MKT-RF)

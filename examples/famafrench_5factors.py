@@ -1,7 +1,11 @@
 """
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
 Filename
-________
-`famafrench_5factors.py`
+_________
+`examples/famafrench_5factors.py`
 
 Construct Fama/French 5 Factors:
 * Market premium

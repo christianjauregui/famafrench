@@ -1,7 +1,11 @@
 """
-Filename:
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
 _________
-`famafrench_trisorts_me_bm_op_inv.py`
+`examples/famafrench_trisorts_me_bm_op_inv.py`
 
 Construct portfolio returns based using trivariate sorts on
 * Size (ME)

@@ -1,7 +1,11 @@
 """
-Filename:
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
 _________
-`famafrench_allsorts_me_var.py`
+`examples/famafrench_allsorts_me_var.py`
 
 Construct portfolio returns based using univariate or bivariate sorts on
 * Size (ME)

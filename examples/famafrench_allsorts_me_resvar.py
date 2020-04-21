@@ -1,7 +1,11 @@
 """
-Filename:
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
 _________
-`famafrench_allsorts_me_resvar.py`
+`examples/famafrench_allsorts_me_resvar.py`
 
 Construct portfolio returns based using univariate or bivariate sorts on
 * Size (ME)
@@ -35,7 +39,7 @@ endDate = dt.date.today()  # "default" endDate
 #**********************************************************************************************#
 # Daily Portfolios Formed on Residual Variance (RESVAR)
 #**********************************************************************************************#
-runQuery, runEstimation = True, True
+runQuery, runEstimation = False, True
 ffFreq = 'D'
 ffFactors, ffsortCharac, ffportCharac = [], ['RESVAR'], ['ME', 'RESVAR']
 ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac, runEstimation)

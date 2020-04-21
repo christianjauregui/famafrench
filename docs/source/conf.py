@@ -1,3 +1,7 @@
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -28,7 +32,9 @@ copyright = '2020, Christian Jauregui'
 author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
-version = '0.1.0'
+from famafrench import __version__
+version = __version__
+# The full version, including alpha/beta/rc tags.
 release = version
 
 # -- General configuration ---------------------------------------------------

@@ -1,11 +1,25 @@
 """
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
+________
 `setup.py`
 
+Note
+_____
 setuptools-based setup module: (see https://packaging.python.org/guides/distributing-packages-using-setuptools/)
+
+Note
+_____
 For more information on licenses, go to https://choosealicense.com/licenses/
 """
 from os import path
 from setuptools import setup, find_packages
+
+# Define __version__
+exec(open("famafrench/version.py").read())
 
 here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
@@ -39,7 +53,7 @@ requires = [
 setup(
     # Package meta-data
     name=NAME,
-    version='0.1.0',
+    version=__version__,
     author='Christian Jauregui',
     author_email='chris.jauregui@berkeley.edu',
     description='Python package designed to construct and replicate datasets from Ken French\'s '
@@ -48,7 +62,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://https://github.com/christianjauregui/famafrench',
-    license='MIT',
+    license='2-clause BSD',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[

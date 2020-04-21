@@ -1,14 +1,17 @@
 """
-`wrds-cloud` connection functions.
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
+Filename
+_________
+`famafrench/wrdsconnect.py`
 
 Description
 ___________
-
 wrdsConnection
     Object class used to set up a remote connection to wrds-cloud.
     This class largely builds on the "Connection" class in the `WRDS-Py` library.
-
-Copyright (c) 2017 Wharton Research Data Services
 """
 
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'

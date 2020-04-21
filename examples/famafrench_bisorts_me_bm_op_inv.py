@@ -1,7 +1,11 @@
 """
+# This file is part of famafrench
+# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# See file LICENSE.txt for license information.
+
 Filename
 _________
-`famafrenchbisorts_me_bm_op_inv.py`
+`examples/famafrenchbisorts_me_bm_op_inv.py`
 
 Construct portfolio returns based using bivariate sorts on
 * Size (ME)
