@@ -7,6 +7,8 @@ ___________
 wrdsConnection
     Object class used to set up a remote connection to wrds-cloud.
     This class largely builds on the "Connection" class in the `WRDS-Py` library.
+
+Copyright (c) 2017 Wharton Research Data Services
 """
 
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
@@ -26,6 +28,8 @@ class wrdsConnection:
     __doc__ = """
         Class for setting up the remote connection to `wrds-cloud`;
         largely builds on the ``Connection`` class in the `WRDS-Py library <https://pypi.org/project/wrds/0.0.5/>`_.
+        
+        Copyright (c) 2017 Wharton Research Data Services
         """
     def __init__(self, autoconnect=True):
         """
