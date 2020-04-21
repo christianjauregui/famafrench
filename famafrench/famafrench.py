@@ -33,6 +33,7 @@ from importlib import reload
 from tqdm import tqdm
 from dotenv import load_dotenv
 from famafrench import wrdsconnect as wrds
+from famafrench import utils # import 'utils' module w/ auxilary functions
 
 nyse_cal = mcal.get_calendar('NYSE')
 np.seterr(divide='raise')  # warn/error if taking np.log() if non-positive number.
@@ -42,9 +43,6 @@ pd.options.mode.use_inf_as_na = True
 # Reloads the .env file in your home directory.
 load_dotenv()
 reload(wrds)
-
-# import 'utils' module w/ auxilary functions
-from famafrench import utils
 
 # Establish remote connection to wrds-cloud using user-defined class adjusted from the 'WRDS-Py' library
 if 'wrdsConn' in locals():
