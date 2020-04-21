@@ -29,6 +29,7 @@ requires = [
     'python_dateutil >= 2.8.1',
     'python_dotenv >= 0.13.0',
     'sqlalchemy >= 1.3.13',
+    'sphinx >= 2.0',
     'termcolor >= 1.1.0',
     'tqdm >= 4.41.1',
     'wrds >= 3.0.8'
