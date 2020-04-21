@@ -18,9 +18,9 @@ import sphinx_rtd_theme
 import famafrench
 try:
     import IPython
-    print "ipython: %s, %s" % (IPython.__version__, IPython.__file__)
+    print("ipython: %s, %s" % (IPython.__version__, IPython.__file__))
 except ImportError:
-    print "no ipython"
+    print("no ipython")
 
 
 
@@ -32,7 +32,7 @@ author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
 version = famafrench.__version__
-release = '0.1.0'
+release = version
 
 
 # -- General configuration ---------------------------------------------------
