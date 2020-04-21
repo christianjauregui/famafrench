@@ -3,7 +3,10 @@
 .DS_Store?
 .iml?
 .xml?
+.idea/
 
 
-# Distribution / packaging
+
+# Distribution / packaging #
+######################
 docs/build/
