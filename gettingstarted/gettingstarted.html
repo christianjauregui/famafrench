@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; famafrench 0.1.0 documentation</title>
+  <title>Getting Started &mdash; famafrench 0.1.0 documentation</title>
   
 
   
@@ -87,12 +87,15 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../whatsnew/whatsnew.html">What's New?!</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/famafrench.FamaFrench.html">famafrench.FamaFrench</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/famafrench.FamaFrench.html">famafrench.FamaFrench</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#creating-an-instance-of-the-famafrench-class">Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-an-instance-of-the-famafrench-class">Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/applications.html">Applications and Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrdsconnection/wrdsconnection.html">Connecting to the WRDS cloud server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrdscloudquery/wrdscloudquery.html">WRDS Query Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../portfolios/factorregressions.html">Estimating Market Betas and Rolling Residual Variances</a></li>
@@ -101,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../statistics-diagnostics/statistics.html">Summary Statistics and Diagnostics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">Auxiliary Functions and Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/changes.html">Change Log</a></li>
 </ul>
 
             
@@ -146,7 +150,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Overview</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,11 +169,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview">
-<span id="gettingstarted"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="getting-started">
+<span id="gettingstarted"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The main tool provided by the package is the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> class that enables its user to construct
 a multitude of datasets found in <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a> as well as many others.</p>
-<p>Datasets include portfolio returns (<cite>value</cite>- or <cite>equal</cite>-weighted), number of firms in each portfolio, or average anomaly portfolio characteristics. The sample dataset will be for a pre-specified frequency and range of dates characterized by a start and end date.</p>
+<p>Datasets include portfolio returns (<cite>value</cite>- or <cite>equal</cite>-weighted), number of firms in each portfolio, or <cite>average</cite> anomaly portfolio characteristics. The sample dataset will be for a pre-specified frequency and range of dates characterized by a start and end date.</p>
 <p>In addition, and of most interest to the average user, the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> class enables a user to construct some of the most studied Fama-French-style factors:</p>
 <blockquote>
 <div><ul class="simple">
@@ -189,13 +195,13 @@ a multitude of datasets found in <a class="reference external" href="https://mba
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FamaFrench</span></code></a></p></td>
-<td><p><p>Class providing tools for constructing and replicating datasets from <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a> via queries to CRSP, Compustat Fundamentals, and other sources accessed through <a class="reference external" href="https://wrds-www.wharton.upenn.edu/">wrds-cloud</a>.</p>
+<td><p><p>Class providing tools for constructing and replicating datasets from <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a> via queries to CRSP, Compustat Fundamentals Annual, and other sources accessed through <a class="reference external" href="https://wrds-www.wharton.upenn.edu/">wrds-cloud</a>.</p>
 </p></td>
 </tr>
 </tbody>
 </table>
-<p>The constructor function makes use of an altered set of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> to query CRSP, Compustat Fundamentals, and other data provided by <cite>Wharton Research Data Services</cite> <a class="reference external" href="https://wrds-web.wharton.upenn.edu/wrds/support/">(WRDS)</a>. To use the <code class="docutils literal notranslate"><span class="pre">famafrench</span></code> package, a user <strong>must</strong> have a subscription to both CRSP and Compustat Fundamentals Annual through WRDS. See <a class="reference internal" href="../wrdsconnection/wrdsconnection.html#connecting-to-wrds-cloud"><span class="std std-ref">Connecting to wrds-cloud</span></a>.</p>
-<p>Alterations of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> enable a user with access to WRDS to add his/her WRDS username and password to their local environment. This is achieved through the use of environment variables via <code class="xref py py-func docutils literal notranslate"><span class="pre">os.environ()</span></code>, a mapping object in Python’s <a class="reference external" href="https://docs.python.org/3/library/os.html#module-os" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> module that represents the user’s environment variables. Environment variables provide secure means of storing usernames and passwords.</p>
+<p>The constructor function makes use of an altered set of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> to query <a class="reference external" href="http://www.crsp.org/products/research-products/crsp-us-stock-databases">CRSP</a>, <a class="reference external" href="https://wrds-web.wharton.upenn.edu/wrds/support/Data/_001Manuals%20and%20Overviews/_001Compustat/_001North%20America%20-%20Global%20-%20Bank/_000dataguide/index.cfm0">Compustat Fundamentals Annual</a>, and other datafiles provided by <cite>Wharton Research Data Services</cite> <a class="reference external" href="https://wrds-web.wharton.upenn.edu/wrds/support/">(WRDS)</a>. To use the <code class="docutils literal notranslate"><span class="pre">famafrench</span></code> package, a user <strong>must</strong> have a subscription to both CRSP and Compustat Fundamentals Annual through WRDS. See <a class="reference internal" href="../wrdsconnection/wrdsconnection.html#connecting-to-wrds-cloud"><span class="std std-ref">Connecting to wrds-cloud</span></a>.</p>
+<p>Alterations of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> enable a user with access to WRDS to add his/her WRDS username and password to their local environment. This is achieved through the use of environment variables via <code class="xref py py-func docutils literal notranslate"><span class="pre">os.environ()</span></code>, a mapping object in Python’s <a class="reference external" href="https://docs.python.org/3/library/os.html#module-os" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> module that represents the user’s environment variables. Environment variables provide secure means of storing usernames and passwords. Use of and modifications to the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> abide by its permissive MIT license (see <a class="reference external" href="https://github.com/christianjauregui/famafrench/blob/master/LICENSE">LICENSE</a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To securely set up the WRDS username and password as environment variables:</p>
@@ -220,10 +226,10 @@ a multitude of datasets found in <a class="reference external" href="https://mba
 simple through the constructor <a class="reference internal" href="../wrdsconnection/generated/famafrench.wrdsconnect.wrdsConnection.html#famafrench.wrdsconnect.wrdsConnection" title="famafrench.wrdsconnect.wrdsConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">wrdsConnection</span></code></a>. This constructor is repeatedly used within the main package constructor <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a>.</p>
 </div>
 <div class="section" id="creating-an-instance-of-the-famafrench-class">
-<h1>Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class<a class="headerlink" href="#creating-an-instance-of-the-famafrench-class" title="Permalink to this headline">¶</a></h1>
-<p>Instances of the <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a> object will vary depending on whether the user wants to construct Fama-French-style factors <strong>or</strong> portfolio returns (<cite>value</cite>- or <cite>equal</cite>-weighted), number of firms in each portfolio, and average anomaly portfolio characteristics.</p>
+<h2>Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class<a class="headerlink" href="#creating-an-instance-of-the-famafrench-class" title="Permalink to this headline">¶</a></h2>
+<p>Instances of the <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a> object will vary depending on whether the user wants to construct Fama-French-style factors <strong>or</strong> portfolio returns (<cite>value</cite>- or <cite>equal</cite>-weighted), number of firms in each portfolio, and <cite>average</cite> anomaly portfolio characteristics.</p>
 <p>For both types of instances, the frequency of portfolios <code class="xref py py-attr docutils literal notranslate"><span class="pre">freqType</span></code> as well as the starting and ending dates must be specified. Both starting and ending dates must be in <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a> format. In addition, attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">runQuery</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> depending on whether the user prefers to query all datafiles from <cite>wrds-cloud</cite> from scratch or whether previously queried and locally-saved datafiles are pickled in constructing the instance. The latter choice is particularly useful when updating data following a new set of observation points released by WRDS. Making use of previously queried and locally-saved datafiles significantly speeds up run-time and execution of code.</p>
-<p>For example, to construct the Fama-French 3 factors: the <cite>Market Premium</cite> <code class="docutils literal notranslate"><span class="pre">MKT-RF</span></code>, <cite>Small Minus Big</cite> <code class="docutils literal notranslate"><span class="pre">SMB</span></code>, and <cite>High Minus Low</cite> <code class="docutils literal notranslate"><span class="pre">HML</span></code>, at the monthly frequency (from 1970 to the present, or the most recent date for which there is stock returns data available in CRPS), we execute the following lines of Python code:</p>
+<p>For example, to construct the <strong>Fama-French 3 factors</strong>: the <cite>Market Premium</cite> <code class="docutils literal notranslate"><span class="pre">MKT-RF</span></code>, <cite>Small Minus Big</cite> <code class="docutils literal notranslate"><span class="pre">SMB</span></code>, and <cite>High Minus Low</cite> <code class="docutils literal notranslate"><span class="pre">HML</span></code>, at the monthly frequency (from 1970 to the present, or the most recent date for which there is stock returns data available in CRPS), we execute the following lines of Python code:</p>
 <p><strong>Fama-French 3 Factors:</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">famafrench.famafrench</span> <span class="k">as</span> <span class="nn">ff</span>
@@ -515,6 +521,7 @@ simple through the constructor <a class="reference internal" href="../wrdsconnec
 <li><p>Lastly, <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortingDim</span></code> is set to <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3]</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">retType</span></code> is set to <code class="docutils literal notranslate"><span class="pre">vw</span></code> in order to form the 6 (ie 2 x 3) portfolios.</p></li>
 </ul>
 <p>More applications and detailed examples are provided in <a class="reference internal" href="../applications/applications.html#applications-and-examples"><span class="std std-ref">Applications and Examples</span></a>.</p>
+</div>
 </div>
 
 

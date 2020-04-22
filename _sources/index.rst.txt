@@ -4,18 +4,40 @@
 ``famafrench`` - Package Documentation
 ****************************************
 
-Toolbox for constructing and replicating datasets from `Ken French's online data library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ by accessing WRDS remotely through its cloud server.  
+Toolbox for constructing and replicating datasets from `Ken French's online data library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ by accessing `WRDS <https://wrds-www.wharton.upenn.edu/>`_ remotely through its cloud server.  
 
-Future plans are to continue to expand the toolbox to include additional factor-based datasets relevant for empirical asset pricing. 
+Future plans are to continue to expand the toolbox to include additional factor-based datasets relevant for empirical asset pricing. These include the following:
 
-Please reach out if you have any recommendations or suggestions for improvements. Collaborations are welcomed - reach out!
+- `AQR Capital Management's <https://www.aqr.com/library/data-sets>`_:
+   
+      * `Betting Against Beta` (BAB)
+      * `Quality Minus Junk` (QMJ)
+      * `Modified Value - High Minus Low` (HMLD)
+
+
+- `Lettau, Ludvigson, and Ma (2019) Capital Share Factor  <https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12772>`_:
+
+    * `Capital Share of Aggregate Income` (KS)
+
+- `Pastor and Stambaugh (2003) Liquidity Factors <https://faculty.chicagobooth.edu/-/media/faculty/lubos-pastor/data/liq_data_1962_2019.txt>`_:
+      
+      * `Non-Traded Liquidity Factor`
+      * `Traded Liquidity Factor`
+
+- `Sadka (2006) Liquidity Factors <https://drive.google.com/file/d/1hTnBk7uasanA3x1gRFBNg6hFE1A0JJEO/view>`_:
+      
+      * `Fixed-Transitory Factor`
+      * `Variable-Permanent Factor`
+
+
+Please reach out if you have any recommendations or suggestions for improvements. Collaborations are welcomed - reach out at **chris.jauregui@berkeley.edu**!
 
 Contents
 ========
 
 - What's New?!
 - Getting Started
-- Applications 
+- Applications and Examples
 - Connecting to the WRDS cloud server
 - WRDS Query Tools 
 - Estimating Market Betas and Rolling Residual Variances 
@@ -24,6 +46,7 @@ Contents
 - Summary Statistics and Diagnostics 
 - Auxiliary Functions and Utilities 
 - API Reference
+- Change Log
 
 .. toctree::
     :maxdepth: 2
@@ -31,7 +54,7 @@ Contents
 	
     What's New?! <whatsnew/whatsnew>
     Getting Started <gettingstarted/gettingstarted>
-    Applications <applications/applications>
+    Applications and Examples <applications/applications>
     Connecting to the WRDS cloud server <wrdsconnection/wrdsconnection>
     WRDS Query Tools <wrdscloudquery/wrdscloudquery>
     Estimating Market Betas and Rolling Residual Variances <portfolios/factorregressions>
@@ -40,6 +63,7 @@ Contents
     Summary Statistics and Diagnostics <statistics-diagnostics/statistics>
     Auxiliary Functions and Utilities <utils/utils>
     API Reference <api>
+    Change Log <changes/changes>
 
 
 ************
@@ -63,6 +87,11 @@ This package (and its release) should be cited using fishare. For example, for t
    	* `In May 2015, we made two changes in the way we compute daily portfolio returns so the process is closer to the way we compute monthly portfolio returns. In daily files produced in May 2015 or thereafter, stocks are dropped from a portfolio immediately after their CRSP delist date; in files produced before May 2015, those stocks are held until the portfolio is reconstituted, at the end of June. Also, in daily files produced before May 2015 we exclude a stock from portfolios during any period in which it is missing prices for more than 10 consecutive trading no price for more than 200 consecutive trading days.`
 
 	Future versions will verify the aforementioned adjustments are accounted for in the package's construction of daily portfolio returns. 
+
+.. todo::
+      TODO
+    
+
 
 
 *******************
