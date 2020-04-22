@@ -58,6 +58,10 @@
           
             
             
+              <div class="version">
+                0.1.0
+              </div>
+            
           
 
           
@@ -156,7 +160,13 @@
             
   <h1>Source code for famafrench.famafrench</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Main module.</span>
+<span class="sd"># This file is part of famafrench</span>
+<span class="sd"># Copyright (c) 2020, Christian Jauregui &lt;chris.jauregui@berkeley.edu&gt;</span>
+<span class="sd"># See file LICENSE.txt for license information.</span>
+
+<span class="sd">Filename</span>
+<span class="sd">_________</span>
+<span class="sd">`famafrench/famafrench.py`</span>
 
 <span class="sd">Descriptions</span>
 <span class="sd">____________</span>
@@ -173,37 +183,33 @@
 <span class="c1"># Standard Imports</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">import</span> <span class="nn">pandas_market_calendars</span> <span class="k">as</span> <span class="nn">mcal</span>
+
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">cprint</span>
 <span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span><span class="p">,</span> <span class="nb">compile</span>
 <span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>  <span class="c1"># warn/error if taking np.log() if non-positive number.</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="s1">&#39;raise&#39;</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">use_inf_as_na</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
 <span class="kn">from</span> <span class="nn">pandas_datareader._utils</span> <span class="kn">import</span> <span class="n">RemoteDataError</span>
-<span class="kn">import</span> <span class="nn">sqlalchemy</span>
-
 <span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">famafrench</span> <span class="kn">import</span> <span class="n">wrdsconnect</span> <span class="k">as</span> <span class="n">wrds</span>
+<span class="kn">from</span> <span class="nn">famafrench</span> <span class="kn">import</span> <span class="n">utils</span> <span class="c1"># import &#39;utils&#39; module w/ auxilary functions</span>
 
-<span class="kn">import</span> <span class="nn">pandas_market_calendars</span> <span class="k">as</span> <span class="nn">mcal</span>
 <span class="n">nyse_cal</span> <span class="o">=</span> <span class="n">mcal</span><span class="o">.</span><span class="n">get_calendar</span><span class="p">(</span><span class="s1">&#39;NYSE&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>  <span class="c1"># warn/error if taking np.log() if non-positive number.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="s1">&#39;raise&#39;</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">use_inf_as_na</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="c1"># Reloads the .env file in your home directory.</span>
-<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
 <span class="n">load_dotenv</span><span class="p">()</span>
-<span class="kn">from</span> <span class="nn">famafrench</span> <span class="kn">import</span> <span class="n">wrdsconnect</span> <span class="k">as</span> <span class="n">wrds</span>
 <span class="n">reload</span><span class="p">(</span><span class="n">wrds</span><span class="p">)</span>
-
-<span class="c1"># import &#39;utils&#39; module w/ auxilary functions</span>
-<span class="kn">from</span> <span class="nn">famafrench</span> <span class="kn">import</span> <span class="n">utils</span>
 
 <span class="c1"># Establish remote connection to wrds-cloud using user-defined class adjusted from the &#39;WRDS-Py&#39; library</span>
 <span class="k">if</span> <span class="s1">&#39;wrdsConn&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>

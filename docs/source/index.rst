@@ -42,13 +42,16 @@ Contents
     API Reference <api>
 
 
-
+************
 How to Cite
-===========
-This package (and its release) should be cited using Zenodo as follows:
+************
+This package (and its release) should be cited using fishare. For example, for the 0.1.0 release, 
 
-.. [*] Christian Jauregui. (2020, April 15). christianjauregui/famafrench: Release 1.0 (Version 0).
+   [*] `Christian Jauregui. (2020, April)`. christianjauregui/famafrench: Release 0.1.0 (Version 0.1.0).
+   figshare. https://figshare.com/articles/famafrench_Python_library/12170439/1
 
+      .. image:: https://zenodo.org/badge/doi/10.5281/zenodo.3551028.svg
+         :target: https://doi.org/10.6084/m9.figshare.12170439.v1
 
 *******************
 `Todo`
