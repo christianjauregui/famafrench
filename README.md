@@ -24,8 +24,8 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas/issues/25571
 |                            | [![Total Alerts](https://img.shields.io/lgtm/alerts/g/bashtage/arch.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bashtage/arch/alerts)                                                                                       |
 |                            | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/93f6fd90209842bf97fd20fda8db70ef)](https://www.codacy.com/manual/bashtage/arch?utm_source=github.com&utm_medium=referral&utm_content=bashtage/arch&utm_campaign=Badge_Grade) |
 |                            | [![codebeat badge](https://codebeat.co/badges/18a78c15-d74b-4820-b56d-72f7e4087532)](https://codebeat.co/projects/github-com-bashtage-arch-master)                                                                                       |
-| **Citation**               | [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3551028.svg)](https://doi.org/10.5281/zenodo.3551028)                                                                                                                                |
-| **Documentation**          | [![Documentation Status](https://readthedocs.org/projects/arch/badge/?version=latest)](http://arch.readthedocs.org/en/latest/)                                                                                                           |
+| **Citation**               | [![DOI](https://figshare.com/articles/famafrench_Python_library/12170439/1)](https://doi.org/10.6084/m9.figshare.12170439.v1)                                                                                                                                |
+| **Documentation**          | [![Documentation Status](https://readthedocs.org/projects/famafrench/badge/?version=latest)](https://famafrench.readthedocs.io/en/latest/?badge=latest)                                                                                                           |
 
 To best explore `famafrench`....
 
