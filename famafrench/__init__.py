@@ -24,7 +24,6 @@ ________
 
 `utils.py` : Utility/Auxiliary functions and routines used in module`famafrench.py`
 """
-
 from famafrench.version import __version__
 __title__ = 'famafrench-py'
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
