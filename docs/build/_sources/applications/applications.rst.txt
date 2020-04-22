@@ -381,15 +381,23 @@ Fama-French 5 Factors : Annual
 Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 #############################################################
 
-``MOM, ``ST_Rev``, and ``LT_Rev`` : Daily
-******************************************
+``MOM``, ``ST_Rev``, and ``LT_Rev`` : Daily
+********************************************
 
 .. code-block:: ipython
    
 
 
-``MOM, ``ST_Rev``, and ``LT_Rev`` : Monthly
-********************************************
+``MOM``, ``ST_Rev``, and ``LT_Rev`` : Monthly
+**********************************************
+
+.. code-block:: ipython
+
+
+
+``MOM``, ``ST_Rev``, and ``LT_Rev`` : Annual
+**********************************************
+
 
 .. code-block:: ipython
    
