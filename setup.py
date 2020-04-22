@@ -93,6 +93,7 @@ setup(
         'beta',
         'capm',
         'econometrics',
+        'expected returns'
         'factor model',
         'factor returns',
         'factor investing',
