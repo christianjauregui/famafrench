@@ -22,7 +22,7 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_5_facto
 import famafrench.famafrench as ff
 import datetime as dt
 
-startDate = dt.date(1970, 1, 1)  # "default" startDate
+startDate = dt.date(1950, 1, 1)  # "default" startDate
 endDate = dt.date.today()  # "default" endDate
 #startDate = dt.date(1970, 1, 1)
 #endDate = dt.date(2019, 12, 31)

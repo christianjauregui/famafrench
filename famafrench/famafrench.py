@@ -80,7 +80,7 @@ class FamaFrench:
     __doc__ = """
     Class providing tools for constructing and replicating datasets from 
     `Ken French's online library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ 
-    via queries to CRSP, Compustat Fundamentals, and other sources accessed through 
+    via queries to CRSP, Compustat Fundamentals Annual, and other sources accessed through 
     `wrds-cloud <https://wrds-www.wharton.upenn.edu/>`_.   
         
     Attributes
@@ -194,7 +194,7 @@ class FamaFrench:
         dfcomp: pandas.DataFrame
             Dataset containing Compustat data cleaned from `wrds-cloud` queries.
         dfcomp_list: list, str
-            Names of the anomaly portfolio characteristics computed from Compustat Fundamentals Annuals.
+            Names of the anomaly portfolio characteristics computed from Compustat Fundamentals Annual.
 
         Note
         ____
@@ -263,7 +263,7 @@ class FamaFrench:
 
         def get_comp_sqlQuery(wrds_update, start_date, end_date):
             """
-            Create SQL query string for Compustat Fundamentals Annuals datafiles.
+            Create SQL query string for Compustat Fundamentals Annual datafiles.
 
             Parameters
             ___________

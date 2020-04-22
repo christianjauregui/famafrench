@@ -1,13 +1,16 @@
 .. _gettingstarted:
 
-**********
+****************
+Getting Started
+****************
+
 Overview
-**********
+#########
 
 The main tool provided by the package is the ``FamaFrench`` class that enables its user to construct 
 a multitude of datasets found in `Ken French's online library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ as well as many others. 
 
-Datasets include portfolio returns (`value`- or `equal`-weighted), number of firms in each portfolio, or average anomaly portfolio characteristics. The sample dataset will be for a pre-specified frequency and range of dates characterized by a start and end date. 
+Datasets include portfolio returns (`value`- or `equal`-weighted), number of firms in each portfolio, or `average` anomaly portfolio characteristics. The sample dataset will be for a pre-specified frequency and range of dates characterized by a start and end date. 
 
 In addition, and of most interest to the average user, the ``FamaFrench`` class enables a user to construct some of the most studied Fama-French-style factors: 
 	
@@ -31,9 +34,9 @@ In almost all applications, the package requires the use of the constructor func
 
      FamaFrench
 
-The constructor function makes use of an altered set of routines borrowed from the `WRDS-Py library <https://github.com/wharton/wrds>`_ to query CRSP, Compustat Fundamentals, and other data provided by `Wharton Research Data Services` `(WRDS) <https://wrds-web.wharton.upenn.edu/wrds/support/>`_. To use the ``famafrench`` package, a user **must** have a subscription to both CRSP and Compustat Fundamentals Annual through WRDS. See :ref:`wrdsconnection/wrdsconnection:Connecting to ``wrds-cloud```.
+The constructor function makes use of an altered set of routines borrowed from the `WRDS-Py library <https://github.com/wharton/wrds>`_ to query `CRSP <http://www.crsp.org/products/research-products/crsp-us-stock-databases>`_, `Compustat Fundamentals Annual <https://wrds-web.wharton.upenn.edu/wrds/support/Data/_001Manuals%20and%20Overviews/_001Compustat/_001North%20America%20-%20Global%20-%20Bank/_000dataguide/index.cfm0>`_, and other datafiles provided by `Wharton Research Data Services` `(WRDS) <https://wrds-web.wharton.upenn.edu/wrds/support/>`_. To use the ``famafrench`` package, a user **must** have a subscription to both CRSP and Compustat Fundamentals Annual through WRDS. See :ref:`wrdsconnection/wrdsconnection:Connecting to ``wrds-cloud```.
 
-Alterations of routines borrowed from the `WRDS-Py library <https://github.com/wharton/wrds>`_ enable a user with access to WRDS to add his/her WRDS username and password to their local environment. This is achieved through the use of environment variables via :func:`os.environ`, a mapping object in Python's :mod:`os` module that represents the user’s environment variables. Environment variables provide secure means of storing usernames and passwords.  
+Alterations of routines borrowed from the `WRDS-Py library <https://github.com/wharton/wrds>`_ enable a user with access to WRDS to add his/her WRDS username and password to their local environment. This is achieved through the use of environment variables via :func:`os.environ`, a mapping object in Python's :mod:`os` module that represents the user’s environment variables. Environment variables provide secure means of storing usernames and passwords. Use of and modifications to the `WRDS-Py library <https://github.com/wharton/wrds>`_ abide by its permissive MIT license (see `LICENSE <https://github.com/christianjauregui/famafrench/blob/master/LICENSE>`_).
 
 .. note::
 
@@ -60,16 +63,16 @@ Having set up the WRDS username and password, connecting remotely to WRDS throug
 simple through the constructor :class:`wrdsConnection<wrdsconnect.wrdsConnection>`. This constructor is repeatedly used within the main package constructor :class:`FamaFrench<FamaFrench>`.
 
     
-************************************************ 
-Creating an Instance of the ``FamaFrench`` Class
-************************************************
 
-Instances of the :class:`FamaFrench<FamaFrench>` object will vary depending on whether the user wants to construct Fama-French-style factors **or** portfolio returns (`value`- or `equal`-weighted), number of firms in each portfolio, and average anomaly portfolio characteristics. 
+Creating an Instance of the ``FamaFrench`` Class
+################################################
+
+Instances of the :class:`FamaFrench<FamaFrench>` object will vary depending on whether the user wants to construct Fama-French-style factors **or** portfolio returns (`value`- or `equal`-weighted), number of firms in each portfolio, and `average` anomaly portfolio characteristics. 
 
 For both types of instances, the frequency of portfolios :attr:`freqType` as well as the starting and ending dates must be specified. Both starting and ending dates must be in :class:`datetime.date` format. In addition, attribute :attr:`runQuery` is set to ``True`` or ``False`` depending on whether the user prefers to query all datafiles from `wrds-cloud` from scratch or whether previously queried and locally-saved datafiles are pickled in constructing the instance. The latter choice is particularly useful when updating data following a new set of observation points released by WRDS. Making use of previously queried and locally-saved datafiles significantly speeds up run-time and execution of code. 
 
 
-For example, to construct the Fama-French 3 factors: the `Market Premium` ``MKT-RF``, `Small Minus Big` ``SMB``, and `High Minus Low` ``HML``, at the monthly frequency (from 1970 to the present, or the most recent date for which there is stock returns data available in CRPS), we execute the following lines of Python code:
+For example, to construct the **Fama-French 3 factors**: the `Market Premium` ``MKT-RF``, `Small Minus Big` ``SMB``, and `High Minus Low` ``HML``, at the monthly frequency (from 1970 to the present, or the most recent date for which there is stock returns data available in CRPS), we execute the following lines of Python code:
 
 **Fama-French 3 Factors:**
 

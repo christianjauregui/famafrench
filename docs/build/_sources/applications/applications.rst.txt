@@ -20,18 +20,18 @@ Let's start by importing this package as well as other required Python libraries
    In [2]: import famafrench.famafrench as ff
 
 
-Let's create all our datasets from 1950 to the present or the most recent date for which there is stock returns data. We set :attr:`runQuery` to ``True`` and query all datafiles directly from `wrds-cloud`. 
+Let's create all our datasets from 1950 to the present, or the most recent date for which there is stock returns data. We set :attr:`runQuery` to ``True`` and query all datafiles directly from `wrds-cloud`. 
 
 .. code-block:: ipython
 
-   In [3]: startDate = dt.date(1970, 1, 1)
+   In [3]: startDate = dt.date(1950, 1, 1)
    In [4]: endDate = dt.date.today()
    In [5]: runQuery = True
 
 
 
-Anomaly/Risk-based Factors
-###########################
+Fama-French 3 Factors
+######################
 
 
 Fama-French 3 Factors : Daily
@@ -164,6 +164,9 @@ Fama-French 3 Factors : Annual
    Elapsed time:  7.354  seconds.
 
 
+Fama-French 5 Factors
+######################
+
 Fama-French 5 Factors : Daily
 *****************************
 
@@ -232,7 +235,6 @@ Fama-French 5 Factors : Daily
    [1 rows x 6 columns] 
 
    Elapsed time:  518.612  seconds.
-
 
 
 Fama-French 5 Factors : Monthly
@@ -376,30 +378,81 @@ Fama-French 5 Factors : Annual
    Elapsed time:  18.957  seconds.
 
 
-Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Daily
-********************************************************************
+Momentum, Short-Term Reversal, and Long-Term Reversal Factor
+#############################################################
+
+``MOM, ``ST_Rev``, and ``LT_Rev`` : Daily
+******************************************
 
 .. code-block:: ipython
    
 
 
-
-
-Momentum, Short-Term Reversal, and Long-Term Reversal Factor : Monthly
-**********************************************************************
+``MOM, ``ST_Rev``, and ``LT_Rev`` : Monthly
+********************************************
 
 .. code-block:: ipython
    
+
+
+Portfolios Sorted on `Size` ``ME``
+##################################
+
+
+Portfolios Sorted on `Size` ``ME`` : Daily
+********************************************
+
+**(3 x 1) Sorts**:
+
+
+**(5 x 1) Quintile Sorts**:
+
+
+**(10 x 1) Decile Sorts**:
+
 
 
 Portfolios Sorted on `Size` ``ME`` : Monthly
-############################################
+**********************************************
+
+**(3 x 1) Sorts**:
+
+
+**(5 x 1) Quintile Sorts**:
+
+
+**(10 x 1) Decile Sorts**:
 
 
 
 
-Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
+Portfolios Sorted on `Size` ``ME`` : Annual
+**********************************************
+
+**(3 x 1) Sorts**:
+
+
+**(5 x 1) Quintile Sorts**:
+
+
+**(10 x 1) Decile Sorts**:
+
+
+
+Portfolios Sorted on `Book-to-Market` ``BM``
+#############################################
+
+
+
+
+Portfolios Sorted on `Operating Profitability` ``OP``
 ######################################################
+
+
+
+
+Portfolios Sorted on `Investment` ``INV``
+##########################################
 
 
     
