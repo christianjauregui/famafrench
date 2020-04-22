@@ -1,6 +1,6 @@
 """
 # This file is part of famafrench
-# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+# Copyright 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
 # See file LICENSE.txt for license information.
 
 Filename
@@ -62,7 +62,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://https://github.com/christianjauregui/famafrench',
-    license='2-clause BSD',
+    license='Apache License 2.0',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     # See https://packaging.python.org/tutorials/packaging-projects/#classifiers
@@ -73,7 +73,8 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        "License :: OSI Approved :: BSD License",
+        'Programming Language :: Python :: 3.8',
+        "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: Financial and Insurance Industry',
