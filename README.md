@@ -24,9 +24,5 @@ To best explore `famafrench`....
 
 **Installation**
 
-`famafrench` is available via [PyPI](https://pypi.python.org/pypi/pyfinance/).  The latest version is 0.1.0 as of April 2020.  Install with pip:
-
-```
-$ pip install famafrench
-```
+`famafrench` will be available via [PyPI](https://pypi.python.org/pypi/pyfinance/).  The latest version is 0.1.0 as of April 2020. 
 
