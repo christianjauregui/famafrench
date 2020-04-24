@@ -76,12 +76,12 @@ Contents
 ************
 How to Cite
 ************
-This package (and its release as of April 20, 2020) should be cited using fishare. For example, for the 0.1.0 release, 
+This package (and its release as of April 20, 2020) should be cited using Zenodo. For example, for the 0.1.0 release, 
 
-   [*] Jauregui, Christian (2020): famafrench Python library. Release 0.1.0 (Version 0.1.0). figshare. Software. https://doi.org/10.6084/m9.figshare.12170439
+   [*] Christian Jauregui. (2020, April 20). christianjauregui/famafrench: Release 0.1.0 (Initial Release). Zenodo. https://sandbox.zenodo.org/record/530634#.XqNbfJNKi_t
 
-      .. image:: https://zenodo.org/badge/doi/10.5281/zenodo.3551028.svg
-         :target: https://doi.org/10.6084/m9.figshare.12170439
+      .. image:: https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530634.svg
+         :target: https://sandbox.zenodo.org/record/530634#.XqNawZNKi_s
 
 *******************
 `Todo`
