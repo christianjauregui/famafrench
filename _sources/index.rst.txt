@@ -6,7 +6,7 @@
 
 Toolbox for constructing and replicating datasets from `Ken French's online data library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ by accessing `WRDS <https://wrds-www.wharton.upenn.edu/>`_ remotely through its cloud server.  
 
-``famafrench``'s current efficient performance results from features such as the use of a `least recently used (LRU) cache <https://docs.python.org/3/library/functools.html>`_.
+``famafrench``'s current efficient performance results from features such as the use of a `least recently used (LRU) cache <https://medium.com/lambda-automotive/python-and-lru-cache-f812bbdcbb51>`_ implemented using Python's :func:`functools.lru_cache`.
 
 Future plans are to continue to expand the toolbox to include additional factor-based datasets relevant for empirical asset pricing. These include the following:
 
