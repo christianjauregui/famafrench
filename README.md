@@ -9,7 +9,8 @@ by querying [CRSP](http://www.crsp.org/products/research-products/crsp-us-stock-
 This module uses the [`WRDS-Py`](https://github.com/wharton/wrds) library package to extract data from CRPS and Compustat Fundamentals Annual via the cloud
 for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package. 
 
-`famafrench`'s current efficient performance results from features such as the use of a [least recently used (LRU) cache](https://docs.python.org/3/library/functools.html).
+`famafrench`'s current efficient performance results from features such as the use of a [least recently used (LRU) cache](https://docs.python.org/3/library/functools.html) implemented using Python's
+[``functools.lru_cache`` decorator](https://github.com/python/cpython/blob/3.8/Lib/functools.py).
 
 
 | Metric                     |                                                                                                                                                                                                                                          |
