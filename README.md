@@ -1,7 +1,7 @@
 # `famafrench`
 
-`famafrench` is a Python library package designed to replicate and construct datasets from Ken French's 
-[online data library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) 
+`famafrench` is a Python library package designed to replicate and construct datasets from  
+[Ken French's online data library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) 
 via remote access to the [wrds-cloud](https://wrds-www.wharton.upenn.edu/pages/support/getting-started/3-ways-use-wrds/#the-wrds-cloud)
 by querying [CRSP](http://www.crsp.org/products/research-products/crsp-us-stock-databases), 
 [Compustat Fundamentals Annual](https://wrds-web.wharton.upenn.edu/wrds/support/Data/_001Manuals%20and%20Overviews/_001Compustat/_001North%20America%20-%20Global%20-%20Bank/_000dataguide/index.cfm0), and other datafiles. 
