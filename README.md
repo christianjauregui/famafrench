@@ -33,11 +33,8 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas/issues/25571
 
 
 ## Installation
-<<<<<<< HEAD
-The latest release is **Release 0.1.0** as of April 20, 2020 (see [documentation](https://famafrench.readthedocs.io/en/latest/changes/changes.html#release-0-1-0)).
-=======
 The latest release is **Release 0.1.0** as of April 2020 (see [documentation](https://famafrench.readthedocs.io/en/latest/changes/changes.html#release-0-1-0)).
->>>>>>> 56d0abbc64ad9f59b0285ea4357af773d86fbae6
+
 ### Python Package Index (`pip`):
 
 Releases are available via [PyPI](https://pypi.python.org/pypi/pyfinance/) and can be installed with `pip`.  
