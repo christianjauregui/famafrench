@@ -28,7 +28,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas/issues/25571
 | ------ | ----------- |
 | `famafrench.py`  | Main module w/ tools for constructing and replicating datasets from Ken French’s online library via queries to WRDS. |
 | `utils.py`   | Auxiliary functions and utilities for use in the main module `famafrench.py`. |
-| `wrdsconnect.py`       | Enables remote connection to wrds-cloud largely building on the "Connection" class in the `WRDS-Py` library. |
+| `wrdsconnect.py`       | Enables remote connection to wrds-cloud largely building on the ``Connection`` class in the `WRDS-Py` library. |
 | `version.py`   | Module w/ package's version number.  |
 
 
