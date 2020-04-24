@@ -12,8 +12,8 @@ Overview
    :toctree: generated/
    :nosignatures:
 
-   FamaFrench.kfLibrary
-   FamaFrench.getkfPortfolioReturns
-   FamaFrench.getkfNumFirms
-   FamaFrench.getkfCharacs
-   FamaFrench.getkfFFfactors
+   ~FamaFrench.kfLibrary
+   ~FamaFrench.getkfPortfolioReturns
+   ~FamaFrench.getkfNumFirms
+   ~FamaFrench.getkfCharacs
+   ~FamaFrench.getkfFFfactors

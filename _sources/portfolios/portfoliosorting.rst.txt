@@ -12,9 +12,9 @@ Overview
    :toctree: generated/
    :nosignatures:
 
-   FamaFrench.getNyseThresholdsAndRet
-   FamaFrench.getPortfolios
-   FamaFrench.getPortfolioReturns
-   FamaFrench.getNumFirms
-   FamaFrench.getCharacs
-   FamaFrench.getFFfactors
+   ~FamaFrench.getNyseThresholdsAndRet
+   ~FamaFrench.getPortfolios
+   ~FamaFrench.getPortfolioReturns
+   ~FamaFrench.getNumFirms
+   ~FamaFrench.getCharacs
+   ~FamaFrench.getFFfactors
