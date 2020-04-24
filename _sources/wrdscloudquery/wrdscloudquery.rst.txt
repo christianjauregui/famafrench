@@ -13,14 +13,14 @@
    :toctree: generated/
    :nosignatures:
  
-   FamaFrench.queryComp
-   FamaFrench.queryCrsp
-   FamaFrench.queryCrspdlret
-   FamaFrench.queryrf1m
-   FamaFrench.getCrspDailyRollVar
-   FamaFrench.aggregateME
-   FamaFrench.getMEDec
-   FamaFrench.getMEJune
-   FamaFrench.mergeCCM
+   ~FamaFrench.queryComp
+   ~FamaFrench.queryCrsp
+   ~FamaFrench.queryCrspdlret
+   ~FamaFrench.queryrf1m
+   ~FamaFrench.getCrspDailyRollVar
+   ~FamaFrench.aggregateME
+   ~FamaFrench.getMEDec
+   ~FamaFrench.getMEJune
+   ~FamaFrench.mergeCCM
 
 
