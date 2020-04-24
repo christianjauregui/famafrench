@@ -95,6 +95,8 @@ setup(
         'beta',
         'capm',
         'econometrics',
+        'equities',
+        'equity returns', 
         'expected returns'
         'factor model',
         'factor returns',
@@ -107,6 +109,7 @@ setup(
         'portfolio',
         'risk model',
         'securities',
+        'stock returns',
         'value',
     ],
 
