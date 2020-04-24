@@ -33,7 +33,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas/issues/25571
 
 
 ## Installation
-The latest release is **Release 0.1.0** as of April 2020 (see [documentation](https://famafrench.readthedocs.io/en/latest/changes/changes.html#release-0-1-0)).
+The latest release is **Release 0.1.0** as of April 20, 2020 (see [documentation](https://famafrench.readthedocs.io/en/latest/changes/changes.html#release-0-1-0)).
 
 ### Python Package Index (`pip`):
 
