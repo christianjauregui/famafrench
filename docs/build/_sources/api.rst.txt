@@ -18,7 +18,7 @@ This is a comprehensive reference for everything you get when you ``import famaf
 .. autosummary::
    :nosignatures:
    
-   ~famafrench.FamaFrench
+   ~FamaFrench
 
 
 ``wrdsConnection`` Constructor
@@ -27,7 +27,7 @@ This is a comprehensive reference for everything you get when you ``import famaf
 .. autosummary::
    :nosignatures:
    
-   ~famafrench.wrdsconnect.wrdsConnection
+   ~wrdsconnect.wrdsConnection
 
 Connecting to ``wrds-cloud``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
