@@ -12,7 +12,7 @@ a multitude of datasets found in `Ken French's online library <https://mba.tuck.
 
 Datasets include portfolio returns (`value`- or `equal`-weighted), number of firms in each portfolio, or `average` anomaly portfolio characteristics. The sample dataset will be for a pre-specified frequency and range of dates characterized by a start and end date. 
 
-In addition, and of most interest to the average user, the ``FamaFrench`` class enables a user to construct some of the most studied Fama-French-style factors: 
+In addition, and of utmost interest to most users, the ``FamaFrench`` class enables one to construct some of the most studied Fama-French-style factors: 
 	
 	* Market Premium (``MKT-RF``)
 	* Small Minus Big (``SMB``)

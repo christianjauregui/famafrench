@@ -1,0 +1,14 @@
+include README.md
+include LICENSE.txt
+include docs/requirements.txt
+
+
+include examples/*.py
+include famafrench/pickled_db/*.pickle
+include famafrench/pickled_db/daily/*.pickle
+include famafrench/pickled_db/weekly/*.pickle
+include famafrench/pickled_db/monthly/*.pickle
+include famafrench/pickled_db/quarterly/*.pickle
+include famafrench/pickled_db/annual/*.pickle
+include famafrench/tests/*.py
+

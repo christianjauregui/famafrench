@@ -51,12 +51,14 @@ ff_D.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw'
 ff_D.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 
+
 # - 5 daily portfolios (5x1) sorted on ['ME']
 sortingDim = [5]
 _, _, _, = ff_D.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 ff_D.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw')
 ff_D.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
+
 
 # - 10 portfolios (10x1) sorted on ['ME']
 sortingDim = [10]
@@ -84,6 +86,7 @@ ff_M.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw'
 ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 
+
 # - 5 daily portfolios (5x1) sorted on ['ME']
 sortingDim = [5]
 _, _, _, = ff_M.comparePortfolios('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw')
@@ -93,6 +96,7 @@ ff_M.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw'
 ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 
+
 # - 10 portfolios (10x1) sorted on ['ME']
 sortingDim = [10]
 _, _, _, = ff_M.comparePortfolios('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw')
@@ -101,6 +105,7 @@ _, _, _, = ff_M.comparePortfolios('Characs',  ffFreq, startDate, endDate, sortin
 ff_M.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw')
 ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
+
 
 #%%
 #************************************************************#
@@ -119,6 +124,7 @@ ff_A.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw'
 ff_A.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 
+
 # - 5 daily portfolios (5x1) sorted on ['ME']
 sortingDim = [5]
 _, _, _, = ff_A.comparePortfolios('Returns',   ffFreq, startDate, endDate, sortingDim, 'vw')
@@ -126,6 +132,7 @@ _, _, _, = ff_A.comparePortfolios('Characs',  ffFreq, startDate, endDate, sortin
 ff_A.getFamaFrenchStats('Returns',  ffFreq, startDate, endDate, sortingDim, 'vw')
 ff_A.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
 ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
+
 
 # - 10 portfolios (10x1) sorted on ['ME']
 sortingDim = [10]

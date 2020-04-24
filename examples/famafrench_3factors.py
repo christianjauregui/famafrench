@@ -17,8 +17,9 @@ Fama/French 3 Factors
 __________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html
 """
-from importlib import reload
+
 import famafrench.famafrench as ff
+from importlib import reload
 import datetime as dt
 
 # Example of how to re-load a distribution module/package

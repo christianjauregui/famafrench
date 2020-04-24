@@ -9,7 +9,9 @@ ________
 
 Note
 _____
-setuptools-based setup module: (see https://packaging.python.org/guides/distributing-packages-using-setuptools/)
+setuptools-based setup module:
+* see https://packaging.python.org/guides/distributing-packages-using-setuptools/
+* see https://setuptools.readthedocs.io/en/latest/setuptools.html
 
 Note
 _____
@@ -119,10 +121,12 @@ setup(
                                     'docs',
                                     'examples',
                                     'tests*',
+                                    '*pickle',
                                     '*txt',
                                     '*md',
                                     '*rst']),
     install_requires=requires,
+    include_package_data=True,
     python_requires='>=3.4.0',
     tests_require=['pytest'],
     test_suite="tests"

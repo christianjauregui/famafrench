@@ -1470,7 +1470,8 @@ class FamaFrench:
 
         Todo
         ______
-        Extend the Dimson (1979) methodology based on Scholes-Williams (1977) to other factor quantities of risk
+        Extend the `Dimson (1979) <https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138>`_
+        methodology based on `Scholes and Williams (1977) <https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411>`_ to other factor quantities of risk
         beyond the `market (CAPM)` beta (eg, `SMB` and `HML` quantities of risk)
 
         References

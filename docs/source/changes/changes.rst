@@ -13,7 +13,7 @@ Version 0 (Beta)
 
 Release 0.1.0
 =============
-The current release is the initial release. 
+The current release (as of April 20, 2020) is the initial release. 
 
 
    
