@@ -12,10 +12,9 @@ This is a comprehensive reference for everything you get when you ``import famaf
 .. module:: famafrench
 
 
-.. currentmodule:: famafrench
-
 ``FamaFrench`` Constructor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 .. autosummary::
    :nosignatures:
@@ -37,10 +36,10 @@ Connecting to ``wrds-cloud``
 .. autosummary::
    :nosignatures:
    
-   ~famafrench.wrdsconnect.wrdsConnection.connect
-   ~famafrench.wrdsconnect.wrdsConnection.close
-   ~famafrench.wrdsconnect.wrdsConnection.get_wrds_table
-   ~famafrench.wrdsconnect.wrdsConnection.raw_sql
+   ~wrdsconnect.wrdsConnection.connect
+   ~wrdsconnect.wrdsConnection.close
+   ~wrdsconnect.wrdsConnection.get_wrds_table
+   ~wrdsconnect.wrdsConnection.raw_sql
 
 
 ``wrds-cloud`` Query Tools
@@ -49,15 +48,15 @@ Connecting to ``wrds-cloud``
 .. autosummary::
    :nosignatures:
 
-   ~famafrench.FamaFrench.queryComp
-   ~famafrench.FamaFrench.queryCrsp
-   ~famafrench.FamaFrench.queryCrspdlret
-   ~famafrench.FamaFrench.queryrf1m
-   ~famafrench.FamaFrench.getCrspDailyRollVar
-   ~famafrench.FamaFrench.aggregateME
-   ~famafrench.FamaFrench.getMEDec
-   ~famafrench.FamaFrench.getMEJune
-   ~famafrench.FamaFrench.mergeCCM
+   ~FamaFrench.queryComp
+   ~FamaFrench.queryCrsp
+   ~FamaFrench.queryCrspdlret
+   ~FamaFrench.queryrf1m
+   ~FamaFrench.getCrspDailyRollVar
+   ~FamaFrench.aggregateME
+   ~FamaFrench.getMEDec
+   ~FamaFrench.getMEJune
+   ~FamaFrench.mergeCCM
 
 
 Estimating Market Betas and Rolling Residual Variances
@@ -66,7 +65,7 @@ Estimating Market Betas and Rolling Residual Variances
 .. autosummary::
    :nosignatures:
 
-   ~famafrench.FamaFrench.getFactorRegResults
+   ~FamaFrench.getFactorRegResults
 
 
 Constructing Portfolios and Return-Based Factors
@@ -75,12 +74,12 @@ Constructing Portfolios and Return-Based Factors
 .. autosummary::
    :nosignatures:
 
-   ~famafrench.FamaFrench.getNyseThresholdsAndRet
-   ~famafrench.FamaFrench.getPortfolios
-   ~famafrench.FamaFrench.getPortfolioReturns
-   ~famafrench.FamaFrench.getNumFirms
-   ~famafrench.FamaFrench.getCharacs
-   ~famafrench.FamaFrench.getFFfactors
+   ~FamaFrench.getNyseThresholdsAndRet
+   ~FamaFrench.getPortfolios
+   ~FamaFrench.getPortfolioReturns
+   ~FamaFrench.getNumFirms
+   ~FamaFrench.getCharacs
+   ~FamaFrench.getFFfactors
 
 
 Comparing to Ken French's Online Library
@@ -89,11 +88,11 @@ Comparing to Ken French's Online Library
 .. autosummary::
    :nosignatures:
 
-   ~famafrench.FamaFrench.kfLibrary
-   ~famafrench.FamaFrench.getkfPortfolioReturns
-   ~famafrench.FamaFrench.getkfNumFirms
-   ~famafrench.FamaFrench.getkfCharacs
-   ~famafrench.FamaFrench.getkfFFfactors
+   ~FamaFrench.kfLibrary
+   ~FamaFrench.getkfPortfolioReturns
+   ~FamaFrench.getkfNumFirms
+   ~FamaFrench.getkfCharacs
+   ~FamaFrench.getkfFFfactors
 
 
 Summary Statistics and Diagnostics
@@ -102,8 +101,8 @@ Summary Statistics and Diagnostics
 .. autosummary::
    :nosignatures:
 
-   ~famafrench.FamaFrench.getFamaFrenchStats
-   ~famafrench.FamaFrench.comparePortfolios
+   ~FamaFrench.getFamaFrenchStats
+   ~FamaFrench.comparePortfolios
    
 
 Auxiliary Functions and Utilities
@@ -112,14 +111,14 @@ Auxiliary Functions and Utilities
 .. autosummary::
    :nosignatures:
 
-   ~famafrench.utils.lru_cached_method
-   ~famafrench.utils.get_kfpriorfactors_directly
-   ~famafrench.utils.timing
-   ~famafrench.utils.any_in
-   ~famafrench.utils.priormonthToDay
-   ~famafrench.utils.grouped_vwAvg
-   ~famafrench.utils.portRetAvg
-   ~famafrench.utils.get_statsTable	
+   ~utils.lru_cached_method
+   ~utils.get_kfpriorfactors_directly
+   ~utils.timing
+   ~utils.any_in
+   ~utils.priormonthToDay
+   ~utils.grouped_vwAvg
+   ~utils.portRetAvg
+   ~utils.get_statsTable	
  
 
 
