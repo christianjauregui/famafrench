@@ -96,11 +96,11 @@ setup(
         'capm',
         'econometrics',
         'equities',
-        'equity returns', 
+        'equity returns',
         'expected returns'
+        'factor investing',
         'factor model',
         'factor returns',
-        'factor investing',
         'fama-french',
         'finance',
         'growth',
