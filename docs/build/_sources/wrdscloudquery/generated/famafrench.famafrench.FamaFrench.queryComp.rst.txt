@@ -1,0 +1,6 @@
+famafrench.FamaFrench.queryComp
+===============================
+
+.. currentmodule:: famafrench
+
+.. automethod:: famafrench.FamaFrench.queryComp
