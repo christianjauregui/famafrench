@@ -91,25 +91,25 @@ setup(
     # What does your project relate to?
     keywords=[
         'alpha',
-        'alpha factors',
+        'alpha-factors',
         'beta',
         'capm',
         'econometrics',
         'equities',
-        'equity returns',
-        'expected returns'
-        'factor investing',
-        'factor model',
-        'factor returns',
+        'equity-returns',
+        'expected-returns'
+        'factor-investing',
+        'factor-model',
+        'factor-returns',
         'fama-french',
         'finance',
         'growth',
         'investment',
         'momentum',
         'portfolio',
-        'risk model',
+        'risk-model',
         'securities',
-        'stock returns',
+        'stock-returns',
         'value',
     ],
 
