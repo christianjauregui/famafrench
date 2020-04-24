@@ -111,8 +111,6 @@ This package (and its release as of April 20, 2020) should be cited using fishar
 	 To improve the statistical metrics, adjustments in how the aforementioned anomaly characteristics are computed or estimated will be incorporated in future releases. 
 	
         
-        
-   
 *******************
 Indices and Tables
 *******************
