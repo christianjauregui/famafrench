@@ -25,6 +25,7 @@ In almost all applications, the package requires the use of the constructor func
 
 .. module:: famafrench
    :noindex:
+
 .. currentmodule:: famafrench
 
 .. autosummary::
