@@ -6,6 +6,8 @@
 
 Toolbox for constructing and replicating datasets from `Ken French's online data library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_ by accessing `WRDS <https://wrds-www.wharton.upenn.edu/>`_ remotely through its cloud server.  
 
+``famafrench``'s current efficient performance results from features such as the use of a `least recently used (LRU) cache <https://docs.python.org/3/library/functools.html>`_.
+
 Future plans are to continue to expand the toolbox to include additional factor-based datasets relevant for empirical asset pricing. These include the following:
 
 - `AQR Capital Management's <https://www.aqr.com/library/data-sets>`_:
@@ -14,20 +16,25 @@ Future plans are to continue to expand the toolbox to include additional factor-
       * `Quality Minus Junk` (QMJ)
       * `Modified Value - High Minus Low` (HMLD)
 
-
-- `Lettau, Ludvigson, and Ma (2019) Capital Share Factor  <https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12772>`_:
+- `Lettau, Ludvigson, and Ma (2019) <https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12772>`_ Capital Share Factor:
 
     * `Capital Share of Aggregate Income` (KS)
 
-- `Pastor and Stambaugh (2003) Liquidity Factors <https://faculty.chicagobooth.edu/-/media/faculty/lubos-pastor/data/liq_data_1962_2019.txt>`_:
+- `Pastor and Stambaugh (2003) <https://faculty.chicagobooth.edu/-/media/faculty/lubos-pastor/data/liq_data_1962_2019.txt>`_ Liquidity Factors:
       
       * `Non-Traded Liquidity Factor`
       * `Traded Liquidity Factor`
 
-- `Sadka (2006) Liquidity Factors <https://drive.google.com/file/d/1hTnBk7uasanA3x1gRFBNg6hFE1A0JJEO/view>`_:
+- `Sadka (2006) <https://drive.google.com/file/d/1hTnBk7uasanA3x1gRFBNg6hFE1A0JJEO/view>`_ Liquidity Factors:
       
       * `Fixed-Transitory Factor`
       * `Variable-Permanent Factor`
+
+- `Stambaugh and Yuan (2017) <https://academic.oup.com/rfs/article/30/4/1270/2965095>`_ `Clustered` Mispricing Factors:
+       
+      * `Management-related Factor` (MGMT)
+      * `Performance-related Factor` (PERF)
+      * `Mispricing (non-clustered) Factor` (UMO)
 
 
 Please reach out if you have any recommendations or suggestions for improvements. Collaborations are welcomed - reach out at **chris.jauregui@berkeley.edu**!
@@ -69,7 +76,7 @@ Contents
 ************
 How to Cite
 ************
-This package (and its release) should be cited using fishare. For example, for the 0.1.0 release, 
+This package (and its release as of April 20, 2020) should be cited using fishare. For example, for the 0.1.0 release, 
 
    [*] Jauregui, Christian (2020): famafrench Python library. Release 0.1.0 (Version 0.1.0). figshare. Software. https://doi.org/10.6084/m9.figshare.12170439.v1
 
@@ -89,11 +96,23 @@ This package (and its release) should be cited using fishare. For example, for t
 	Future versions will verify the aforementioned adjustments are accounted for in the package's construction of daily portfolio returns. 
 
 .. todo::
-      TODO
-    
-
-
-
+	* Include option to construct the `Fama and French (2018) <https://www.sciencedirect.com/science/article/abs/pii/S0304405X18300515>`_ cash-based profitability factor, ``RMWc``.
+        * Within the instance method used for constructing market betas and rolling residual variances, :meth:`getFactorResults`, extend the `Dimson (1979) <https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138>`_ methodology based on `Scholes and Williams (1977) <https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411>`_ to other factor quantities of risk beyond the `market (CAPM)` beta (eg, `SMB` and `HML` quantities of risk).
+        * Verify the `pandas-datareader <https://pandas-datareader.readthedocs.io/en/latest/>`_ Python library is still unable to pull monthly and annual datafiles for the `Short-Term Reversal` or `Long-Term Reversal` Fama-French-style factors made public through `Ken French's online library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_. 
+        * When applicable, constructed portfolios, specifically portfolio returns, number of firms in each portfolio, and `average` anomaly portfolio characteristics are compared with those provided by Ken French for the same frequency and over the same period. The sample `Pearson correlations`, sample `means`, and sample `standard deviations` for the following portfolios **can be improved**:
+   		
+		- `Portfolios Formed on Dividend Yield <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_port_form_dp.html>`_
+		- `6 Portfolios Formed on Size and Dividend Yield <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/six_portfolios_me_dp.html>`_
+		- `Portfolios Formed on Accruals <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_port_form_AC.html>`_
+		- `25 Portfolios Formed on Size and Accruals <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/tw_5_ports_me_AC.html>`_
+		- `Portfolios Formed on Market Beta <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_port_form_BETA.html>`_
+		- `25 Portfolios Formed on Size and Market Beta <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/tw_5_ports_me_BETA.html>`_
+		
+	 To improve the statistical metrics, adjustments in how the aforementioned anomaly characteristics are computed or estimated will be incorporated in future releases. 
+	
+        
+        
+   
 *******************
 Indices and Tables
 *******************
