@@ -28,7 +28,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas/issues/25571
 | ------ | ----------- |
 | `famafrench.py`  | Main module w/ tools for constructing and replicating datasets from Ken French’s online library via queries to WRDS. |
 | `utils.py`   | Auxiliary functions and utilities for use in the main module `famafrench.py`. |
-| `wrdsconnect.py`       | Enables remote connection to wrds-cloud largely building on the ``Connection()`` class in the `WRDS-Py` library. |
+| `wrdsconnect.py`       | Enables remote connection to wrds-cloud largely building on the ``Connection()`` class in the [WRDS-Py](https://pypi.org/project/wrds/) library. |
 | `version.py`   | Module w/ package's version number.  |
 
 
@@ -46,7 +46,7 @@ Conda users will soon be able to install from my [Anaconda](https://anaconda.org
 
 
 ## Dependencies
-`famafrench` relies on a suite of Python libraries, which include Python's scientific computing stack [NumPy](https://numpy.org/) and [Pandas](https://pandas.pydata.org/), as well as [Numba](http://numba.pydata.org/) and [SQLAlchemy](https://www.sqlalchemy.org/) among many others.
+`famafrench` relies on a suite of Python libraries, which include Python's scientific computing stack (e.g. [NumPy](https://numpy.org/) and [Pandas](https://pandas.pydata.org/)). Other dependencies include [Numba](http://numba.pydata.org/) and [SQLAlchemy](https://www.sqlalchemy.org/). 
 
 Please see [``setup.py``](https://github.com/christianjauregui/famafrench/blob/master/setup.py) or [``requirements.txt``](https://github.com/christianjauregui/famafrench/blob/master/docs/requirements.txt) for specific version threshold requirements.
 
@@ -95,7 +95,7 @@ I welcome recommendations, contributions and/or future collaborations. I am ambi
 
 Performance and speed improvements are also appreciated. 
 
-Please report any bugs or errors on [my github page](https://github.com/christianjauregui/famafrench) or please send me an email at chris.jauregui@berkeley.edu.  
+Please report any bugs or errors to [my github page](https://github.com/christianjauregui/famafrench) or please send me an email at chris.jauregui@berkeley.edu.  
 
 
 ## API
