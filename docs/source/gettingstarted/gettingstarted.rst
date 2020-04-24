@@ -32,7 +32,7 @@ In almost all applications, the package requires the use of the constructor func
   :nosignatures:
   :toctree: generated/
 
-     FamaFrench
+     ~FamaFrench
 
 The constructor function makes use of an altered set of routines borrowed from the `WRDS-Py library <https://github.com/wharton/wrds>`_ to query `CRSP <http://www.crsp.org/products/research-products/crsp-us-stock-databases>`_, `Compustat Fundamentals Annual <https://wrds-web.wharton.upenn.edu/wrds/support/Data/_001Manuals%20and%20Overviews/_001Compustat/_001North%20America%20-%20Global%20-%20Bank/_000dataguide/index.cfm0>`_, and other datafiles provided by `Wharton Research Data Services` `(WRDS) <https://wrds-web.wharton.upenn.edu/wrds/support/>`_. To use the ``famafrench`` package, a user **must** have a subscription to both CRSP and Compustat Fundamentals Annual through WRDS. See :ref:`wrdsconnection/wrdsconnection:Connecting to ``wrds-cloud```.
 
