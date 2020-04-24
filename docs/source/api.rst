@@ -12,6 +12,8 @@ This is a comprehensive reference for everything you get when you ``import famaf
 .. module:: famafrench
 
 
+.. currentmodule:: famafrench
+
 ``FamaFrench`` Constructor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
