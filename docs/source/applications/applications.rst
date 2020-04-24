@@ -426,6 +426,35 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
    In [12]: # Compare daily Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
 	    _, _, _, = ffprior_D.comparePortfolios(dataType='Factors', dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)
 
+   CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
+   CRSP delisted returns (daily) dataset currently NOT saved locally. Querying from wrds-cloud...
+   Compustat (annual) dataset currently NOT saved locally. Querying from wrds-cloud...
+   CRSP-Compustat merged linktable currently NOT saved locally. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 4/4 [27:29<00:00, 412.39s/it]
+   Historical risk-free interest rate (daily) dataset currently NOT saved locally. Querying from wrds-cloud...
+   Constructing Fama-French return factor(s): 100%|██████████| 4/4 [26:12<00:00, 393.02s/it]
+   *********************************** Factor Returns: 1950-01-03 to 2020-02-28 ***********************************
+       *********************** Observation frequency: D ************************
+
+   Fama-French factors: Correlation matrix:
+           mkt  mkt-rf  st_rev  lt_rev    mom
+   corr:  1.0     1.0   0.972   0.927  0.969 
+
+   Fama-French factors: Average matrix:
+                             mkt        mkt-rf  ...      lt_rev           mom
+   [wrds, kflib]:  [0.05, 0.05]  [0.03, 0.03]  ...  [0.0, 0.0]  [0.03, 0.03]
+
+   [1 rows x 5 columns] 
+
+   Fama-French factors: Std Deviation matrix:
+                             mkt        mkt-rf  ...        lt_rev           mom
+   [wrds, kflib]:  [0.93, 0.95]  [0.93, 0.95]  ...  [0.43, 0.42]  [0.67, 0.66]
+
+   [1 rows x 5 columns] 
+
+   Elapsed time:  1587.064  seconds.
+
+
 
 ``MOM``, ``ST_Rev``, and ``LT_Rev`` : Monthly
 **********************************************

@@ -573,9 +573,63 @@
 <span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ffprior_D.getFamaFrenchStats(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
 
+<span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (daily) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">CRSP-Compustat merged linktable currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 4/4 [24:44&lt;00:00, 371.14s/it]</span>
+<span class="go">Historical risk-free interest rate (daily) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">*********************************** Summary Statistics: Fama-French Factors ***********************************</span>
+<span class="go">    *********************** Observation frequency: D ************************</span>
+<span class="go">                  mkt      mkt-rf      st_rev      lt_rev         mom</span>
+<span class="go">startdate  1950-01-03  1950-01-03  1951-07-02  1951-07-02  1951-07-02</span>
+<span class="go">enddate    2020-02-28  2020-02-28  2020-02-28  2020-02-28  2020-02-28</span>
+<span class="go">count           17653       17653       17279       17279       17279</span>
+<span class="go">mean            0.05%       0.03%        0.1%        0.0%       0.03%</span>
+<span class="go">std             0.93%       0.93%       0.66%       0.43%       0.67%</span>
+<span class="go">min           -17.45%     -17.47%      -6.86%      -4.28%      -7.79%</span>
+<span class="go">1%             -2.55%      -2.56%       -1.6%      -1.11%      -2.01%</span>
+<span class="go">10%            -0.95%      -0.96%      -0.47%      -0.46%      -0.61%</span>
+<span class="go">25%            -0.36%      -0.38%      -0.17%      -0.22%      -0.23%</span>
+<span class="go">50%             0.07%       0.06%       0.08%       -0.0%       0.06%</span>
+<span class="go">75%             0.49%       0.47%       0.34%       0.22%       0.33%</span>
+<span class="go">90%             0.97%       0.95%       0.68%       0.48%       0.66%</span>
+<span class="go">99%             2.44%       2.42%       2.13%        1.2%       1.83%</span>
+<span class="go">max            11.36%      11.36%       10.2%       4.41%        6.9%</span>
+<span class="go">skew           -0.57%      -0.57%       1.71%      -0.12%      -0.88%</span>
+<span class="go">kurt           16.24%      16.24%      26.23%       7.39%      14.15%</span>
+<span class="go">mad             0.62%       0.62%        0.4%        0.3%       0.43%</span>
 
 <span class="gp">In [12]: </span><span class="c1"># Compare daily Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ffprior_D.comparePortfolios(dataType=&#39;Factors&#39;, dataFreq=ffFreq, dt_start=startDate, dt_end=endDate)</span>
+
+<span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
+<span class="go">CRSP delisted returns (daily) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">Compustat (annual) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">CRSP-Compustat merged linktable currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 4/4 [27:29&lt;00:00, 412.39s/it]</span>
+<span class="go">Historical risk-free interest rate (daily) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
+<span class="go">Constructing Fama-French return factor(s): 100%|██████████| 4/4 [26:12&lt;00:00, 393.02s/it]</span>
+<span class="go">*********************************** Factor Returns: 1950-01-03 to 2020-02-28 ***********************************</span>
+<span class="go">    *********************** Observation frequency: D ************************</span>
+
+<span class="go">Fama-French factors: Correlation matrix:</span>
+<span class="go">        mkt  mkt-rf  st_rev  lt_rev    mom</span>
+<span class="go">corr:  1.0     1.0   0.972   0.927  0.969</span>
+
+<span class="go">Fama-French factors: Average matrix:</span>
+<span class="go">                          mkt        mkt-rf  ...      lt_rev           mom</span>
+<span class="go">[wrds, kflib]:  [0.05, 0.05]  [0.03, 0.03]  ...  [0.0, 0.0]  [0.03, 0.03]</span>
+
+<span class="go">[1 rows x 5 columns]</span>
+
+<span class="go">Fama-French factors: Std Deviation matrix:</span>
+<span class="go">                          mkt        mkt-rf  ...        lt_rev           mom</span>
+<span class="go">[wrds, kflib]:  [0.93, 0.95]  [0.93, 0.95]  ...  [0.43, 0.42]  [0.67, 0.66]</span>
+
+<span class="go">[1 rows x 5 columns]</span>
+
+<span class="go">Elapsed time:  1587.064  seconds.</span>
 </pre></div>
 </div>
 </div>
