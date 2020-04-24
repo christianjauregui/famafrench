@@ -12,4 +12,4 @@ Overview
    :toctree: generated/
    :nosignatures:
 
-   FamaFrench.getFactorRegResults
+   ~FamaFrench.getFactorRegResults

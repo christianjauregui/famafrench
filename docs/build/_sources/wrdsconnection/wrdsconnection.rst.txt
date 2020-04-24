@@ -11,7 +11,7 @@ Connecting to ``wrds-cloud``
 .. autosummary::
    :toctree: generated/
  
-   wrdsconnect.wrdsConnection
+   ~wrdsconnect.wrdsConnection
 
 
 

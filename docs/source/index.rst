@@ -81,7 +81,7 @@ This package (and its release as of April 20, 2020) should be cited using fishar
    [*] Jauregui, Christian (2020): famafrench Python library. Release 0.1.0 (Version 0.1.0). figshare. Software. https://doi.org/10.6084/m9.figshare.12170439.v1
 
       .. image:: https://zenodo.org/badge/doi/10.5281/zenodo.3551028.svg
-         :target: https://doi.org/10.6084/m9.figshare.12170439.v1
+         :target: https://doi.org/10.6084/m9.figshare.12170439
 
 *******************
 `Todo`
