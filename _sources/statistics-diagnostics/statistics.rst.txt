@@ -11,5 +11,5 @@ Overview
 .. autosummary::
    :toctree: generated/
 
-   FamaFrench.getFamaFrenchStats
-   FamaFrench.comparePortfolios
+   ~FamaFrench.getFamaFrenchStats
+   ~FamaFrench.comparePortfolios
