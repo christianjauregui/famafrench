@@ -41,9 +41,7 @@ class wrdsConnection:
         """
         py3 = version_info[0] > 2
         if not py3:
-            print('PLEASE USE PYTHON 3.')
-            PermissionError = Exception
-            FileNotFoundError = Exception
+            raise SyntaxError('PLEASE USE PYTHON 3+')
 
         appname = '{0} python {1}.{2}.{3}/wrds {4}'.format(
                   sys.platform,
