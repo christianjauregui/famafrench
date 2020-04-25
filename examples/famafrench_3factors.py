@@ -1,7 +1,7 @@
 """
-# This file is part of famafrench.
-# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
-# See file LICENSE.txt for license information.
+This file is part of famafrench.
+Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+See file LICENSE.txt for license information.
 
 Filename
 ________
