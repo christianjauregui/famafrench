@@ -13,14 +13,23 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 [``functools.lru_cache`` decorator](https://github.com/python/cpython/blob/3.8/Lib/functools.py).
 
 
-| Metric                     |                                                                                                                                                                                                                                          |
-| :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Supports**         | Python 3.4+                                                                                                                                          |
-| **Citation**               | [![DOI](https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530634.svg)](https://sandbox.zenodo.org/record/530634#.XqNawZNKi_s) |
-| **License**  | [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/christianjauregui/famafrench/blob/master/LICENSE.txt)
-| **Documentation**          | [![Documentation Status](https://readthedocs.org/projects/famafrench/badge/?version=latest)](https://famafrench.readthedocs.io/en/latest/?badge=latest)                                                                                                           |
+| Metric                     |                                                                                                                                                                    |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Supports**               | Python 3.4+                                                                                                                                                        | 
+|                            | [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                                              |                                             
+|                            | [![Python 3](https://pyup.io/repos/github/christianjauregui/famafrench/python-3-shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)           |
+| **Release**                | [![GitHub release (latest by date)](https://img.shields.io/github/v/release/christianjauregui/famafrench?style=for-the-badge)](https://github.com/christianjauregui/famafrench/releases)   |                                    |
+|                            | ![GitHub Release Date](https://img.shields.io/github/release-date/christianjauregui/famafrench)                                                                    |
+| **Code Quality**           | [![Updates](https://pyup.io/repos/github/christianjauregui/famafrench/shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)                     |
+|                            |                                                                                                                                                                    |
+| **Citation**               | [![DOI](https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530634.svg)](https://sandbox.zenodo.org/record/530634#.XqNawZNKi_s)                                    |
+| **License**                | [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/christianjauregui/famafrench/blob/master/LICENSE.txt)                  |
+| **Documentation**          | [![made-with-sphinx-doc](https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg)](https://www.sphinx-doc.org/)                                                 |
+|                            | [![Documentation Status](https://img.shields.io/badge/Documentation-latest-brightgreen)](https://christianjauregui.github.io/famafrench/)                      |   
+| **Contributing**           | [![Contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg?style=flat)](https://github.com/christianjauregui/famafrench/issues)  |
+| **HitCount!**              | [![HitCount](http://hits.dwyl.com/christianjauregui/famafrench.svg)](http://hits.dwyl.com/christianjauregui/famafrench)                                            |
 
-`famafrench` is best explored by going through applications and examples provided in the released documentation hosted on [Read The Docs](https://famafrench.readthedocs.io/en/latest/applications/applications.html).
+`famafrench` is best explored by going through applications and examples provided in the released documentation hosted on [Github Pages](https://christianjauregui.github.io/famafrench/).
 
 
 ## Module Contents
@@ -34,7 +43,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 
 
 ## Installation
-The latest release is **Release 0.1.0** as of April 20, 2020 (see [documentation](https://famafrench.readthedocs.io/en/latest/changes/changes.html#release-0-1-0)).
+The latest release is **Release 0.1.0** as of April 20, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#release-0-1-0)).
 
 ### Python Package Index (`pip`):
 
