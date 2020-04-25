@@ -30,11 +30,9 @@ with open(path.join(here, 'README.md'), "r") as readme:
 
 NAME = 'famafrench'
 
-packages = [
-    'famafrench'
-]
+packages = ['famafrench']
 
-requires = [
+REQUIRES = [
     'IPython >= 7.12.0',
     'numpy >= 1.16.1',
     'numpydoc >=0.9.2',
@@ -128,7 +126,7 @@ setup(
                                     '*txt',
                                     '*md',
                                     '*rst']),
-    install_requires=requires,
+    install_requires=REQUIRES,
     include_package_data=True,
     python_requires='>=3.4.0',
     tests_require=['pytest'],
