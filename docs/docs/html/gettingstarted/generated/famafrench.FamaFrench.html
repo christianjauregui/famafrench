@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>famafrench.FamaFrench &mdash; famafrench 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Applications and Examples" href="../../applications/applications.html" />
+    <link rel="prev" title="Getting Started" href="../gettingstarted.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> famafrench
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/whatsnew.html">What's New?!</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gettingstarted.html">Getting Started</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../gettingstarted.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">famafrench.FamaFrench</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../gettingstarted.html#creating-an-instance-of-the-famafrench-class">Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/applications.html">Applications and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wrdsconnection/wrdsconnection.html">Connecting to the WRDS cloud server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wrdscloudquery/wrdscloudquery.html">WRDS Query Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../portfolios/factorregressions.html">Estimating Market Betas and Rolling Residual Variances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../portfolios/portfoliosorting.html">Constructing Portfolios and Return-Based Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kflibrary/kflibrary.html">Comparing to Ken French's Online Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics-diagnostics/statistics.html">Summary Statistics and Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils/utils.html">Auxiliary Functions and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes/changes.html">Change Log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">famafrench</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../gettingstarted.html">Getting Started</a> &raquo;</li>
+        
+      <li>famafrench.FamaFrench</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/gettingstarted/generated/famafrench.FamaFrench.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="famafrench-famafrench">
+<h1>famafrench.FamaFrench<a class="headerlink" href="#famafrench-famafrench" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="famafrench.FamaFrench">
+<em class="property">class </em><code class="sig-prename descclassname">famafrench.</code><code class="sig-name descname">FamaFrench</code><span class="sig-paren">(</span><em class="sig-param">runQuery</em>, <em class="sig-param">freqType</em>, <em class="sig-param">sortCharacsId</em>, <em class="sig-param">factorsId</em>, <em class="sig-param">mainCharacsId=None</em>, <em class="sig-param">runEstimation=False</em>, <em class="sig-param">pickled_directory='./famafrench/pickled_db/'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/famafrench/famafrench.html#FamaFrench"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#famafrench.FamaFrench" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class providing tools for constructing and replicating datasets from
+<a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a>
+via queries to CRSP, Compustat Fundamentals Annual, and other sources accessed through
+<a class="reference external" href="https://wrds-www.wharton.upenn.edu/">wrds-cloud</a>.</p>
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.runQuery">
+<code class="sig-name descname">runQuery</code><a class="headerlink" href="#famafrench.FamaFrench.runQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag for choosing whether to query datafiles from <a class="reference external" href="https://wrds-www.wharton.upenn.edu/">wrds-cloud</a> or import locally-pickled files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.freqType">
+<code class="sig-name descname">freqType</code><a class="headerlink" href="#famafrench.FamaFrench.freqType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Observation frequency of the portfolios. Possible choices are</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code> : daily</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code> : weekly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> : monthly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Q</span></code> : quarterly (3-months)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> : annual</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.sortCharacsId">
+<code class="sig-name descname">sortCharacsId</code><a class="headerlink" href="#famafrench.FamaFrench.sortCharacsId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Names of the anomaly characteristics used for portfolio sorting. The list will contain one, two, or three elements.
+The order of the elements matters and should be consistent w/ the orders presented in
+<a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a>.
+Possible choices are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ME</span></code> : Size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BE</span></code> : Book equity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BM</span></code> : Book-to-Market equity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OP</span></code> : Operating Profitability</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INV</span></code> : Investment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EP</span></code> : Earnings/Price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CFP</span></code> : Cashflow/Price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DP</span></code> : Dividend Yield (i.e. Dividends/Price)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIOR_2_12</span></code> : Prior (2-12) Returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIOR_1_1</span></code> : Prior (1-1) Returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIOR_60_13</span></code> : Prior (13-60) Returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AC</span></code> : Accruals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BETA</span></code> : Market Beta (estimated using the Scholes-Williams (1977) methodology)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VAR</span></code> : Variance (Daily and calculated using last 60 days (w/ 20 minimum)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RESVAR</span></code> : Fama-French Three-factor model Residual Variance  (Daily and calculated using last 60 days (w/ 20 minimum)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NI</span></code> : Net Share Issues</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.factorsId">
+<code class="sig-name descname">factorsId</code><a class="headerlink" href="#famafrench.FamaFrench.factorsId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Names of the anomaly/risk-based factors following Fama and French (1992, 1993, 2008, 2015, 2017).
+Possible choices are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MKT-RF</span></code> : Market premium</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMB</span></code> : Small Minus Big</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HML</span></code> : High Minus Low</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMW</span></code> : Robust Minus Weak</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMWc</span></code> : Cash-based Robust Minus Weak (<strong>Todo</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMA</span></code> : Conservative Minus Aggressive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MOM</span></code> : Momentum - based on Prior (2-12) returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ST_Rev</span></code> : Short-Term Reversal - based on Prior (1-1) returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LT_Rev</span></code> : Long-Term Reversal - based on Prior (13-60) returns</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)">None</a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.mainCharacsId">
+<code class="sig-name descname">mainCharacsId</code><a class="headerlink" href="#famafrench.FamaFrench.mainCharacsId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Names of the anomaly characteristics computed as averages for each portfolio bucket and constructed using the list <code class="docutils literal notranslate"><span class="pre">sortCharacsId</span></code>.
+If <em>None</em>, <code class="docutils literal notranslate"><span class="pre">mainCharacsI</span></code> is set to the list <code class="docutils literal notranslate"><span class="pre">sortCharacsId</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)">None</a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a>,  default None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.runEstimation">
+<code class="sig-name descname">runEstimation</code><a class="headerlink" href="#famafrench.FamaFrench.runEstimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag for choosing whether to run any estimation procedures for the first time/re-estimate procedures
+by querying <a class="reference external" href="https://wrds-www.wharton.upenn.edu/">wrds-cloud</a> datafiles
+<cite>or</cite> import locally-pickled files storing existing estimates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a>, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.pickled_directory">
+<code class="sig-name descname">pickled_directory</code><a class="headerlink" href="#famafrench.FamaFrench.pickled_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Local directory extention where pickled datasets will be saved to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, default <cite>‘./famafrench/pickled_db/’</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.runFactorReg">
+<code class="sig-name descname">runFactorReg</code><a class="headerlink" href="#famafrench.FamaFrench.runFactorReg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag for initializing the estimation of market beta’s and/or rolling residual variances required
+for sorting portfolios on <code class="docutils literal notranslate"><span class="pre">BETA</span></code> and/or <code class="docutils literal notranslate"><span class="pre">RESVAR</span></code>.
+This boolean is set internally - no need for user to specify it externally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a>, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">(Auxiliary) Methods/Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.queryComp.html#famafrench.FamaFrench.queryComp" title="famafrench.FamaFrench.queryComp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">queryComp</span></code></a></p></td>
+<td><p>Query Compustat Fundamentals Annual files from <cite>wrds-cloud</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.queryCrsp.html#famafrench.FamaFrench.queryCrsp" title="famafrench.FamaFrench.queryCrsp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">queryCrsp</span></code></a></p></td>
+<td><p>Query CRSP Stock/Security files from <cite>wrds-cloud</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.queryCrspdlret.html#famafrench.FamaFrench.queryCrspdlret" title="famafrench.FamaFrench.queryCrspdlret"><code class="xref py py-obj docutils literal notranslate"><span class="pre">queryCrspdlret</span></code></a></p></td>
+<td><p>Query CRSP’s Stock Event - Delisting files on <cite>wrds-cloud</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.queryrf1m.html#famafrench.FamaFrench.queryrf1m" title="famafrench.FamaFrench.queryrf1m"><code class="xref py py-obj docutils literal notranslate"><span class="pre">queryrf1m</span></code></a></p></td>
+<td><p>Query the risk-free interest rate (ie 1-month Treasury Bill rate) from <cite>wrds-cloud</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.getCrspDailyRollVar.html#famafrench.FamaFrench.getCrspDailyRollVar" title="famafrench.FamaFrench.getCrspDailyRollVar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getCrspDailyRollVar</span></code></a></p></td>
+<td><p>Calculate rolling <cite>daily</cite> variance of stock returns for all CRSP stocks queried from <cite>wrds-cloud</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.aggregateME.html#famafrench.FamaFrench.aggregateME" title="famafrench.FamaFrench.aggregateME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aggregateME</span></code></a></p></td>
+<td><p>Aggregate market value of equity <strong>me</strong> for cases in which the same firm (ie single <strong>permco</strong> identifer) has two or more securities (ie multiple <strong>permno</strong> identifiers) for a given <strong>date</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.getMEDec.html#famafrench.FamaFrench.getMEDec" title="famafrench.FamaFrench.getMEDec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMEDec</span></code></a></p></td>
+<td><p>Construct market value of equity <strong>me</strong> for Decemeber of every year.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.getMEJune.html#famafrench.FamaFrench.getMEJune" title="famafrench.FamaFrench.getMEJune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMEJune</span></code></a></p></td>
+<td><p>Construct market value of equity <strong>me</strong> for June of every year.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../wrdscloudquery/generated/famafrench.FamaFrench.mergeCCM.html#famafrench.FamaFrench.mergeCCM" title="famafrench.FamaFrench.mergeCCM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mergeCCM</span></code></a></p></td>
+<td><p>Query the CRSP/Compustat (CCM) Merged Linking Table needed to merge CRSP securities to Compustat companies on (<strong>permno</strong>, <strong>gvkey</strong>) identifier pairs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getFactorRegResults.html#famafrench.FamaFrench.getFactorRegResults" title="famafrench.FamaFrench.getFactorRegResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFactorRegResults</span></code></a></p></td>
+<td><p>Estimate factor-based quantities of risk (specifically, market betas) as well as residuals using rolling regressions.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Primary Methods/Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getNyseThresholdsAndRet.html#famafrench.FamaFrench.getNyseThresholdsAndRet" title="famafrench.FamaFrench.getNyseThresholdsAndRet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getNyseThresholdsAndRet</span></code></a></p></td>
+<td><p>Select NYSE stocks used in the construction of breakpoints (ie thresholds) for portfolio sorting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getPortfolios.html#famafrench.FamaFrench.getPortfolios" title="famafrench.FamaFrench.getPortfolios"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPortfolios</span></code></a></p></td>
+<td><p>Generalized routine used to construct datasets containing portfolio returns (which may include factor returns), number of firms in each portfolio, or <cite>average</cite> anomaly portfolio characteristics at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getPortfolioReturns.html#famafrench.FamaFrench.getPortfolioReturns" title="famafrench.FamaFrench.getPortfolioReturns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPortfolioReturns</span></code></a></p></td>
+<td><p>Construct dataset w/ portfolio returns (which may include factor returns) at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getNumFirms.html#famafrench.FamaFrench.getNumFirms" title="famafrench.FamaFrench.getNumFirms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getNumFirms</span></code></a></p></td>
+<td><p>Construct dataset w/ number of firms in each portfolio at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getCharacs.html#famafrench.FamaFrench.getCharacs" title="famafrench.FamaFrench.getCharacs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getCharacs</span></code></a></p></td>
+<td><p>Construct <cite>average</cite> anomaly portfolio characteristics at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../portfolios/generated/famafrench.FamaFrench.getFFfactors.html#famafrench.FamaFrench.getFFfactors" title="famafrench.FamaFrench.getFFfactors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFFfactors</span></code></a></p></td>
+<td><p>Construct dataset w/  Fama-French-style factors at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../statistics-diagnostics/generated/famafrench.FamaFrench.getFamaFrenchStats.html#famafrench.FamaFrench.getFamaFrenchStats" title="famafrench.FamaFrench.getFamaFrenchStats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFamaFrenchStats</span></code></a></p></td>
+<td><p>Detailed summary statistics tables of portfolio returns (which may include factor returns), number of firms in each portfolio, or <cite>average</cite> anomaly portfolio characteristics at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../kflibrary/generated/famafrench.FamaFrench.kfLibrary.html#famafrench.FamaFrench.kfLibrary" title="famafrench.FamaFrench.kfLibrary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kfLibrary</span></code></a></p></td>
+<td><p>Generalized routine used to query datasets from Ken French’s online library at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../kflibrary/generated/famafrench.FamaFrench.getkfPortfolioReturns.html#famafrench.FamaFrench.getkfPortfolioReturns" title="famafrench.FamaFrench.getkfPortfolioReturns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getkfPortfolioReturns</span></code></a></p></td>
+<td><p>Query portfolio returns from Ken French’s online library at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../kflibrary/generated/famafrench.FamaFrench.getkfNumFirms.html#famafrench.FamaFrench.getkfNumFirms" title="famafrench.FamaFrench.getkfNumFirms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getkfNumFirms</span></code></a></p></td>
+<td><p>Query number of firms in each portfolio from Ken French’s online data library at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../kflibrary/generated/famafrench.FamaFrench.getkfCharacs.html#famafrench.FamaFrench.getkfCharacs" title="famafrench.FamaFrench.getkfCharacs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getkfCharacs</span></code></a></p></td>
+<td><p>Query <cite>average</cite> anomaly portfolio characteristics from Ken French’s online library at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../kflibrary/generated/famafrench.FamaFrench.getkfFFfactors.html#famafrench.FamaFrench.getkfFFfactors" title="famafrench.FamaFrench.getkfFFfactors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getkfFFfactors</span></code></a></p></td>
+<td><p>Query Fama-French-style factors from Ken French’s online library at a given frequency and for a given sample period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../statistics-diagnostics/generated/famafrench.FamaFrench.comparePortfolios.html#famafrench.FamaFrench.comparePortfolios" title="famafrench.FamaFrench.comparePortfolios"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comparePortfolios</span></code></a></p></td>
+<td><p><p>Generalized routine used to compare datasets constructed from <cite>wrds-cloud</cite> queries to their equivalents made publicly available on <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a> at a given frequency and for a given sample period.</p>
+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../applications/applications.html" class="btn btn-neutral float-right" title="Applications and Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../gettingstarted.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christian Jauregui
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

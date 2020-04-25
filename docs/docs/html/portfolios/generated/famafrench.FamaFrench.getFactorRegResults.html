@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>famafrench.FamaFrench.getFactorRegResults &mdash; famafrench 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Overview" href="../portfoliosorting.html" />
+    <link rel="prev" title="Overview" href="../factorregressions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> famafrench
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/whatsnew.html">What's New?!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/applications.html">Applications and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wrdsconnection/wrdsconnection.html">Connecting to the WRDS cloud server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wrdscloudquery/wrdscloudquery.html">WRDS Query Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../factorregressions.html">Estimating Market Betas and Rolling Residual Variances</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">famafrench.FamaFrench.getFactorRegResults</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../portfoliosorting.html">Constructing Portfolios and Return-Based Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kflibrary/kflibrary.html">Comparing to Ken French's Online Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics-diagnostics/statistics.html">Summary Statistics and Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils/utils.html">Auxiliary Functions and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes/changes.html">Change Log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">famafrench</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../factorregressions.html">Overview</a> &raquo;</li>
+        
+      <li>famafrench.FamaFrench.getFactorRegResults</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/portfolios/generated/famafrench.FamaFrench.getFactorRegResults.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="famafrench-famafrench-getfactorregresults">
+<h1>famafrench.FamaFrench.getFactorRegResults<a class="headerlink" href="#famafrench-famafrench-getfactorregresults" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="famafrench.FamaFrench.getFactorRegResults">
+<code class="sig-prename descclassname">FamaFrench.</code><code class="sig-name descname">getFactorRegResults</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">ffmodel</em>, <em class="sig-param">boolRVar</em>, <em class="sig-param">scholeswilliams</em>, <em class="sig-param">roll_window</em>, <em class="sig-param">min_per</em>, <em class="sig-param">freq</em>, <em class="sig-param">dt_start</em>, <em class="sig-param">dt_end</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/famafrench/famafrench.html#FamaFrench.getFactorRegResults"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#famafrench.FamaFrench.getFactorRegResults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate factor-based quantities of risk (specifically, market betas) as well as residuals using rolling regressions.
+Rolling regressions require a fixed rolling window w/ a minimum number of observations within each window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ffmodel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>Possible choices include:</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">capm</span></code> : Market (CAPM) model</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(R_{t}^{i} - R_{t}^{f} = \alpha _{i} + \beta^{Mkt}_{i}\left(R_{t}^{M}-R_{t}^{f}\right) +\varepsilon _{t}^{i}\)</span></p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ff3</span></code> : Fama-French 3 factor model</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(R_{t}^{i} - R_{t}^{f} = \alpha _{i} + \beta^{Mkt}_{i}\left(R_{t}^{M}-R_{t}^{f}\right) + \beta^{SMB}_{i}R_{t}^{SMB} + \beta^{HML}_{i}R_{t}^{HML} + \varepsilon _{t}^{i}\)</span></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>boolRvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Flag for choosing whether to calculate the variance of residuals (<code class="docutils literal notranslate"><span class="pre">boolRvar</span> <span class="pre">=</span> <span class="pre">True</span></code>)
+or the market betas estimated from a specified factor model <code class="docutils literal notranslate"><span class="pre">ffmode</span></code> (<code class="docutils literal notranslate"><span class="pre">boolRvar</span> <span class="pre">=</span> <span class="pre">False</span></code>).</p></li>
+<li><p><strong>scholeswilliams</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – <p>Flag for choosing whether to implement the Dimson (1979) methodology - based on Scholes-Williams (1977) -
+for estimating betas in the presence of infrequent trading. The methodology used here as well as in Fama-French (1993)
+estimates betas by summing coefficient estimates pertaining to lagged and coincident market return variables
+adjusted for auto-correlation of the market return variables:</p>
+<div class="math notranslate nohighlight">
+\[\widehat{\beta^{Mkt}}_{t, Dimson} = \frac{\left(\widehat{\beta^{Mkt}}_{t} + \widehat{\beta^{Mkt}}_{t-1}\right)}{\left(1 + 2\widehat{\rho}\right)}\]</div>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\widehat{\beta^{Mkt}}_{t}\)</span> : OLS beta with the contemporaneous return of the market portfolio</p></li>
+<li><p><span class="math notranslate nohighlight">\(\widehat{\beta^{Mkt}}_{t-1}\)</span> : OLS beta with the return on the market portfolio lagged one period</p></li>
+<li><p><span class="math notranslate nohighlight">\(\widehat{\rho}\)</span> : First order autocorrelation coefficient of the return on the market.</p></li>
+</ul>
+<p>Otherwise, factor market betas are estimated in the usual sense using coincident market return variables.</p>
+</p></li>
+<li><p><strong>roll_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Fixed size of the rolling (moving) window.
+This is the number of observations used for calculating the factor betas or the residual variances from factor models.</p></li>
+<li><p><strong>min_per</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Minimum number of observations in each window necessary to have an estimated value.</p></li>
+<li><p><strong>freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>Observation frequency. Possible choices are:</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code> : daily</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code> : weekly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> : monthly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Q</span></code> : quarterly (3-months)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> : annual</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>dt_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.8)"><em>datetime.date</em></a>) – Starting date for the dataset queried or locally retrieved.</p></li>
+<li><p><strong>dt_end</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.8)"><em>datetime.date</em></a>) – Ending date for the dataset queried or locally retrieved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dfresVar, dfbeta</strong> – Dataset containing the panel of market betas OR residual variances estimated from rolling regressions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.0.3)">pandas.DataFrame</a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This routine uses <a class="reference external" href="https://numba.pydata.org/numba-doc/dev/index.html">Numba</a>, an opens-source <cite>just-in-time (JIT)</cite> compiler that translates a subset of Python and NumPy
+into fast machine code using the LLVM compiler written in C++.
+Using <a class="reference external" href="https://numba.pydata.org/numba-doc/dev/index.html">Numba</a> a gives us C++/Fortran-like speed when estimating the rolling regressions.
+More details in source code utilizing <a class="reference external" href="https://numba.pydata.org/numba-doc/dev/index.html">Numba</a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Extend the <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138">Dimson (1979)</a>
+methodology based on <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411">Scholes and Williams (1977)</a> to other factor quantities of risk
+beyond the <cite>market (CAPM)</cite> beta (eg, <cite>SMB</cite> and <cite>HML</cite> quantities of risk)</p>
+</div>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Scholes, Myron and Williams, Joseph. (1977). <cite>Estimating betas from nonsynchronous data</cite>,
+Journal of Financial Economics, (5)3, pp.309-327</p></li>
+<li><p>Dimson, Elroy. (1979). <cite>Risk measurement when shares are subject to infrequent trading</cite>,
+Journal of Financial Economics, (7)2, pp.197-226</p></li>
+<li><p>Fama, Eugene F., and Kenneth R. French. (1992). <cite>The Cross-section of Expected Stock Returns</cite>,
+Journal of Finance, 47(2), pp.427-465</p></li>
+</ul>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../portfoliosorting.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../factorregressions.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christian Jauregui
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
