@@ -28,23 +28,6 @@ from famafrench.version import __version__
 __title__ = 'famafrench-py'
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
 
-# Set '__all__' reader of source code knows what is conventional public API exposed by this module,
-# as well as provide a list of the names to import when performing the wild-import 'from famafrench import *'
-__all__ = [
-    "Error",
-    "FamaFrench",
-    "getPortfolioReturns",
-    "getNumFirms",
-    "getCharacs",
-    "getFFfactors",
-    "getFamaFrenchStats",
-    "getkfPortfolioReturns",
-    "getkfNumFirms",
-    "getkfFFfactors",
-    "getkfCharac",
-    "comparePortfolios",
-]
-
 # Bring to to-level namespace
 from .famafrench import FamaFrench, Error
 
