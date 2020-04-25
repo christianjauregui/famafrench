@@ -84,7 +84,7 @@ class wrdsConnection:
         """
         try:
             self.connection = self.engine.connect()
-        except Exception as e:
+        except Exception:
             # Parameters for sa.create_engine(*args, **kwargs):
             # https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine
             pghost = 'postgresql://{usr}:{pwd}@{host}:{port}/{dbname}'
