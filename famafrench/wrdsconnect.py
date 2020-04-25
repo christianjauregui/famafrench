@@ -41,7 +41,7 @@ class wrdsConnection:
         """
         py3 = version_info[0] > 2
         if not py3:
-            input = raw_input  # use raw_input in python 2
+            print('PLEASE USE PYTHON 3.')
             PermissionError = Exception
             FileNotFoundError = Exception
 
