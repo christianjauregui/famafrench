@@ -62,25 +62,25 @@ Released documentation is hosted on [Github Pages](https://christianjauregui.git
 I welcome recommendations, contributions and/or future collaborations. I am ambitious and plan to expand the module to include construction of additional factor-based datasets relevant for empirical asset pricing. These include the following:
 
 - [AQR Capital Management's](https://www.aqr.com/library/data-sets): 
-    - `Betting Against Beta` (BAB)
-    - `Quality Minus Junk` (QMJ)
-    - `Modified Value - High Minus Low` (HMLD)
+  - `Betting Against Beta` (BAB)
+  - `Quality Minus Junk` (QMJ)
+  - `Modified Value - High Minus Low` (HMLD)
 
 - [Lettau, Ludvigson, and Ma (2019)](https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12772) Capital Share Factor:   
-    - `Capital Share of Aggregate Income` (KS)
+  - `Capital Share of Aggregate Income` (KS)
 
 - [Pastor and Stambaugh (2003)](https://faculty.chicagobooth.edu/-/media/faculty/lubos-pastor/data/liq_data_1962_2019.txt) Liquidity Factors: 
-    - `Non-Traded Liquidity Factor`
-    - `Traded Liquidity Factor`
+  - `Non-Traded Liquidity Factor`
+  - `Traded Liquidity Factor`
 
 - [Sadka (2006)](https://drive.google.com/file/d/1hTnBk7uasanA3x1gRFBNg6hFE1A0JJEO/view) Liquidity Factors:
-    - `Fixed-Transitory Factor`
-    - `Variable-Permanent Factor`
+  - `Fixed-Transitory Factor`
+  - `Variable-Permanent Factor`
 
 - [Stambaugh and Yuan (2017)](https://academic.oup.com/rfs/article/30/4/1270/2965095) *Clustered* Mispricing Factors: 
-    - `Management-related Factor` (MGMT)
-    - `Performance-related Factor` (PERF)
-    - `Mispricing (non-clustered) Factor` (UMO)
+  - `Management-related Factor` (MGMT)
+  - `Performance-related Factor` (PERF)
+  - `Mispricing (non-clustered) Factor` (UMO)
     
 
 Performance and speed improvements are also appreciated. 
