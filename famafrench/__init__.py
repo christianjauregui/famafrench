@@ -24,10 +24,10 @@ ________
 
 `utils.py` : Utility/Auxiliary functions and routines used in module`famafrench.py`
 """
-from famafrench.version import __version__
+from famafrench.version import __version__ as version
+__version__ = version
 __title__ = 'famafrench-py'
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
 
-# Bring to to-level namespace
-from .famafrench import FamaFrench, Error
+
 
