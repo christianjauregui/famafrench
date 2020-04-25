@@ -64,7 +64,7 @@ Please see [``setup.py``](https://github.com/christianjauregui/famafrench/blob/m
 
 
 ## Documentation
-Released documentation is hosted on [Read The Docs](https://famafrench.readthedocs.io/en/latest/?badge=latest). Look out for updated documentation from my master branch hosted on Github.
+Released documentation is hosted on [Github Pages](https://christianjauregui.github.io/famafrench/). Look out for future updated documentation from my master branch hosted on Github.
 
 
 
