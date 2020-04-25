@@ -42,12 +42,12 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 ## Installation
 The latest release is **Release 0.1.0** as of April 20, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#release-0-1-0)).
 
-### Python Package Index (`pip`):
+### Python Package Index (`pip`)
 Releases are available via [PyPI](https://pypi.python.org/pypi/pyfinance/) and can be installed with `pip`.  
 ```bash
 pip install famafrench
 ```
-### Anaconda (`conda`):
+### Anaconda (`conda`)
 Conda users will soon be able to install from my [Anaconda](https://anaconda.org/) channel. Stay tuned.
 
 ## Dependencies
