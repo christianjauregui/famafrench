@@ -24,6 +24,7 @@ try:
     print("ipython: %s, %s" % (IPython.__version__, IPython.__file__))
 except ImportError:
     print("no ipython")
+import famafrench
 
 # -- Project information -----------------------------------------------------
 
