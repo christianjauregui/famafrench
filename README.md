@@ -12,13 +12,12 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 `famafrench`'s current efficient performance results from features such as the use of a [least recently used (LRU) cache](https://medium.com/lambda-automotive/python-and-lru-cache-f812bbdcbb51) implemented using Python's
 [``functools.lru_cache`` decorator](https://github.com/python/cpython/blob/3.8/Lib/functools.py).
 
-
 | Metric                     |                                                                                                                                                                    |
 | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Supports**               | Python 3.4+                                                                                                                                                        | 
 |                            | [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                                              |                                             
 |                            | [![Python 3](https://pyup.io/repos/github/christianjauregui/famafrench/python-3-shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)           |
-| **Release**                | [![GitHub release (latest by date)](https://img.shields.io/github/v/release/christianjauregui/famafrench?style=for-the-badge)](https://github.com/christianjauregui/famafrench/releases)   |                                    |
+| **Release**                | [![GitHub release (latest by date)](https://img.shields.io/github/v/release/christianjauregui/famafrench?style=for-the-badge)](https://github.com/christianjauregui/famafrench/releases)   |  
 |                            | ![GitHub Release Date](https://img.shields.io/github/release-date/christianjauregui/famafrench)                                                                    |
 | **Code Quality**           | [![Updates](https://pyup.io/repos/github/christianjauregui/famafrench/shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)                     |
 |                            |                                                                                                                                                                    |
