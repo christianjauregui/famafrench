@@ -2,7 +2,6 @@
 Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
 See file LICENSE.txt for license information.
 
-
 Filename
 _________
 `examples/famafrench_allsorts_me_resvar.py`
