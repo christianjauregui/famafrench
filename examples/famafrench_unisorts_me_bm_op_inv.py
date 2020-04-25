@@ -2,7 +2,6 @@
 Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
 See file LICENSE.txt for license information.
 
-
 Filename
 ________
 `examples/famafrench_unisorts_me_bm_op_inv.py`
