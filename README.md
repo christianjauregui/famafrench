@@ -31,9 +31,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 
 `famafrench` is best explored by going through applications and examples provided in the released documentation hosted on [Github Pages](https://christianjauregui.github.io/famafrench/).
 
-
 ## Module Contents
-
 | Module | Description |
 | ------ | ----------- |
 | `famafrench.py`  | Main module w/ tools for constructing and replicating datasets from Ken French’s online library via queries to WRDS. |
@@ -41,35 +39,26 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 | `wrdsconnect.py`       | Enables remote connection to wrds-cloud largely building on the ``Connection()`` class in the [WRDS-Py](https://pypi.org/project/wrds/) library. |
 | `version.py`   | Module w/ package's version number.  |
 
-
 ## Installation
 The latest release is **Release 0.1.0** as of April 20, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#release-0-1-0)).
 
 ### Python Package Index (`pip`):
-
 Releases are available via [PyPI](https://pypi.python.org/pypi/pyfinance/) and can be installed with `pip`.  
 ```bash
 pip install famafrench
 ```
 ### Anaconda (`conda`):
-
 Conda users will soon be able to install from my [Anaconda](https://anaconda.org/) channel. Stay tuned.
-
 
 ## Dependencies
 `famafrench` relies on a suite of Python libraries, which include Python's scientific computing stack (e.g. [NumPy](https://numpy.org/) and [Pandas](https://pandas.pydata.org/)). Other dependencies include [Numba](http://numba.pydata.org/) and [SQLAlchemy](https://www.sqlalchemy.org/). 
 
 Please see [``setup.py``](https://github.com/christianjauregui/famafrench/blob/master/setup.py) or [``requirements.txt``](https://github.com/christianjauregui/famafrench/blob/master/docs/requirements.txt) for specific version threshold requirements.
 
-
-
 ## Documentation
 Released documentation is hosted on [Github Pages](https://christianjauregui.github.io/famafrench/). Look out for future updated documentation from my master branch hosted on Github.
 
-
-
 ## Contributing
-
 I welcome recommendations, contributions and/or future collaborations. I am ambitious and plan to expand the module to include construction of additional factor-based datasets relevant for empirical asset pricing. These include the following:
 
 
@@ -108,7 +97,5 @@ Performance and speed improvements are also appreciated.
 
 Please report any bugs or errors to [my github page](https://github.com/christianjauregui/famafrench/issues) or please send me an email at chris.jauregui@berkeley.edu.  
 
-
 ## API
-
 For in-depth call syntaxes, please see the source code doctrings. 
