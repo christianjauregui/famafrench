@@ -106,7 +106,7 @@ I welcome recommendations, contributions and/or future collaborations. I am ambi
 
 Performance and speed improvements are also appreciated. 
 
-Please report any bugs or errors to [my github page](https://github.com/christianjauregui/famafrench) or please send me an email at chris.jauregui@berkeley.edu.  
+Please report any bugs or errors to [my github page](https://github.com/christianjauregui/famafrench/issues) or please send me an email at chris.jauregui@berkeley.edu.  
 
 
 ## API
