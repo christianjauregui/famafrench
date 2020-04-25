@@ -1,7 +1,6 @@
-"""
-# This file is part of famafrench
-# Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
-# See file LICENSE.txt for license information.
+"""This file is part of famafrench.
+Copyright (c) 2020, Christian Jauregui <chris.jauregui@berkeley.edu>
+See file LICENSE.txt for license information.
 
 This file must be kept very simple, because it is consumed from several places.
 It is imported by famafrench/__init__.py, execfile'd by setup.py, etc.
