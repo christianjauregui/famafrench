@@ -21,7 +21,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 |                            | [![PyPI version](https://badge.fury.io/py/famafrench.svg)](https://pypi.org/project/famafrench/)                                                                                           |
 | **Code Quality**           | [![Updates](https://pyup.io/repos/github/christianjauregui/famafrench/shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)                                            |
 |                            | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a81ccb9c22144f6bbf7b25d6926c5217)](https://app.codacy.com/manual/christianjauregui/famafrench?utm_source=github.com&utm_medium=referral&utm_content=christianjauregui/famafrench&utm_campaign=Badge_Grade_Dashboard) |                                                                                                                                                                                          |
-| **Citation**               | [![DOI](https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530634.svg)](https://sandbox.zenodo.org/record/530634#.XqNawZNKi_s)                                                           |
+| **Citation**               | [![DOI](https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530964.svg)](https://sandbox.zenodo.org/record/530964#.XqULo5NKi_t)                                                           |
 | **License**                | [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/christianjauregui/famafrench/blob/master/LICENSE.txt)                                         |
 | **Documentation**          | [![made-with-sphinx-doc](https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg)](https://www.sphinx-doc.org/)                                                                        |
 |                            | [![documentation Status](https://img.shields.io/badge/Documentation-latest-brightgreen)](https://christianjauregui.github.io/famafrench/)                                                 |   
@@ -39,7 +39,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 | `version.py`      | Module w/ package's version number.                                                                                                              |
 
 ## Installation
-The latest release is **Release 0.1.1** as of April 20, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#release-0-1-1)).
+The latest release is **Release 0.1.1** as of April 25, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#release-0-1-1)).
 
 ### Python Package Index (`pip`)
 Releases are available via [PyPI](https://pypi.org/project/famafrench/) and can be installed with `pip`.  
