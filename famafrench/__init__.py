@@ -29,5 +29,6 @@ __version__ = version
 __title__ = 'famafrench-py'
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
 
-
+# Bring to to-level namespace
+from .famafrench import FamaFrench, Error # used to build sphinx-documentation
 
