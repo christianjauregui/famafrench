@@ -23,6 +23,11 @@ from setuptools import setup, find_packages
 # Define __version__
 exec(open("famafrench/version.py").read())
 
+if '__version__' in locals():
+    VERSION = __version__
+else:
+    VERSION = '0.1.0'
+
 here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
 with open(path.join(here, 'README.md'), "r") as readme:
@@ -53,7 +58,7 @@ REQUIRES = [
 setup(
     # Package meta-data
     name=NAME,
-    version= __version__,
+    version=VERSION,
     author='Christian Jauregui',
     author_email='chris.jauregui@berkeley.edu',
     description='Python package designed to construct and replicate datasets from Ken French\'s '
