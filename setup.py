@@ -87,7 +87,7 @@ setup(
         'Intended Audience :: Science/Research',
         'Topic :: Office/Business :: Financial',
         'Topic :: Office/Business :: Financial :: Investment',
-        "Topic :: Scientific/Engineering"
+        "Topic :: Scientific/Engineering",
         'Topic :: Scientific/Engineering :: Information Analysis'
     ],
 
