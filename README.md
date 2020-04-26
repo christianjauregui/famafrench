@@ -17,8 +17,8 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 | **Supports**               | Python 3.4+                                                                                                                                                                               | 
 |                            | [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                                                                     |                                             
 |                            | [![Python 3](https://pyup.io/repos/github/christianjauregui/famafrench/python-3-shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)                                  |
-| **Release**                | [![GitHub release (latest by date)](https://img.shields.io/github/v/release/christianjauregui/famafrench?style=for-the-badge)](https://github.com/christianjauregui/famafrench/releases)  |  
-|                            | ![GitHub Release Date](https://img.shields.io/github/release-date/christianjauregui/famafrench)                                                                                           |
+| **Latest Release**         | ![GitHub Release Date](https://img.shields.io/github/release-date/christianjauregui/famafrench)                                                                                           |
+|                            | [![PyPI version](https://badge.fury.io/py/famafrench.svg)](https://badge.fury.io/py/famafrench)                                                                                           |
 | **Code Quality**           | [![Updates](https://pyup.io/repos/github/christianjauregui/famafrench/shield.svg)](https://pyup.io/repos/github/christianjauregui/famafrench/)                                            |
 |                            | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a81ccb9c22144f6bbf7b25d6926c5217)](https://app.codacy.com/manual/christianjauregui/famafrench?utm_source=github.com&utm_medium=referral&utm_content=christianjauregui/famafrench&utm_campaign=Badge_Grade_Dashboard) |                                                                                                                                                                                          |
 | **Citation**               | [![DOI](https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530634.svg)](https://sandbox.zenodo.org/record/530634#.XqNawZNKi_s)                                                           |
@@ -62,29 +62,29 @@ I welcome recommendations, contributions and/or future collaborations. I am ambi
 
 -   [AQR Capital Management](https://www.aqr.com/library/data-sets): 
 
-    -   `Betting Against Beta` (BAB)
-    -   `Quality Minus Junk` (QMJ)
-    -   `Modified Value - High Minus Low` (HMLD)
+    -   *Betting Against Beta* (BAB)
+    -   *Quality Minus Junk* (QMJ)
+    -   *Modified Value - High Minus Low* (HMLD)
 
 -   [Lettau, Ludvigson, and Ma (2019)](https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12772) Capital Share Factor:   
  
-    -   `Capital Share of Aggregate Income` (KS)
+    -   *Capital Share of Aggregate Income* (KS)
 
 -   [Pastor and Stambaugh (2003)](https://faculty.chicagobooth.edu/-/media/faculty/lubos-pastor/data/liq_data_1962_2019.txt) Liquidity Factors: 
  
-    -   `Non-Traded Liquidity Factor`
-    -   `Traded Liquidity Factor`
+    -   *Non-Traded Liquidity Factor*
+    -   *Traded Liquidity Factor*
 
 -   [Sadka (2006)](https://drive.google.com/file/d/1hTnBk7uasanA3x1gRFBNg6hFE1A0JJEO/view) Liquidity Factors:
 
-    -   `Fixed-Transitory Factor`
-    -   `Variable-Permanent Factor`
+    -   *Fixed-Transitory Factor*
+    -   *Variable-Permanent Factor*
 
 -   [Stambaugh and Yuan (2017)](https://academic.oup.com/rfs/article/30/4/1270/2965095) *Clustered* Mispricing Factors: 
  
-    -   `Management-related Factor` (MGMT)
-    -   `Performance-related Factor` (PERF)
-    -   `Mispricing (non-clustered) Factor` (UMO)
+    -   *Management-related Factor* (MGMT)
+    -   *Performance-related Factor* (PERF)
+    -   *Mispricing (non-clustered) Factor* (UMO)
     
 
 Performance and speed improvements are also appreciated. 
