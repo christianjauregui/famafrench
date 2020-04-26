@@ -337,7 +337,7 @@ def portRetAvg(df):
 
 
 # Function: get_statsTable(.,.,.,.)
-def get_statsTable(dType, dFreq, df, dates_as_index=True, ptiles=[0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99]):
+def get_statsTable(dType, dFreq, df, dates_as_index=True, ptiles=[]):
     """
     Construct detailed tables with summary statistics.
 
@@ -364,8 +364,9 @@ def get_statsTable(dType, dFreq, df, dates_as_index=True, ptiles=[0.01, 0.1, 0.2
     dates_as_index : bool
         Flag determining whether ``df`` has a :class:`pandas.DatetimeIndex` index (``dates_as_index = True``).
         Otherwise, ``dates_as_index = False``.
-    ptiles : list, float, default [0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99]
+    ptiles : list, float, default None
         List of percentiles (in decimal format) included as part of output results.
+        If ``None``, then ``ptiles = [0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99]``.
 
 
     Returns
@@ -385,6 +386,8 @@ def get_statsTable(dType, dFreq, df, dates_as_index=True, ptiles=[0.01, 0.1, 0.2
 
         If ``dates_as_index = True``, then the table also includes the starting and ending date for each observation type.
     """
+    if ptiles is None:
+        ptiles = [0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99]
     statsTable = df.describe(percentiles=ptiles).round(2)
     statsTable = statsTable.append(df.reindex(statsTable.columns, axis=1).agg(['skew', 'kurt', 'mad'])).round(2)
 
