@@ -60,7 +60,7 @@ Released documentation is hosted on [Github Pages](https://christianjauregui.git
 ## Contributing
 I welcome recommendations, contributions and/or future collaborations. I am ambitious and plan to expand the module to include construction of additional factor-based datasets relevant for empirical asset pricing. These include the following:
 
--   [AQR Capital Management's](https://www.aqr.com/library/data-sets): 
+-   [AQR Capital Management](https://www.aqr.com/library/data-sets): 
   - `Betting Against Beta` (BAB)
   - `Quality Minus Junk` (QMJ)
   - `Modified Value - High Minus Low` (HMLD)
