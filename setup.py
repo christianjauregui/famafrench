@@ -66,7 +66,7 @@ setup(
                 'via remote access to wrds-cloud. ',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://https://github.com/christianjauregui/famafrench',
+    url='https://github.com/christianjauregui/famafrench',
     license='Apache License 2.0',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
