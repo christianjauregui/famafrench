@@ -62,9 +62,9 @@ I welcome recommendations, contributions and/or future collaborations. I am ambi
 
 -   [AQR Capital Management](https://www.aqr.com/library/data-sets): 
 
-    - `Betting Against Beta` (BAB)
-    - `Quality Minus Junk` (QMJ)
-    - `Modified Value - High Minus Low` (HMLD)
+    -   `Betting Against Beta` (BAB)
+    -   `Quality Minus Junk` (QMJ)
+    -   `Modified Value - High Minus Low` (HMLD)
 
 - [Lettau, Ludvigson, and Ma (2019)](https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12772) Capital Share Factor:   
   -  `Capital Share of Aggregate Income` (KS)
