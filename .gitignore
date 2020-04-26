@@ -5,3 +5,9 @@
 .xml?
 .idea/
 
+
+# Project specific files #
+##########################
+docs/build/.doctrees/**
+**/.ipynb_checkpoints/
+
