@@ -160,9 +160,9 @@
             
   <h1>Source code for famafrench.wrdsconnect</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd"># This file is part of famafrench</span>
-<span class="sd"># Copyright (c) 2020, Christian Jauregui &lt;chris.jauregui@berkeley.edu&gt;</span>
-<span class="sd"># See file LICENSE.txt for license information.</span>
+<span class="sd">This file is part of famafrench.</span>
+<span class="sd">Copyright (c) 2020, Christian Jauregui &lt;chris.jauregui@berkeley.edu&gt;</span>
+<span class="sd">See file LICENSE.txt for license information.</span>
 
 <span class="sd">Filename</span>
 <span class="sd">_________</span>
@@ -202,9 +202,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">py3</span> <span class="o">=</span> <span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">py3</span><span class="p">:</span>
-            <span class="nb">input</span> <span class="o">=</span> <span class="n">raw_input</span>  <span class="c1"># use raw_input in python 2</span>
-            <span class="ne">PermissionError</span> <span class="o">=</span> <span class="ne">Exception</span>
-            <span class="ne">FileNotFoundError</span> <span class="o">=</span> <span class="ne">Exception</span>
+            <span class="k">raise</span> <span class="ne">SyntaxError</span><span class="p">(</span><span class="s1">&#39;PLEASE USE PYTHON 3+&#39;</span><span class="p">)</span>
 
         <span class="n">appname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> python </span><span class="si">{1}</span><span class="s1">.</span><span class="si">{2}</span><span class="s1">.</span><span class="si">{3}</span><span class="s1">/wrds </span><span class="si">{4}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                   <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">,</span>
@@ -247,7 +245,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="c1"># Parameters for sa.create_engine(*args, **kwargs):</span>
             <span class="c1"># https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine</span>
             <span class="n">pghost</span> <span class="o">=</span> <span class="s1">&#39;postgresql://</span><span class="si">{usr}</span><span class="s1">:</span><span class="si">{pwd}</span><span class="s1">@</span><span class="si">{host}</span><span class="s1">:</span><span class="si">{port}</span><span class="s1">/</span><span class="si">{dbname}</span><span class="s1">&#39;</span>
