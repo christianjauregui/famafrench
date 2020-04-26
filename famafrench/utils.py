@@ -337,7 +337,7 @@ def portRetAvg(df):
 
 
 # Function: get_statsTable(.,.,.,.)
-def get_statsTable(dType, dFreq, df, dates_as_index=True, ptiles=[]):
+def get_statsTable(dType, dFreq, df, dates_as_index=True, ptiles=None):
     """
     Construct detailed tables with summary statistics.
 
