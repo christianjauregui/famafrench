@@ -389,7 +389,7 @@ class FamaFrench:
             file_to_pickle.close()
 
         # Replace any Python objects 'None' to np.nan
-        dfcomp = dfcomp.fillna(value=pd.np.nan)
+        dfcomp = dfcomp.fillna(value=np.nan)
 
         # Get datetime objects...
         dfcomp['datadate'] = pd.to_datetime(dfcomp['datadate'])
@@ -3010,6 +3010,10 @@ class FamaFrench:
                         dfportSort_ret.insert(dfportSort_ret.columns.get_loc('date_crsp') + 1, 'date', dfportSort_ret['date_crsp'] + YearEnd(0))
                         dfportSort_nfirms.insert(dfportSort_nfirms.columns.get_loc('date_crsp') + 1, 'date', dfportSort_nfirms['date_crsp'] + YearEnd(0))
 
+                        # Since annual data should be for each full calendar year, we exclude data that may be incomplete in a final year.
+                        dfportSort_ret = dfportSort_ret[dfportSort_ret['date'].dt.date <= dt_end]
+                        dfportSort_nfirms = dfportSort_nfirms[dfportSort_nfirms['date'].dt.date <= dt_end]
+
                     # Compound returns.
                     dfportSort_ret.insert(dfportSort_ret.columns.get_loc('mktport') + 1, 'ln(1+mktport)', np.log(dfportSort_ret['mktport'] + 1))
                     dfportSort_ret.loc[:, 'mktport'] = np.exp(dfportSort_ret.groupby(['date'])['ln(1+mktport)'].transform(np.sum)) - 1
@@ -4155,7 +4159,7 @@ class FamaFrench:
                     #       An adjustment is made to correct for the error, assuming the only mistake is in the
                     #       the weekly dates provided by Ken French and not how the daily returns are cumulated
                     #       for the aforementioned weeks.
-                    dfkf.index = np.where(dfkf.index.weekday_name.isin(['Saturday', 'Sunday']), dfkf.index - BDay(1), dfkf.index)
+                    dfkf.index = np.where(dfkf.index.day_name().isin(['Saturday', 'Sunday']), dfkf.index - BDay(1), dfkf.index)
 
                     # NYSE trading day holiday calendar
                     nyse_holidays = pd.DataFrame(nyse_cal.holidays().holidays, columns=['nyse_date'])
@@ -4515,7 +4519,8 @@ class FamaFrench:
                                 #       An adjustment is made to correct for the error, assuming the only mistake is in the
                                 #       the weekly dates provided by Ken French and not how the daily returns are cumulated
                                 #       for the aforementioned weeks.
-                                dfkf[key].index = np.where(dfkf[key].index.weekday_name.isin(['Saturday', 'Sunday']), dfkf[key].index - BDay(1), dfkf[key].index)
+                                dfkf[key].index = np.where(dfkf[key].index.day_name().isin(['Saturday', 'Sunday']), dfkf[key].index - BDay(1), dfkf[key].index)
+
                                 # NYSE trading day holiday calendar
                                 nyse_holidays = pd.DataFrame(nyse_cal.holidays().holidays, columns=['nyse_date'])
                                 nyse_holidays = nyse_holidays[(dt_start <= nyse_holidays['nyse_date'].dt.date) & (dt_end >= nyse_holidays['nyse_date'].dt.date)]['nyse_date'].dt.date.tolist()
