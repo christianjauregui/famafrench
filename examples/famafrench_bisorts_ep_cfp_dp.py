@@ -24,7 +24,9 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/six_portfol
 6 Portfolios Formed on Size and Dividend Yield
 ____________________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/six_portfolios_me_dp.html
+
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 

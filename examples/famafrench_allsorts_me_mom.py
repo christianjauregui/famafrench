@@ -28,6 +28,7 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_25_port
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_25_port_form_sz_pr_12_2_daily.html
 
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 

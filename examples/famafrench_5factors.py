@@ -18,7 +18,9 @@ Ken French online library:
 Fama/French 5 Factors (2x3)
 ___________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_5_factors_2x3.html
+
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 

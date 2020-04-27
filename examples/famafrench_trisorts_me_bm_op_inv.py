@@ -26,8 +26,8 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/32_ports_me
 __________________________________________________________________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/32_ports_me_op_inv.html
 
-
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 

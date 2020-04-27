@@ -27,7 +27,9 @@ Long-Term Reversal
 __________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_lt_rev_factor.html
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_lt_rev_factor_daily.html
+
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 

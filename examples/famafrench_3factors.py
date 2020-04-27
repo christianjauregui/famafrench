@@ -16,6 +16,7 @@ Ken French online library:
 Fama/French 3 Factors
 __________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html
+
 """
 
 import famafrench.famafrench as ff

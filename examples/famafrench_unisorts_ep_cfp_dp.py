@@ -26,6 +26,7 @@ ____________________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_port_form_dp.html
 
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 

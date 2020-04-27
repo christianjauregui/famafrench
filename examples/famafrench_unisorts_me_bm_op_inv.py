@@ -18,8 +18,8 @@ Univariate sorts on Size, B/M, OP, and Inv
 __________________________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
 
-
 """
+
 import famafrench.famafrench as ff
 import datetime as dt
 
