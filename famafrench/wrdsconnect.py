@@ -25,7 +25,6 @@ import sqlalchemy as sa
 from sys import version_info
 from wrds import __version__ as wrds_version
 
-
 # Declare 'wrdsConnection' object class
 class wrdsConnection:
     __doc__ = """
