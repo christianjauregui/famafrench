@@ -16,5 +16,7 @@ This is compatible with PEP 440:
 via the use of the "local suffix" "+dev", which is disallowed on index
 servers and causes 1.0.0+dev to sort after plain 1.0.0, which is what I
 want. (Contrast with the special suffix 1.0.0.dev, which sorts *before* 1.0.0.)
+
 """
+
 __version__ = "0.1.1"
