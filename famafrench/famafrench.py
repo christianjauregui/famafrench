@@ -4535,7 +4535,7 @@ class FamaFrench:
                     if kfFreq in ['D', 'W']:
                         if kfFreq == 'W':
                             # See most recent NOTE.
-                            dfkf.index = np.where(dfkf.index.weekday_name.isin(['Saturday', 'Sunday']), dfkf.index - BDay(1), dfkf.index)
+                            dfkf.index = np.where(dfkf.index.day_name().isin(['Saturday', 'Sunday']), dfkf.index - BDay(1), dfkf.index)
                         dfkf.index = pd.to_datetime(dfkf.index).date
                     else:
                         dfkf.index = dfkf.index.to_timestamp(kfFreq).date
