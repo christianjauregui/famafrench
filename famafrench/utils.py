@@ -10,7 +10,7 @@ _________
 Descriptions
 ____________
 lru_cached_method
-    Wrapper for methodtools.lru_cache(maxsize) that allows for sphinx documentation's
+    Wrapper for methodtools.lru_cache(maxsize) that allows for sphinx documentation
     recognition of decorated instance methods.
 get_kfpriorfactors_directly
     Directly download zipped datafiles from Ken French's online data library without
