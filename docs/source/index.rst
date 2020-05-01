@@ -78,10 +78,10 @@ How to Cite
 ************
 This package (and its release as of May 1, 2020) should be cited using Zenodo. For example, for the 0.1.2 release, 
 
-   [*] Christian Jauregui. (2020, May 1). christianjauregui/famafrench: Release 0.1.2. Zenodo. https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY
+   [*] Christian Jauregui. (2020, May 1). christianjauregui/famafrench: Release 0.1.2. Zenodo. https://sandbox.zenodo.org/record/535156#.XqUJn5NKhTY
 
-      .. image:: https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530964.svg
-         :target: https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY
+      .. image:: https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.535156.svg
+         :target: https://sandbox.zenodo.org/record/535156#.XqUJn5NKhTY
 
 *******************
 `Todo`
