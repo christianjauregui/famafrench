@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>famafrench - Package Documentation &mdash; famafrench 0.1.1 documentation</title>
+  <title>famafrench - Package Documentation &mdash; famafrench 0.1.2 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -232,9 +232,9 @@
 </div>
 <div class="section" id="how-to-cite">
 <h1>How to Cite<a class="headerlink" href="#how-to-cite" title="Permalink to this headline">¶</a></h1>
-<p>This package (and its release as of April 25, 2020) should be cited using Zenodo. For example, for the 0.1.1 release,</p>
+<p>This package (and its release as of May 1, 2020) should be cited using Zenodo. For example, for the 0.1.2 release,</p>
 <blockquote>
-<div><p>[*] Christian Jauregui. (2020, April 25). christianjauregui/famafrench: Release 0.1.1 (Initial Release). Zenodo. <a class="reference external" href="https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY">https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY</a></p>
+<div><p>[*] Christian Jauregui. (2020, May 1). christianjauregui/famafrench: Release 0.1.2. Zenodo. <a class="reference external" href="https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY">https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY</a></p>
 <blockquote>
 <div><a class="reference external image-reference" href="https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY"><img alt="https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530964.svg" src="https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530964.svg" /></a>
 </div></blockquote>
@@ -255,7 +255,7 @@ notes the following regarding the construction of their daily portfolio returns:
 <p class="admonition-title">Todo</p>
 <ul>
 <li><p>Include option to construct the <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0304405X18300515">Fama and French (2018)</a> cash-based profitability factor, <code class="docutils literal notranslate"><span class="pre">RMWc</span></code>.</p></li>
-<li><p>Within the instance method used for constructing market betas and rolling residual variances, <code class="xref py py-meth docutils literal notranslate"><span class="pre">getFactorResults()</span></code>, extend the <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138">Dimson (1979)</a> methodology based on <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411">Scholes and Williams (1977)</a> to other factor quantities of risk beyond the <cite>market (CAPM)</cite> beta (eg, <cite>SMB</cite> and <cite>HML</cite> quantities of risk).</p></li>
+<li><p>Within the instance method used for constructing market betas and rolling residual variances, <code class="xref py py-meth docutils literal notranslate"><span class="pre">fama.getFactorRegResults()</span></code>, extend the <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138">Dimson (1979)</a> methodology based on <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411">Scholes and Williams (1977)</a> to other factor quantities of risk beyond the <cite>market (CAPM)</cite> beta (eg, <cite>SMB</cite> and <cite>HML</cite> quantities of risk).</p></li>
 <li><p>Verify the <a class="reference external" href="https://pandas-datareader.readthedocs.io/en/latest/">pandas-datareader</a> Python library is still unable to pull monthly and annual datafiles for the <cite>Short-Term Reversal</cite> or <cite>Long-Term Reversal</cite> Fama-French-style factors made public through <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a>.</p></li>
 <li><p>When applicable, constructed portfolios, specifically portfolio returns, number of firms in each portfolio, and <cite>average</cite> anomaly portfolio characteristics are compared with those provided by Ken French for the same frequency and over the same period. The sample <cite>Pearson correlations</cite>, sample <cite>means</cite>, and sample <cite>standard deviations</cite> for the following portfolios <strong>can be improved</strong>:</p>
 <blockquote>
@@ -273,6 +273,19 @@ notes the following regarding the construction of their daily portfolio returns:
 <blockquote>
 <div><p>To improve the statistical metrics, adjustments in how the aforementioned anomaly characteristics are computed or estimated will be incorporated in future releases.</p>
 </div></blockquote>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<ul>
+<li><p><cite>Recommendations by</cite> <a class="reference external" href="https://sites.google.com/view/martinlettau/home">Martin Lettau</a>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enable the user to query information for a selected set of individual stocks. For example, for <strong>IBM</strong>, the package could provide the user with returns at a given frequency over a given sample period, as well as firm characteristics (eg <cite>market equity</cite>, <cite>book-to-market</cite>, prior (2-12) <cite>momentum</cite> returns, <cite>accruals</cite>, etc).</p></li>
+<li><p>In addition, the package could provide a list of all relevant firm characteristics for empirical asset pricing available through Compustat Fundamentals Annual.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
