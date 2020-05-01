@@ -11,7 +11,7 @@ Note
 ____
 Python package designed to construct and replicate datasets from Ken French's online library
 (https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) via remote access to wrds-cloud.
-============================================================
+============================================================================================================
 
 Modules
 ________
