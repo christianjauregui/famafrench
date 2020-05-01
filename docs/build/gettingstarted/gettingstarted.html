@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; famafrench 0.1.1 documentation</title>
+  <title>Getting Started &mdash; famafrench 0.1.2 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -187,7 +187,7 @@ a multitude of datasets found in <a class="reference external" href="https://mba
 <li><p>Long-Term Reversal based on Prior (13-60) returns (<code class="docutils literal notranslate"><span class="pre">LT_Rev</span></code>)</p></li>
 </ul>
 </div></blockquote>
-<p>In almost all applications, the package requires the use of the constructor function <code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code>:</p>
+<p>In almost all applications, the package requires the use of the constructor function <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a>:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -201,7 +201,7 @@ a multitude of datasets found in <a class="reference external" href="https://mba
 </tbody>
 </table>
 <p>The constructor function makes use of an altered set of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> to query <a class="reference external" href="http://www.crsp.org/products/research-products/crsp-us-stock-databases">CRSP</a>, <a class="reference external" href="https://wrds-web.wharton.upenn.edu/wrds/support/Data/_001Manuals%20and%20Overviews/_001Compustat/_001North%20America%20-%20Global%20-%20Bank/_000dataguide/index.cfm0">Compustat Fundamentals Annual</a>, and other datafiles provided by <cite>Wharton Research Data Services</cite> <a class="reference external" href="https://wrds-web.wharton.upenn.edu/wrds/support/">(WRDS)</a>. To use the <code class="docutils literal notranslate"><span class="pre">famafrench</span></code> package, a user <strong>must</strong> have a subscription to both CRSP and Compustat Fundamentals Annual through WRDS. See <a class="reference internal" href="../wrdsconnection/wrdsconnection.html#connecting-to-wrds-cloud"><span class="std std-ref">Connecting to wrds-cloud</span></a>.</p>
-<p>Alterations of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> enable a user with access to WRDS to add his/her WRDS username and password to their local environment. This is achieved through the use of environment variables via <code class="xref py py-func docutils literal notranslate"><span class="pre">os.environ()</span></code>, a mapping object in Python’s <a class="reference external" href="https://docs.python.org/3/library/os.html#module-os" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> module that represents the user’s environment variables. Environment variables provide secure means of storing usernames and passwords. Use of and modifications to the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> abide by its permissive MIT license (see <a class="reference external" href="https://github.com/christianjauregui/famafrench/blob/master/LICENSE">LICENSE</a>).</p>
+<p>Alterations of routines borrowed from the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> enable a user with access to WRDS to add his/her WRDS username and password to their local environment. This is achieved through the use of environment variables via <code class="xref py py-func docutils literal notranslate"><span class="pre">os.environ()</span></code>, a mapping object in Python’s <a class="reference external" href="https://docs.python.org/3/library/os.html#module-os" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> module that represents the user’s environment variables. Environment variables provide secure means of storing usernames and passwords. Use of and modifications to the <a class="reference external" href="https://github.com/wharton/wrds">WRDS-Py library</a> abide by its permissive MIT license (see <a class="reference external" href="https://github.com/christianjauregui/famafrench/blob/master/LICENSE.txt">LICENSE</a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To securely set up the WRDS username and password as environment variables:</p>
@@ -228,21 +228,21 @@ simple through the constructor <a class="reference internal" href="../wrdsconnec
 <div class="section" id="creating-an-instance-of-the-famafrench-class">
 <h2>Creating an Instance of the <code class="docutils literal notranslate"><span class="pre">FamaFrench</span></code> Class<a class="headerlink" href="#creating-an-instance-of-the-famafrench-class" title="Permalink to this headline">¶</a></h2>
 <p>Instances of the <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a> object will vary depending on whether the user wants to construct Fama-French-style factors <strong>or</strong> portfolio returns (<cite>value</cite>- or <cite>equal</cite>-weighted), number of firms in each portfolio, and <cite>average</cite> anomaly portfolio characteristics.</p>
-<p>For both types of instances, the frequency of portfolios <code class="xref py py-attr docutils literal notranslate"><span class="pre">freqType</span></code> as well as the starting and ending dates must be specified. Both starting and ending dates must be in <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a> format. In addition, attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">runQuery</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> depending on whether the user prefers to query all datafiles from <cite>wrds-cloud</cite> from scratch or whether previously queried and locally-saved datafiles are pickled in constructing the instance. The latter choice is particularly useful when updating data following a new set of observation points released by WRDS. Making use of previously queried and locally-saved datafiles significantly speeds up run-time and execution of code.</p>
-<p>For example, to construct the <strong>Fama-French 3 factors</strong>: the <cite>Market Premium</cite> <code class="docutils literal notranslate"><span class="pre">MKT-RF</span></code>, <cite>Small Minus Big</cite> <code class="docutils literal notranslate"><span class="pre">SMB</span></code>, and <cite>High Minus Low</cite> <code class="docutils literal notranslate"><span class="pre">HML</span></code>, at the monthly frequency (from 1970 to the present, or the most recent date for which there is stock returns data available in CRPS), we execute the following lines of Python code:</p>
+<p>For both types of instances, the frequency of portfolios <code class="xref py py-attr docutils literal notranslate"><span class="pre">freqType</span></code> as well as the starting and end dates must be specified. Both starting and ending dates must be in <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a> format. In addition, attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">runQuery</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> depending on whether the user prefers to query all datafiles from <cite>wrds-cloud</cite> from scratch or whether previously queried and locally-saved datafiles are pickled in constructing the instance. The latter choice is particularly useful when updating data following a new set of observation points released by WRDS. Making use of previously queried and locally-saved datafiles significantly speeds up run-time and execution of code.</p>
+<p>For example, to construct the <strong>Fama-French 3 factors</strong>: the <cite>Market Premium</cite> <code class="docutils literal notranslate"><span class="pre">MKT-RF</span></code>, <cite>Small Minus Big</cite> <code class="docutils literal notranslate"><span class="pre">SMB</span></code>, and <cite>High Minus Low</cite> <code class="docutils literal notranslate"><span class="pre">HML</span></code>, at the monthly frequency (from 1960 to the present, or the most recent date for which there is stock returns data available in CRPS and fundamentals data in Compustat), we execute the following lines of Python code:</p>
 <p><strong>Fama-French 3 Factors:</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">famafrench.famafrench</span> <span class="k">as</span> <span class="nn">ff</span>
 
-<span class="gp">In [3]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">In [4]: </span><span class="n">endDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
 <span class="gp">In [5]: </span><span class="n">runQuery</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
 <span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
 <span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ff3</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">)</span>
+<span class="gp">In [9]: </span><span class="n">ff3</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
 
-<span class="gp">In [10]: </span><span class="n">factorsTableM</span> <span class="o">=</span> <span class="n">ff3</span><span class="o">.</span><span class="n">getFFfactors</span><span class="p">(</span><span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">)</span>
+<span class="gp">In [10]: </span><span class="n">factorsTableM</span> <span class="o">=</span> <span class="n">ff3</span><span class="o">.</span><span class="n">getFFfactors</span><span class="p">(</span><span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
@@ -255,29 +255,29 @@ simple through the constructor <a class="reference internal" href="../wrdsconnec
 <span class="gh">Out[11]:</span>
 <span class="go">                 mkt    mkt-rf       smb       hml</span>
 <span class="go">date</span>
-<span class="go">1970-01-31 -0.074878 -0.080878  0.031418  0.027965</span>
-<span class="go">1970-02-28  0.057439  0.051239 -0.025979  0.040931</span>
-<span class="go">1970-03-31 -0.004881 -0.010581 -0.018887  0.041828</span>
-<span class="go">1970-04-30 -0.104866 -0.109866 -0.058987  0.064264</span>
-<span class="go">1970-05-31 -0.063964 -0.069264 -0.046954  0.034585</span>
+<span class="go">1960-01-31 -0.066497 -0.069797  0.017755  0.025267</span>
+<span class="go">1960-02-29  0.014547  0.011647  0.006323 -0.010965</span>
+<span class="go">1960-03-31 -0.012873 -0.016373 -0.001480 -0.034610</span>
+<span class="go">1960-04-30 -0.015113 -0.017013 -0.001671 -0.008266</span>
+<span class="go">1960-05-31  0.033918  0.031218  0.022134 -0.040884</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>To construct Fama-French-style factors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">factorsId</span></code> must be passed as a list of strings with the names of the factors (per the naming convention outlined in the documentation for <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a>).</p></li>
-<li><p>Although one can pass the anomaly portfolio characteristics used for portfolio sorting in the construction of the factors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortCharacsId</span></code>, the constructor does not require this. Here, <code class="xref py py-attr docutils literal notranslate"><span class="pre">mainCharacsId</span></code> is also not required for obvious reasons (when omitted, <code class="xref py py-attr docutils literal notranslate"><span class="pre">mainCharacsId</span></code> is set to <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortCharacsId</span></code> by default).</p></li>
+<li><p>To construct Fama-French-style factors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">factorsId</span></code> (here, passed as parameter <code class="docutils literal notranslate"><span class="pre">ffFactors</span></code>) must be passed as a list of strings with the names of the factors per the naming convention outlined in the documentation for <a class="reference internal" href="generated/famafrench.FamaFrench.html#famafrench.FamaFrench" title="famafrench.FamaFrench"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamaFrench</span></code></a>.</p></li>
+<li><p>Although one can pass the anomaly portfolio characteristics used for portfolio sorting in the construction of the factors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortCharacsId</span></code> (here, passed as parameter <code class="docutils literal notranslate"><span class="pre">ffsortCharac</span></code>), the constructor does not require this. Here, <code class="xref py py-attr docutils literal notranslate"><span class="pre">mainCharacsId</span></code> is also not required for obvious reasons (when omitted, <code class="xref py py-attr docutils literal notranslate"><span class="pre">mainCharacsId</span></code> is set to <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortCharacsId</span></code> by default).</p></li>
 </ul>
 <p>We can compare the constructed factors to those provided by <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html">Ken French</a>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">kffactorsTableM</span> <span class="o">=</span> <span class="n">ff3</span><span class="o">.</span><span class="n">getkfFFfactors</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">kffactorsTableM</span> <span class="o">=</span> <span class="n">ff3</span><span class="o">.</span><span class="n">getkfFFfactors</span><span class="p">(</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">)</span>
 <span class="gp">In [13]: </span><span class="n">kffactorsTableM</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[13]:</span>
 <span class="go">               mkt  mkt-rf     smb     hml</span>
-<span class="go">1970-01-31 -0.0750 -0.0810  0.0290  0.0304</span>
-<span class="go">1970-02-28  0.0575  0.0513 -0.0240  0.0404</span>
-<span class="go">1970-03-31 -0.0049 -0.0106 -0.0232  0.0425</span>
-<span class="go">1970-04-30 -0.1050 -0.1100 -0.0611  0.0639</span>
-<span class="go">1970-05-31 -0.0639 -0.0692 -0.0452  0.0360</span>
+<span class="go">1960-01-31 -0.0665 -0.0698  0.0209  0.0273</span>
+<span class="go">1960-02-29  0.0146  0.0117  0.0051 -0.0199</span>
+<span class="go">1960-03-31 -0.0128 -0.0163 -0.0051 -0.0285</span>
+<span class="go">1960-04-30 -0.0152 -0.0171  0.0031 -0.0223</span>
+<span class="go">1960-05-31  0.0339  0.0312  0.0121 -0.0376</span>
 
-<span class="gp">In [14]: </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">ff3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="n">kfType</span><span class="o">=</span><span class="s1">&#39;Factors&#39;</span><span class="p">,</span> <span class="n">kfFreq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">)</span>
+<span class="gp">In [14]: </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">ff3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="s1">&#39;Factors&#39;</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
@@ -285,33 +285,33 @@ simple through the constructor <a class="reference internal" href="../wrdsconnec
 <span class="go">CRSP-Compustat merged linktable currently NOT saved locally. Querying from wrds-cloud...</span>
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:03&lt;00:00,  1.78s/it]</span>
 <span class="go">Historical risk-free interest rate (monthly) dataset currently NOT saved locally. Querying from wrds-cloud...</span>
-<span class="go">*********************************** Factor Returns: 1970-01-31 to 2020-02-29 ***********************************</span>
+<span class="go">*********************************** Factor Returns: 1960-01-31 to 2020-03-31 ***********************************</span>
 
 <span class="go">   *********************** Observation frequency: M ************************</span>
 <span class="go">Fama-French factors: Correlation matrix:</span>
 <span class="go">        mkt  mkt-rf    smb    hml</span>
-<span class="go">corr:  1.0     1.0  0.991  0.984</span>
+<span class="go">corr:  1.0     1.0  0.978  0.976</span>
 
 <span class="go">Fama-French factors: Average matrix:</span>
-<span class="go">                          mkt        mkt-rf           smb         hml</span>
-<span class="go">[wrds, kflib]:  [0.93, 0.93]  [0.55, 0.55]  [0.13, 0.12]  [0.3, 0.3]</span>
+<span class="go">                          mkt        mkt-rf           smb           hml</span>
+<span class="go">[wrds, kflib]:  [0.87, 0.87]  [0.51, 0.51]  [0.15, 0.15]  [0.28, 0.28]</span>
 
 <span class="go">Fama-French factors: Std Deviation matrix:</span>
-<span class="go">                        mkt        mkt-rf           smb           hml</span>
-<span class="go">[wrds, kflib]:  [4.5, 4.5]  [4.51, 4.51]  [3.05, 3.06]  [2.98, 2.92]</span>
+<span class="go">                          mkt        mkt-rf           smb           hml</span>
+<span class="go">[wrds, kflib]:  [4.39, 4.39]  [4.41, 4.41]  [3.01, 3.01]  [2.87, 2.87]</span>
 
-<span class="go">Elapsed time:  68.613  seconds.</span>
+<span class="go">Elapsed time:  5.372  seconds.</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The instance method <code class="xref py py-meth docutils literal notranslate"><span class="pre">comparePortfolios()</span></code> compares our constructed factors with those provided by French over the same sample period. Current output of the method includes sample <cite>Pearson correlations</cite>, sample <cite>means</cite>, and sample <cite>standard deviations</cite> for the sample period.</p></li>
+<li><p>The instance method <a class="reference internal" href="../statistics-diagnostics/generated/famafrench.FamaFrench.comparePortfolios.html#famafrench.FamaFrench.comparePortfolios" title="famafrench.FamaFrench.comparePortfolios"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FamaFrench.comparePortfolios</span></code></a> compares our constructed factors with those provided by French at the same frequency over the same sample period. Current output of the method includes sample <cite>Pearson correlations</cite>, sample <cite>means</cite>, and sample <cite>standard deviations</cite>.</p></li>
 </ul>
-<p><strong>Other examples:</strong> To form the 6 (ie 2 x 3) monthly, portfolios (also from 1970 to the present, or the most recent date for which there is stock returns data available in CRPS) sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> and <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code> and construct the <cite>value</cite>-weighted portfolio returns, number of firms in each portfolio, and the <cite>average</cite> anomaly portfolio characteristics used in the construction of the portfolios: market value of equity <code class="docutils literal notranslate"><span class="pre">ME</span></code> and book-to-market equity <code class="docutils literal notranslate"><span class="pre">BM</span></code>, we execute the following lines of Python code:</p>
+<p><strong>Other examples:</strong> To form the 6 (ie 2 x 3) monthly, portfolios (also from 1960 to the present, or the most recent date for which there is stock returns data available in CRPS and fundamentals data in Compustat) sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> and <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code> and construct the <cite>value</cite>-weighted portfolio returns, number of firms in each portfolio, and the <cite>average</cite> anomaly portfolio characteristics used in the construction of the portfolios: market value of equity <code class="docutils literal notranslate"><span class="pre">ME</span></code> and book-to-market equity <code class="docutils literal notranslate"><span class="pre">BM</span></code>, we execute the following lines of Python code:</p>
 <p><cite>Value</cite> <strong>-weighted portfolio returns:</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">famafrench.famafrench</span> <span class="k">as</span> <span class="nn">ff</span>
 
-<span class="gp">In [3]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">In [4]: </span><span class="n">endDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
 <span class="gp">In [5]: </span><span class="n">runQuery</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
@@ -320,9 +320,9 @@ simple through the constructor <a class="reference internal" href="../wrdsconnec
 
 <span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
 <span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">In [11]: </span><span class="n">me_bm_2x3</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="o">=</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="o">=</span><span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">factorsId</span><span class="o">=</span><span class="n">ffFactors</span><span class="p">)</span>
+<span class="gp">In [11]: </span><span class="n">me_bm_2x3</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
 
-<span class="gp">In [12]: </span><span class="n">returnsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getPortfolioReturns</span><span class="p">(</span><span class="n">factorsBool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">pDim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">,</span> <span class="n">pRetType</span><span class="o">=</span><span class="n">retType</span><span class="p">)</span>
+<span class="gp">In [12]: </span><span class="n">returnsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getPortfolioReturns</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">,</span> <span class="n">retType</span><span class="p">)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -331,193 +331,194 @@ simple through the constructor <a class="reference internal" href="../wrdsconnec
 <span class="gp">In [13]: </span><span class="n">returnsTableM</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">Out [13]:</span>
 <span class="go">            me0-50_bm0-30  me0-50_bm30-70  ...  me50-100_bm30-70  me50-100_bm70-100</span>
-<span class="go">date                                       ...</span>
-<span class="go">1970-01-31      -0.075423       -0.066817  ...         -0.072045          -0.079993</span>
-<span class="go">1970-02-28       0.035483        0.030274  ...          0.071287           0.076770</span>
-<span class="go">1970-03-31      -0.049978        0.000497  ...          0.016178           0.011756</span>
-<span class="go">1970-04-30      -0.200480       -0.140580  ...         -0.087627          -0.074118</span>
-<span class="go">1970-05-31      -0.110463       -0.101711  ...         -0.059225          -0.022641</span>
+<span class="go">date</span>
+<span class="go">1960-01-31      -0.065363       -0.053950  ...         -0.045400          -0.071003</span>
+<span class="go">1960-02-29       0.022127        0.006104  ...          0.038354          -0.014447</span>
+<span class="go">1960-03-31      -0.013744       -0.031140  ...         -0.013633          -0.054888</span>
+<span class="go">1960-04-30      -0.010691       -0.016785  ...         -0.020938          -0.014375</span>
+<span class="go">1960-05-31       0.043435        0.035750  ...          0.010110          -0.017830</span>
 
-<span class="gp">In [14]: </span><span class="n">kfreturnsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getkfPortfolioReturns</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">,</span> <span class="n">retType</span><span class="o">=</span><span class="n">retType</span><span class="p">)</span>
+<span class="gp">In [14]: </span><span class="n">kfreturnsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getkfPortfolioReturns</span><span class="p">(</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">,</span> <span class="n">retType</span><span class="p">)</span>
 <span class="gp">In [15]: </span><span class="n">kfreturnsTableM</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">Out [15]:</span>
 <span class="go">            small lobm   me1 bm2  small hibm  big lobm   me2 bm2  big hibm</span>
-<span class="go">1970-01-31   -0.060745 -0.051124   -0.023747 -0.080621 -0.085096 -0.056797</span>
-<span class="go">1970-02-28    0.025803  0.035260    0.061994  0.036058  0.078464  0.080637</span>
-<span class="go">1970-03-31   -0.053084 -0.011075    0.001495 -0.019099  0.014691  0.011248</span>
-<span class="go">1970-04-30   -0.208565 -0.139240   -0.111768 -0.105894 -0.095480 -0.074793</span>
-<span class="go">1970-05-31   -0.114140 -0.105260   -0.079967 -0.079879 -0.041648 -0.042096</span>
+<span class="go">1960-01-31   -0.057876 -0.031988   -0.029368 -0.082071 -0.043931 -0.055931</span>
+<span class="go">1960-02-29    0.020772  0.014530    0.005015  0.013139  0.022903 -0.010929</span>
+<span class="go">1960-03-31   -0.023385 -0.024016   -0.038293 -0.008789 -0.010768 -0.050967</span>
+<span class="go">1960-04-30    0.000545 -0.021162   -0.029614 -0.015721 -0.013525 -0.030143</span>
+<span class="go">1960-05-31    0.053034  0.018239    0.023730  0.043100  0.018242 -0.002716</span>
 
-<span class="gp">In [16]: </span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="n">kfType</span><span class="o">=</span><span class="s1">&#39;Returns&#39;</span><span class="p">,</span> <span class="n">kfFreq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">kfDim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">,</span> <span class="n">kfRetType</span><span class="o">=</span><span class="n">retType</span><span class="p">)</span>
+<span class="gp">In [16]: </span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="s1">&#39;Returns&#39;</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">,</span> <span class="n">retType</span><span class="p">)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">*********************************** ME x BM (2 x 3) ************************************</span>
 <span class="go">    *********************** Observation frequency: M ************************</span>
-<span class="go">    ************************* Returns: 1970-01-31 to 2020-02-29 **************************</span>
+<span class="go">    ************************* Returns: 1960-01-31 to 2020-03-31 **************************</span>
 
 <span class="go">Correlation matrix:</span>
 <span class="go">          bm0-30 bm30-70 bm70-100</span>
-<span class="go">me0-50    0.992   0.996    0.993</span>
-<span class="go">me50-100  0.998   0.993    0.991</span>
+<span class="go"> me0-50     0.99    0.99    0.994</span>
+<span class="go"> me50-100  0.997   0.982    0.984</span>
 
-<span class="go">Average matrix:</span>
-<span class="go">                   bm0-30         bm30-70        bm70-100</span>
-<span class="go">me0-50    [0.82%, 0.83%]  [1.17%, 1.19%]   [1.3%, 1.29%]</span>
-<span class="go">me50-100  [0.92%, 0.93%]  [0.98%, 0.95%]  [1.06%, 1.07%]</span>
+<span class="go"> Average matrix:</span>
+<span class="go">                    bm0-30         bm30-70        bm70-100</span>
+<span class="go"> me0-50    [0.82%, 0.84%]  [1.11%, 1.15%]  [1.28%, 1.26%]</span>
+<span class="go"> me50-100  [0.87%, 0.88%]  [0.92%, 0.88%]  [0.97%, 1.01%]</span>
 
-<span class="go">Std Deviation matrix:</span>
-<span class="go">                   bm0-30         bm30-70        bm70-100</span>
-<span class="go">me0-50    [6.84%, 6.82%]  [5.45%, 5.42%]  [5.66%, 5.61%]</span>
-<span class="go">me50-100  [4.65%, 4.67%]  [4.36%, 4.38%]  [5.02%, 4.93%]</span>
+<span class="go"> Std Deviation matrix:</span>
+<span class="go">                    bm0-30        bm30-70        bm70-100</span>
+<span class="go"> me0-50    [6.68%, 6.69%]  [5.47%, 5.4%]  [5.62%, 5.63%]</span>
+<span class="go"> me50-100  [4.55%, 4.54%]  [4.2%, 4.28%]  [5.06%, 4.91%]</span>
 
-<span class="go">Elapsed time:  66.627  seconds.</span>
+<span class="go"> Elapsed time:  84.751  seconds.</span>
 </pre></div>
 </div>
 <p><strong>Number of firms in each portfolio:</strong></p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">firmsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getNumFirms</span><span class="p">(</span><span class="n">factorsBool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">pDim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">firmsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getNumFirms</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">)</span>
 <span class="gp">In [17]: </span><span class="n">firmsTableM</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">Out [17]:</span>
 <span class="go">            me0-50_bm0-30  me0-50_bm30-70  ...  me50-100_bm30-70  me50-100_bm70-100</span>
 <span class="go">date                                       ...</span>
-<span class="go">1970-01-31            396             499  ...                90                121</span>
-<span class="go">1970-02-28            395             499  ...                90                121</span>
-<span class="go">1970-03-31            396             499  ...                90                121</span>
-<span class="go">1970-04-30            396             499  ...                90                121</span>
-<span class="go">1970-05-31            394             499  ...                90                121</span>
+<span class="go">1960-01-31             21              49  ...                69                 27</span>
+<span class="go">1960-02-29             21              49  ...                69                 27</span>
+<span class="go">1960-03-31             21              49  ...                69                 27</span>
+<span class="go">1960-04-30             21              49  ...                69                 27</span>
+<span class="go">1960-05-31             21              49  ...                69                 27</span>
 
-<span class="gp">In [18]: </span><span class="n">kffirmsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getkfNumFirms</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">)</span>
+<span class="gp">In [18]: </span><span class="n">kffirmsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getkfNumFirms</span><span class="p">(</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">)</span>
 <span class="gp">In [19]: </span><span class="n">kffirmsTableM</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">Out [19]:</span>
 <span class="go">            small lobm  me1 bm2  small hibm  big lobm  me2 bm2  big hibm</span>
-<span class="go">1970-01-31         475      400         297       211      246       143</span>
-<span class="go">1970-02-28         475      399         297       211      246       143</span>
-<span class="go">1970-03-31         474      399         297       211      246       141</span>
-<span class="go">1970-04-30         472      397         296       211      246       141</span>
-<span class="go">1970-05-31         470      395         296       211      246       141</span>
+<span class="go">1960-01-31          66      193         223       228      199        72</span>
+<span class="go">1960-02-29          66      193         222       228      199        72</span>
+<span class="go">1960-03-31          66      192         222       228      199        72</span>
+<span class="go">1960-04-30          66      190         221       228      199        72</span>
+<span class="go">1960-05-31          66      187         221       228      199        72</span>
 
-<span class="gp">In [20]: </span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="n">kfType</span><span class="o">=</span><span class="s1">&#39;NumFirms&#39;</span><span class="p">,</span> <span class="n">kfFreq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">kfDim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">)</span>
+<span class="gp">In [20]: </span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="s1">&#39;NumFirms&#39;</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">)</span>
 
 <span class="go">*********************************** ME x BM (2 x 3) ************************************</span>
 <span class="go">    *********************** Observation frequency: M ************************</span>
-<span class="go">    ************************* NumFirms: 1970-01-31 to 2020-02-29 **************************</span>
+<span class="go">    ************************* NumFirms: 1960-01-31 to 2020-03-31 **************************</span>
 
 <span class="go">Correlation matrix:</span>
 <span class="go">          bm0-30 bm30-70 bm70-100</span>
-<span class="go">me0-50    0.986   0.933    0.965</span>
-<span class="go">me50-100  0.876    0.76    0.892</span>
+<span class="go">me0-50     0.99   0.969     0.98</span>
+<span class="go">me50-100  0.894   0.854     0.93</span>
 
 <span class="go">Average matrix:</span>
-<span class="go">                bm0-30       bm30-70      bm70-100</span>
-<span class="go">me0-50    [995, 1011]  [1012, 1024]  [1178, 1153]</span>
-<span class="go">me50-100   [373, 381]    [308, 316]    [138, 144]</span>
+<span class="go">               bm0-30     bm30-70      bm70-100</span>
+<span class="go">me0-50    [857, 877]  [878, 902]  [1022, 1014]</span>
+<span class="go">me50-100  [336, 358]  [282, 302]    [124, 135]</span>
 
 <span class="go">Std Deviation matrix:</span>
 <span class="go">               bm0-30     bm30-70    bm70-100</span>
-<span class="go">me0-50    [427, 407]  [286, 261]  [420, 369]</span>
-<span class="go">me50-100   [102, 87]    [58, 41]    [33, 28]</span>
+<span class="go">me0-50    [501, 479]  [400, 362]  [522, 458]</span>
+<span class="go">me50-100   [124, 96]    [79, 49]    [45, 34]</span>
 
-<span class="go">Elapsed time:  4.93  seconds.</span>
+<span class="go">Elapsed time:  7.179  seconds.</span>
 </pre></div>
 </div>
 <p><cite>Equal</cite> <strong>-weighted average firm size</strong> <code class="docutils literal notranslate"><span class="pre">ME</span></code> <strong>and</strong> <cite>Value</cite> <strong>-weighted average</strong> <code class="docutils literal notranslate"><span class="pre">BM</span></code> <strong>for each portfolio:</strong></p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">characsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getCharacs</span><span class="p">(</span><span class="n">factorsBool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">pDim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">)</span>
-<span class="gp">In [17]: </span><span class="k">for</span> <span class="n">charac</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">mainCharacsId</span><span class="p">)):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">characsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getCharacs</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">)</span>
+<span class="gp">In [17]: </span><span class="k">for</span> <span class="n">charac</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">mainCharacsId</span><span class="p">):</span>
 <span class="go">             print(charac, &#39;\n&#39;, characsTableM[charac].head())</span>
 
 <span class="go">ME</span>
 
 <span class="go">me_bm_port  me0-50_bm0-30  me0-50_bm30-70  ...  me50-100_bm30-70  me50-100_bm70-100</span>
 <span class="go">date                                       ...</span>
-<span class="go">1970-01-31      80.534648         88.4552  ...       1514.275631        1553.468291</span>
-<span class="go">1970-02-28      80.631874         88.4552  ...       1514.275631        1553.468291</span>
-<span class="go">1970-03-31      80.589856         88.4552  ...       1514.275631        1553.468291</span>
-<span class="go">1970-04-30      80.657533         88.4552  ...       1514.275631        1553.468291</span>
-<span class="go">1970-05-31      80.685602         88.4552  ...       1514.275631        1553.468291</span>
+<span class="go">1960-01-31      50.358714       44.536747  ...        625.549871         376.082398</span>
+<span class="go">1960-02-29      50.358714       44.536747  ...        625.549871         376.082398</span>
+<span class="go">1960-03-31      50.358714       44.536747  ...        625.549871         376.082398</span>
+<span class="go">1960-04-30      50.358714       44.536747  ...        625.549871         376.082398</span>
+<span class="go">1960-05-31      50.358714       44.536747  ...        625.549871         376.082398</span>
 
 <span class="go">[5 rows x 6 columns]</span>
 <span class="go">BM</span>
 
 <span class="go">me_bm_port  me0-50_bm0-30  me0-50_bm30-70  ...  me50-100_bm30-70  me50-100_bm70-100</span>
 <span class="go">date                                       ...</span>
-<span class="go">1970-01-31       0.154248        0.372900  ...          0.369096           0.722310</span>
-<span class="go">1970-02-28       0.154723        0.373592  ...          0.370108           0.723227</span>
-<span class="go">1970-03-31       0.154757        0.374245  ...          0.370769           0.724581</span>
-<span class="go">1970-04-30       0.155672        0.375810  ...          0.370403           0.724732</span>
-<span class="go">1970-05-31       0.154938        0.376080  ...          0.370257           0.723313</span>
+<span class="go">1960-01-31       0.442664        0.835413  ...          0.715368           1.495814</span>
+<span class="go">1960-02-29       0.443257        0.835101  ...          0.716441           1.495995</span>
+<span class="go">1960-03-31       0.444962        0.834058  ...          0.716098           1.479376</span>
+<span class="go">1960-04-30       0.444282        0.834749  ...          0.715577           1.470528</span>
+<span class="go">1960-05-31       0.442410        0.834351  ...          0.716156           1.474706</span>
 
 <span class="go">[5 rows x 6 columns]</span>
 
-<span class="gp">In [18]: </span><span class="n">kfcharacsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getkfCharacs</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">)</span>
-<span class="gp">In [19]: </span><span class="k">for</span> <span class="n">charac</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">mainCharacsId</span><span class="p">)):</span>
+<span class="gp">In [18]: </span><span class="n">kfcharacsTableM</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">getkfCharacs</span><span class="p">(</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">)</span>
+<span class="gp">In [19]: </span><span class="k">for</span> <span class="n">charac</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">mainCharacsId</span><span class="p">):</span>
 <span class="go">             print(charac, &#39;\n&#39;, kfcharacsTableM[charac].head())</span>
 <span class="go">ME</span>
 
 <span class="go">            small lobm  me1 bm2  small hibm  big lobm  me2 bm2  big hibm</span>
-<span class="go">1970-01-31       45.73    39.19       41.70   1131.57   706.41    771.55</span>
-<span class="go">1970-02-28       42.91    37.14       40.61   1039.82   645.16    725.75</span>
-<span class="go">1970-03-31       44.04    38.31       42.95   1074.20   691.17    785.33</span>
-<span class="go">1970-04-30       41.71    37.91       43.00   1052.42   699.74    792.46</span>
-<span class="go">1970-05-31       32.85    32.50       38.09    940.38   632.27    731.43</span>
+<span class="go">1960-01-31       37.66    31.88       21.40    743.00   405.35    239.89</span>
+<span class="go">1960-02-29       35.48    30.82       20.81    681.54   386.94    226.11</span>
+<span class="go">1960-03-31       36.12    31.09       20.85    687.18   393.99    222.53</span>
+<span class="go">1960-04-30       35.11    30.35       19.99    679.88   388.21    210.41</span>
+<span class="go">1960-05-31       35.12    29.88       19.38    668.63   382.39    203.68</span>
 <span class="go">BM</span>
 
 <span class="go">            small lobm  me1 bm2  small hibm  big lobm  me2 bm2  big hibm</span>
-<span class="go">1970-01-31      0.1952   0.4649      0.9195    0.1900   0.4962    0.8532</span>
-<span class="go">1970-02-28      0.1963   0.4661      0.9226    0.1909   0.4955    0.8570</span>
-<span class="go">1970-03-31      0.1966   0.4662      0.9243    0.1912   0.4949    0.8521</span>
-<span class="go">1970-04-30      0.1979   0.4671      0.9213    0.1922   0.4948    0.8521</span>
-<span class="go">1970-05-31      0.2010   0.4684      0.9222    0.1931   0.4953    0.8512</span>
+<span class="go">1960-01-31      0.4158   0.8464      1.7597    0.3443   0.7227    1.6961</span>
+<span class="go">1960-02-29      0.4163   0.8457      1.7650    0.3454   0.7226    1.7006</span>
+<span class="go">1960-03-31      0.4171   0.8449      1.7559    0.3429   0.7220    1.6942</span>
+<span class="go">1960-04-30      0.4181   0.8440      1.7532    0.3412   0.7209    1.6762</span>
+<span class="go">1960-05-31      0.4175   0.8428      1.7422    0.3395   0.7201    1.6721</span>
 
-<span class="gp">In [20]: </span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="n">kfType</span><span class="o">=</span><span class="s1">&#39;NumFirms&#39;</span><span class="p">,</span> <span class="n">kfFreq</span><span class="o">=</span><span class="n">ffFreq</span><span class="p">,</span> <span class="n">dt_start</span><span class="o">=</span><span class="n">startDate</span><span class="p">,</span> <span class="n">dt_end</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">kfDim</span><span class="o">=</span><span class="n">sortingDim</span><span class="p">)</span>
+<span class="gp">In [20]: </span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">me_bm_2x3</span><span class="o">.</span><span class="n">comparePortfolios</span><span class="p">(</span><span class="s1">&#39;Characs&#39;</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">endDate</span><span class="p">,</span> <span class="n">sortingDim</span><span class="p">)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
 <span class="go">*********************************** ME x BM (2 x 3) ************************************</span>
 <span class="go">    *********************** Observation frequency: M ************************</span>
-<span class="go">    ************************* (Characteristic: ME): 1970-01-31 to 2020-02-29 ***************************</span>
+<span class="go"> ************************* (Characteristic: ME): 1960-01-31 to 2020-03-31 ***************************</span>
 
 <span class="go">Correlation matrix:</span>
-<span class="go">          bm0-30 bm30-70 bm70-100</span>
-<span class="go">me0-50    0.968   0.972    0.957</span>
-<span class="go">me50-100  0.989   0.966    0.971</span>
+<span class="go">           bm0-30 bm30-70 bm70-100</span>
+<span class="go"> me0-50    0.909   0.943    0.955</span>
+<span class="go"> me50-100  0.991    0.93    0.975</span>
 
 <span class="go">Average matrix:</span>
-<span class="go">                         bm0-30             bm30-70           bm70-100</span>
-<span class="go">me0-50        [291.82, 276.32]    [276.92, 266.87]   [160.56, 155.53]</span>
-<span class="go">me50-100  [10156.02, 10422.39]  [7423.11, 7410.82]  [6224.8, 6700.63]</span>
+<span class="go">                       bm0-30             bm30-70           bm70-100</span>
+<span class="go">me0-50      [267.22, 237.67]     [247.94, 229.2]   [142.76, 135.05]</span>
+<span class="go">me50-100  [8813.02, 8892.67]  [6534.32, 6296.73]  [5314.71, 5675.8]</span>
 
 <span class="go">Std Deviation matrix:</span>
-<span class="go">                       bm0-30             bm30-70           bm70-100</span>
-<span class="go">me0-50      [307.14, 277.81]    [281.24, 261.46]   [171.98, 152.91]</span>
-<span class="go">me50-100  [9469.6, 10076.59]  [7741.04, 7357.28]  [6854.91, 7221.4]</span>
+<span class="go">                       bm0-30             bm30-70            bm70-100</span>
+<span class="go">me0-50      [352.29, 269.64]     [297.92, 254.2]     [170.9, 147.65]</span>
+<span class="go">me50-100  [9671.32, 9921.44]  [8240.16, 7200.64]  [6635.95, 6998.62]</span>
 
 <span class="go">*********************************** ME x BM (2 x 3) ************************************</span>
 <span class="go">    *********************** Observation frequency: M ************************</span>
-<span class="go">    ************************* (Characteristic: BM): 1970-01-31 to 2020-02-29 ***************************</span>
+<span class="go"> ************************* (Characteristic: BM): 1960-01-31 to 2020-03-31 ***************************</span>
 
 <span class="go">Correlation matrix:</span>
-<span class="go">          bm0-30 bm30-70 bm70-100</span>
-<span class="go">me0-50    0.996   0.999    0.998</span>
-<span class="go">me50-100  0.996   0.994    0.756</span>
+<span class="go">           bm0-30 bm30-70 bm70-100</span>
+<span class="go">me0-50    0.996   0.994    0.972</span>
+<span class="go">me50-100  0.991   0.992    0.723</span>
 
 <span class="go">Average matrix:</span>
 <span class="go">                 bm0-30       bm30-70      bm70-100</span>
-<span class="go">me0-50      [0.3, 0.3]  [0.72, 0.73]  [1.45, 1.48]</span>
-<span class="go">me50-100  [0.29, 0.29]   [0.7, 0.72]   [1.32, 1.3]</span>
+<span class="go">me0-50     [0.3, 0.31]  [0.71, 0.73]  [1.43, 1.51]</span>
+<span class="go">me50-100  [0.28, 0.29]  [0.68, 0.71]   [1.3, 1.32]</span>
 
 <span class="go">Std Deviation matrix:</span>
-<span class="go">                 bm0-30      bm30-70      bm70-100</span>
-<span class="go">me0-50    [0.14, 0.14]   [0.3, 0.3]  [0.58, 0.58]</span>
-<span class="go">me50-100  [0.13, 0.13]  [0.3, 0.29]  [0.63, 0.49]</span>
+<span class="go">                  bm0-30       bm30-70      bm70-100</span>
+<span class="go">me0-50    [0.13, 0.13]  [0.28, 0.28]  [0.53, 0.55]</span>
+<span class="go">me50-100  [0.12, 0.12]  [0.27, 0.27]   [0.6, 0.47]</span>
+
 
 <span class="go">Elapsed time:  68.136  seconds.</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>If attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">mainCharacsId</span></code> is not specified (as in the example above), then the class constructor sets it to <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortCharacsId</span></code>.</p></li>
-<li><p>Since the focus is on constructing portfolios, not factors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">factorsId</span></code> is set to an empty list.</p></li>
+<li><p>If attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">mainCharacsId</span></code> is not specified (as in the example above), then the class constructor sets it to <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortCharacsId</span></code> (here, passed as parameter <code class="docutils literal notranslate"><span class="pre">ffsortCharac</span></code>).</p></li>
+<li><p>Since the focus is on constructing portfolios, not factors, <code class="xref py py-attr docutils literal notranslate"><span class="pre">factorsId</span></code> (here, passed as parameter <code class="docutils literal notranslate"><span class="pre">ffFactors</span></code>) is set to an empty list.</p></li>
 <li><p>Lastly, <code class="xref py py-attr docutils literal notranslate"><span class="pre">sortingDim</span></code> is set to <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3]</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">retType</span></code> is set to <code class="docutils literal notranslate"><span class="pre">vw</span></code> in order to form the 6 (ie 2 x 3) portfolios.</p></li>
 </ul>
 <p>More applications and detailed examples are provided in <a class="reference internal" href="../applications/applications.html#applications-and-examples"><span class="std std-ref">Applications and Examples</span></a>.</p>
