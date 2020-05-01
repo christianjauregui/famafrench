@@ -6,7 +6,7 @@ via remote access to the [wrds-cloud](https://wrds-www.wharton.upenn.edu/pages/s
 by querying [CRSP](http://www.crsp.org/products/research-products/crsp-us-stock-databases), 
 [Compustat Fundamentals Annual](https://wrds-web.wharton.upenn.edu/wrds/support/Data/_001Manuals%20and%20Overviews/_001Compustat/_001North%20America%20-%20Global%20-%20Bank/_000dataguide/index.cfm0), and other datafiles. 
 
-This module uses the [`WRDS-Py`](https://github.com/wharton/wrds) library package to extract data from CRPS and Compustat Fundamentals Annual via the cloud
+This module uses the [`WRDS-Py`](https://github.com/wharton/wrds) library package to extract data from CRPS, Compustat Fundamentals Annual, and other datafiles via the cloud
 for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package. 
 
 `famafrench`'s current efficient performance results from features such as the use of a [least recently used (LRU) cache](https://medium.com/lambda-automotive/python-and-lru-cache-f812bbdcbb51) implemented using the Python decorator
@@ -39,7 +39,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 | `version.py`      | Module w/ package's version number.                                                                                                              |
 
 ## Installation
-The latest release is **Release 0.1.2** as of May 1, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#release-0-1-1)).
+The latest release is **Release 0.1.2** as of May 1, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#)).
 
 ### Python Package Index (`pip`)
 Releases are available via [PyPI](https://pypi.org/project/famafrench/) and can be installed with `pip`.  
