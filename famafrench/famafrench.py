@@ -419,8 +419,7 @@ class FamaFrench:
             dfcomp['be'] = np.where(dfcomp['be'] > 0, dfcomp['be'], np.nan)
             dfcomp_list.append('be')
 
-        if ('OP' in set(self.sortCharacsId).union(set(self.mainCharacsId))) \
-                or (utils.any_in(['RMW', 'CMA'], set(self.factorsId).union(set(self.factorsIdtemp)))):
+        if ('OP' in set(self.sortCharacsId).union(set(self.mainCharacsId))) or (utils.any_in(['RMW', 'CMA'], set(self.factorsId).union(set(self.factorsIdtemp)))):
             # Create "operating profitability" - 'op' - following Fama and French (2015):
             # SOURCE: http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/variable_definitions.html
             # NOTE: 'op' uses annual revenues minus costs of goods 'cogs', interest expense 'xint', as well as
@@ -440,8 +439,7 @@ class FamaFrench:
             dfcomp_list.append('revt')
             dfcomp_list.append('xp_allnan')
 
-        if ('INV' in set(self.sortCharacsId).union(set(self.mainCharacsId))) \
-                or (utils.any_in(['RMW', 'CMA'], set(self.factorsId).union(set(self.factorsIdtemp)))):
+        if ('INV' in set(self.sortCharacsId).union(set(self.mainCharacsId))) or (utils.any_in(['RMW', 'CMA'], set(self.factorsId).union(set(self.factorsIdtemp)))):
             # Create "asset growth (i.e. investment)" - 'inv' following Fama and French (2015):
             # SOURCE: http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/variable_definitions.html
             try:
@@ -621,8 +619,7 @@ class FamaFrench:
             file_to_pickle.close()
             date_min, date_max = dfcrsp['date'].min(), dfcrsp['date'].max()
             if (dt_start < date_min) | (date_max < dt_end):
-                cprint('CRSP (' + freqTypeFull + ') dataset currently NOT saved locally w/ required dates. '
-                                                 'Querying from wrds-cloud...', 'grey', 'on_white')
+                cprint('CRSP (' + freqTypeFull + ') dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...', 'grey', 'on_white')
 
                 # Query missing observations BEFORE 'date_min' and append to locally saved copy.
                 if dt_start < date_min:
@@ -808,8 +805,7 @@ class FamaFrench:
                 cprint('CRSP delisted returns (' + freqTypeFull + ') dataset currently saved locally w/ required dates.', 'grey', 'on_cyan')
                 dfcrspdlret = dfcrspdlret[(dt_start <= dfcrspdlret['dlstdt']) & (dfcrspdlret['dlstdt'] <= dt_end)]
         else:
-            cprint('CRSP delisted returns (' + freqTypeFull + ') dataset currently NOT saved locally. Querying from wrds-cloud...',
-                   'grey', 'on_white')
+            cprint('CRSP delisted returns (' + freqTypeFull + ') dataset currently NOT saved locally. Querying from wrds-cloud...', 'grey', 'on_white')
             try:
                 dfcrspdlret = wrdsConn.raw_sql(sqlquery=get_crspdlret_sqlQuery('monthly', freq))
             except sqlalchemy.exc.ProgrammingError:
@@ -1191,8 +1187,7 @@ class FamaFrench:
             date_min, date_max = dfcrsprollvar['date'].min(), dfcrsprollvar['date'].max()
             print('VAR period', dt_start, date_min, ' ', date_max, dt_end)
             if (dt_start < date_min) | (date_max < dt_end):
-                cprint('CRSP rolling daily variance dataset currently NOT saved locally w/ required dates. '
-                       'Querying from wrds-cloud...', 'grey', 'on_white')
+                cprint('CRSP rolling daily variance dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...', 'grey', 'on_white')
 
                 # Query missing observations BEFORE 'date_min' and append to locally saved copy.
                 if dt_start < date_min:
@@ -1434,7 +1429,7 @@ class FamaFrench:
 
             * :math:`\widehat{\\beta^{Mkt}}_{t}` : OLS beta with the contemporaneous return of the market portfolio
             * :math:`\widehat{\\beta^{Mkt}}_{t-1}` : OLS beta with the return on the market portfolio lagged one period
-            * :math:`\widehat{\\rho}` : First order autocorrelation coefficient of the return on the market.
+            * :math:`\widehat{\\rho}` : First-order autocorrelation coefficient of the return on the market.
 
             Otherwise, factor market betas are estimated in the usual sense using coincident market return variables.
 
@@ -1557,8 +1552,7 @@ class FamaFrench:
                 cprint('Factor Regressions: CRSP return (' + freqTypeFull + ') dataset for factor regressions currently saved locally w/ required dates.', 'grey', 'on_cyan')
                 dfcrsp_ret = dfcrsp_ret[(dt_start <= dfcrsp_ret['date'].dt.date) & (dfcrsp_ret['date'].dt.date <= dt_end)]
         else:
-            cprint(
-                'Factor Regressions: CRSP return (' + freqTypeFull + ') dataset for factor regressions currently NOT saved locally w/ required dates. '
+            cprint('Factor Regressions: CRSP return (' + freqTypeFull + ') dataset for factor regressions currently NOT saved locally w/ required dates. '
                                                                      '\n                    Querying from wrds-cloud...', 'grey', 'on_white')
             dfcrsp_ret = self.aggregateME(freq, dt_start, dt_end)[['permno', 'date', 'retadj']]
             file_to_pickle = open(crsp_ret_file, 'wb')
@@ -1596,7 +1590,7 @@ class FamaFrench:
                     date_min = (date_min + Day(roll_window)).date()
                     dfportSort_tableList_pre = self.getNyseThresholdsAndRet(self.factorsIdtemp, True, freq, dt_start, date_min)
 
-                    for fffactor in set(dfportSort_tableList.keys()):
+                    for fffactor in list(dfportSort_tableList.keys()):
                         dfportSort_tableList[fffactor].to_pickle('dfportSort_tableList_' + fffactor)
                         dfportSort_tableList[fffactor] = dfportSort_tableList[fffactor][(dfportSort_tableList[fffactor].index <= dt_end)]
                         dfportSort_tableList_pre[fffactor].insert(0, 'id', 0)
@@ -1624,7 +1618,7 @@ class FamaFrench:
                     date_max = (date_max - Day(2 * roll_window)).date()
                     dfportSort_tableList_post = self.getNyseThresholdsAndRet(self.factorsIdtemp, True, freq, date_max, dt_end)
 
-                    for fffactor in set(dfportSort_tableList.keys()):
+                    for fffactor in list(dfportSort_tableList.keys()):
                         dfportSort_tableList[fffactor].to_pickle('dfportSort_tableList_' + fffactor)
                         dfportSort_tableList[fffactor] = dfportSort_tableList[fffactor][(dt_start <= dfportSort_tableList[fffactor].index)]
                         dfportSort_tableList_post[fffactor].insert(0, 'id', 0)
@@ -1650,8 +1644,7 @@ class FamaFrench:
                 for fffactor in set(dfportSort_tableList.keys()):
                     dfportSort_tableList[fffactor] = dfportSort_tableList[fffactor][(dt_start <= dfportSort_tableList[fffactor].index) & (dfportSort_tableList[fffactor].index <= dt_end)]
         else:
-            cprint(
-                'Factor Regressions: ' + ffmodel + 'factors (' + freqTypeFull + ') dataset currently NOT saved locally w/ required dates. '
+            cprint('Factor Regressions: ' + ffmodel + 'factors (' + freqTypeFull + ') dataset currently NOT saved locally w/ required dates. '
                                                                                 '\n                    Querying from wrds-cloud...', 'grey', 'on_white')
             dfportSort_tableList = self.getNyseThresholdsAndRet(self.factorsIdtemp, True, freq, dt_start, dt_end)
             file_to_pickle = open(ff_file, 'wb')
@@ -2095,8 +2088,7 @@ class FamaFrench:
                 date_min, date_max = dfresvarff3['date'].dt.date.min(), dfresvarff3['date'].dt.date.max()
                 print('RESVAR period', dt_start, date_min, ' ', date_max, dt_end)
                 if (dt_start < date_min) | (date_max < dt_end):
-                    cprint('FF3-model daily residuals dataset currently NOT saved locally w/ required dates. Estimating...',
-                           'grey', 'on_white')
+                    cprint('FF3-model daily residuals dataset currently NOT saved locally w/ required dates. Estimating...', 'grey', 'on_white')
 
                     # Query missing observations BEFORE 'date_min' and append to locally saved copy
                     if dt_start < date_min:
@@ -2191,9 +2183,7 @@ class FamaFrench:
                 date_min, date_max = dfbeta['date'].dt.date.min(), dfbeta['date'].dt.date.max()
                 print('BETA period', dt_start, date_min, ' ', date_max, dt_end)
                 if (dt_start < date_min) | (date_max < dt_end):
-                    cprint(
-                        'Market beta (' + freqTypeFull + ') dataset currently NOT saved locally w/ required dates. Estimating...',
-                        'grey', 'on_white')
+                    cprint('Market beta (' + freqTypeFull + ') dataset currently NOT saved locally w/ required dates. Estimating...', 'grey', 'on_white')
 
                     # Query missing observations BEFORE 'date_min' and append to locally saved copy.
                     if dt_start < date_min:
@@ -2560,6 +2550,45 @@ class FamaFrench:
             else:
                 raise ValueError('len(args) exceeds 2!')
 
+
+        def get_nyse_characs(df0, idx, dim_for_sorts):
+            """
+            Construct NYSE breakpoints for an arbitrary dimension of the portfolio sorts.
+
+            Parameters
+            ___________
+            df0 : pandas.DataFrame
+                Dataset w/ NYSE stock returns and characteristics.
+            idx : str
+                Anomaly characteristic used to sort portfolios.
+            dim_for)sort : int
+                Num of portfolios constructed on anomaly characteristic `idx`.
+
+            Returns
+            ________
+            nyse_charac : pandas.DataFrame
+                Dataset w/ NYSE breakpoints.
+
+            """
+            if dim_for_sorts == 2:
+                nyse_charac = df0.groupby(['date'])[idx].median().to_frame().reset_index().rename(columns={idx: idx + '_50'})
+                return nyse_charac
+            elif dim_for_sorts == 3:
+                ptiles = [0.3, 0.7]
+                nyse_charac = df0.groupby(['date'])[idx].describe(percentiles=ptiles).reset_index()
+                nyse_charac = nyse_charac[['date', '30%', '70%']].rename(columns={'30%': idx + '_30', '70%': idx + '_70'})
+                return nyse_charac
+            elif dim_for_sorts in [4, 5, 6, 8, 10, 20, 25, 50, 100]:
+                ptiles = list(np.around(np.arange(0, 1, round(1/dim_for_sorts, 2)), 2))[1:]
+                nyse_charac = df0.groupby(['date'])[idx].describe(percentiles=ptiles).reset_index()
+                nyse_charac.columns = [c.strip().replace('.0%', '%') for c in nyse_charac.columns]
+                df_cols = {p: idx + '_' + p.strip('%') for p in nyse_charac.columns if '%' in p}
+                nyse_charac = nyse_charac[['date'] + [p for p in nyse_charac.columns if '%' in p]].rename(columns=df_cols)
+                return nyse_charac
+            else:
+                raise ValueError('\'dim_for_sorts\' is not a standard type:\n' 
+                                 'Choose a value in {2, 3, 4, 5, 6, 8, 10, 20, 25, 50, 100}.')
+
         def univariateSort(df, id1, dim_sort):
             """
             Construct NYSE breakpoints based on univariate portfolio sorts.
@@ -2578,29 +2607,8 @@ class FamaFrench:
             df_breaks : pandas.DataFrame
                 Dataset w/ univariate NYSE breakpoints.
             """
-            if dim_sort == [3]:
-                ptiles = [0.3, 0.7]
-                df_breaks = df.groupby(['date'])[id1].describe(percentiles=ptiles).reset_index()
-                df_breaks = df_breaks[['date', '30%', '70%']].rename(columns={'30%': id1 + '_30', '70%': id1 + '_70'})
-                return df_breaks
-            elif dim_sort == [5]:
-                ptiles = [0.2, 0.4, 0.6, 0.8]
-                df_breaks = df.groupby(['date'])[id1].describe(percentiles=ptiles).reset_index()
-                df_cols = ['20%', '40%', '60%', '80%']
-                df_breaks = df_breaks[['date'] + df_cols].rename(columns={'20%': id1 + '_20', '40%': id1 + '_40',
-                                                                          '60%': id1 + '_60', '80%': id1 + '_80'})
-                return df_breaks
-            elif dim_sort == [10]:
-                ptiles = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-                df_breaks = df.groupby(['date'])[id1].describe(percentiles=ptiles).reset_index()
-                df_cols = ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%']
-                df_breaks = df_breaks[['date'] + df_cols].rename(
-                    columns={'10%': id1 + '_10', '20%': id1 + '_20', '30%': id1 + '_30',
-                             '40%': id1 + '_40', '50%': id1 + '_50', '60%': id1 + '_60',
-                             '70%': id1 + '_70', '80%': id1 + '_80', '90%': id1 + '_90'})
-                return df_breaks
-            else:
-                raise ValueError('\'dim\' is not a standard type')
+            df_breaks = get_nyse_characs(df, id1, dim_sort[0])
+            return df_breaks
 
         def bivariateSort(df, id1, id2, dim_sort):
             """
@@ -2624,46 +2632,10 @@ class FamaFrench:
             df_breaks : pandas.DataFrame
                 Dataset w/ bivariate NYSE breakpoints.
             """
-            if dim_sort == [2, 3]:
-                ptiles = [0.3, 0.7]
-                nyse_charac1 = df.groupby(['date'])[id1].median().to_frame().reset_index().rename(columns={id1: id1 + '_50'})
-                nyse_charac2 = df.groupby(['date'])[id2].describe(percentiles=ptiles).reset_index()
-                nyse_charac2 = nyse_charac2[['date', '30%', '70%']].rename(columns={'30%': id2 + '_30', '70%': id2 + '_70'})
-                df_breaks = nyse_charac1.merge(right=nyse_charac2, how='inner', on=['date'])
-                return df_breaks
-
-            elif dim_sort == [5, 5]:
-                def rename_nyse_charac(dftmp, idx):
-                    df_cols = ['20%', '40%', '60%', '80%']
-                    dftmp = dftmp[['date'] + df_cols].rename(columns={'20%': idx + '_20', '40%': idx + '_40',
-                                                                      '60%': idx + '_60', '80%': idx + '_80'})
-                    return dftmp
-
-                ptiles = [0.2, 0.4, 0.6, 0.8]
-                nyse_charac1 = df.groupby(['date'])[id1].describe(percentiles=ptiles).reset_index()
-                nyse_charac1 = rename_nyse_charac(nyse_charac1, id1)
-                nyse_charac2 = df.groupby(['date'])[id2].describe(percentiles=ptiles).reset_index()
-                nyse_charac2 = rename_nyse_charac(nyse_charac2, id2)
-                df_breaks = nyse_charac1.merge(right=nyse_charac2, how='inner', on=['date'])
-                return df_breaks
-
-            elif dim_sort == [10, 10]:
-                def rename_nyse_charac(dftmp, idx):
-                    df_cols = ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%']
-                    dftmp = dftmp[['date'] + df_cols].rename(columns={'10%': idx + '_10', '20%': idx + '_20', '30%': idx + '_30',
-                                                                      '40%': idx + '_40', '50%': idx + '_50', '60%': idx + '_60',
-                                                                      '70%': idx + '_70', '80%': idx + '_80', '90%': idx + '_90'})
-                    return dftmp
-
-                ptiles = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-                nyse_charac1 = df.groupby(['date'])[id1].describe(percentiles=ptiles).reset_index()
-                nyse_charac1 = rename_nyse_charac(nyse_charac1, id1)
-                nyse_charac2 = df.groupby(['date'])[id2].describe(percentiles=ptiles).reset_index()
-                nyse_charac2 = rename_nyse_charac(nyse_charac2, id2)
-                df_breaks = nyse_charac1.merge(right=nyse_charac2, how='inner', on=['date'])
-                return df_breaks
-            else:
-                raise ValueError('\'dim\' is not a standard type.')
+            nyse_charac1 = get_nyse_characs(df, id1, dim_sort[0])  # Construct NYSE breakpoints for 1st dimension.
+            nyse_charac2 = get_nyse_characs(df, id2, dim_sort[1])  # Construct NYSE breakpoints for 2nd dimension.
+            df_breaks = nyse_charac1.merge(right=nyse_charac2, how='inner', on=['date'])
+            return df_breaks
 
         def trivariateSort(df, id1, id2, id3, dim_sort):
             """
@@ -2687,27 +2659,18 @@ class FamaFrench:
                  2. `book-to-market` split into quartiles, and
                  3. `operating profitability` split into quartiles
 
-
             Returns
             ________
             df_breaks : pandas.DataFrame
                  Dataset w/ trivariate NYSE breakpoints.
             """
-            if dim_sort == [2, 4, 4]:
-                ptiles = [0.25, 0.50, 0.75]
-                nyse_charac1 = df.groupby(['date'])[id1].median().to_frame().reset_index().rename(columns={id1: id1 + '_50'})
-                nyse_charac2 = df.groupby(['date'])[id2].describe(percentiles=ptiles).reset_index()
-                nyse_charac2 = nyse_charac2[['date', '25%', '50%', '75%']].rename(
-                    columns={'25%': id2 + '_25', '50%': id2 + '_50', '75%': id2 + '_75'})
-                nyse_charac3 = df.groupby(['date'])[id3].describe(percentiles=ptiles).reset_index()
-                nyse_charac3 = nyse_charac3[['date', '25%', '50%', '75%']].rename(
-                    columns={'25%': id3 + '_25', '50%': id3 + '_50', '75%': id3 + '_75'})
+            nyse_charac1 = get_nyse_characs(df, id1, dim_sort[0])  # Construct NYSE breakpoints for 1st dimension.
+            nyse_charac2 = get_nyse_characs(df, id2, dim_sort[1])  # Construct NYSE breakpoints for 2nd dimension.
+            nyse_charac3 = get_nyse_characs(df, id3, dim_sort[2])  # Construct NYSE breakpoints for 3rd dimension.
+            df_breaks = nyse_charac1.merge(right=nyse_charac2, how='inner', on=['date'])
+            df_breaks = df_breaks.merge(right=nyse_charac3, how='inner', on=['date'])
+            return df_breaks
 
-                df_breaks = nyse_charac1.merge(right=nyse_charac2, how='inner', on=['date'])
-                df_breaks = df_breaks.merge(right=nyse_charac3, how='inner', on=['date'])
-                return df_breaks
-            else:
-                raise ValueError('\'dim\' is not a standard type.')
 
         def getPortfolioBins(df, id_col, idBool, port_num):
             """
@@ -2723,7 +2686,7 @@ class FamaFrench:
                 Column label for boolean variable determining whether a stock is included or not in a portfolio bin.
             port_num : int
                 Num of portfolios constructed using anomaly portfolio characteristic `id_col`.
-                `port_num` is one of the following: 2, 3, 4, 5, or 10.
+                `port_num` is one of the following: 2, 3, 4, 5, 6, 8, 10, 20, 25, or 100.
 
             Returns
             ________
@@ -2736,57 +2699,42 @@ class FamaFrench:
                 df['lbound'] = -np.inf
             df['ubound'] = np.inf
 
-            if port_num in [2, 3, 4, 5, 10]:
+            if port_num in [2, 3, 4, 5, 6, 8, 10, 20, 25, 100]:
                 if port_num == 2:
                     bcond1 = (df[idBool] == True) & (df['lbound'] < df[id_col]) & (df[id_col] <= df[id_col + '_50'])
                     bcond2 = (df[idBool] == True) & (df[id_col + '_50'] < df[id_col]) & (df[id_col] < df['ubound'])
                     binconds = [bcond1, bcond2]
                     bvals = [id_col + '0-50', id_col + '50-100']
-
                 elif port_num == 3:
                     bcond1 = (df[idBool] == True) & (df['lbound'] < df[id_col]) & (df[id_col] <= df[id_col + '_30'])
                     bcond2 = (df[idBool] == True) & (df[id_col + '_30'] < df[id_col]) & (df[id_col] <= df[id_col + '_70'])
                     bcond3 = (df[idBool] == True) & (df[id_col + '_70'] < df[id_col]) & (df[id_col] < df['ubound'])
                     binconds = [bcond1, bcond2, bcond3]
                     bvals = [id_col + '0-30', id_col + '30-70', id_col + '70-100']
-
-                elif port_num == 4:
-                    bcond1 = (df[idBool] == True) & (df['lbound'] < df[id_col]) & (df[id_col] <= df[id_col + '_25'])
-                    bcond2 = (df[idBool] == True) & (df[id_col + '_25'] < df[id_col]) & (df[id_col] <= df[id_col + '_50'])
-                    bcond3 = (df[idBool] == True) & (df[id_col + '_50'] < df[id_col]) & (df[id_col] <= df[id_col + '_75'])
-                    bcond4 = (df[idBool] == True) & (df[id_col + '_75'] < df[id_col]) & (df[id_col] < df['ubound'])
-                    binconds = [bcond1, bcond2, bcond3, bcond4]
-                    bvals = [id_col + '0-25', id_col + '25-50', id_col + '50-75', id_col + '75-100']
-
-                elif port_num == 5:
-                    bcond1 = (df[idBool] == True) & (df['lbound'] < df[id_col]) & (df[id_col] <= df[id_col + '_20'])
-                    bcond2 = (df[idBool] == True) & (df[id_col + '_20'] < df[id_col]) & (df[id_col] <= df[id_col + '_40'])
-                    bcond3 = (df[idBool] == True) & (df[id_col + '_40'] < df[id_col]) & (df[id_col] <= df[id_col + '_60'])
-                    bcond4 = (df[idBool] == True) & (df[id_col + '_60'] < df[id_col]) & (df[id_col] <= df[id_col + '_80'])
-                    bcond5 = (df[idBool] == True) & (df[id_col + '_80'] < df[id_col]) & (df[id_col] < df['ubound'])
-                    binconds = [bcond1, bcond2, bcond3, bcond4, bcond5]
-                    bvals = [id_col + '0-20', id_col + '20-40', id_col + '40-60', id_col + '60-80', id_col + '80-100']
-
-                else:
-                    bcond1 = (df[idBool] == True) & (df['lbound'] < df[id_col]) & (df[id_col] <= df[id_col + '_10'])
-                    bcond2 = (df[idBool] == True) & (df[id_col + '_10'] < df[id_col]) & (df[id_col] <= df[id_col + '_20'])
-                    bcond3 = (df[idBool] == True) & (df[id_col + '_20'] < df[id_col]) & (df[id_col] <= df[id_col + '_30'])
-                    bcond4 = (df[idBool] == True) & (df[id_col + '_30'] < df[id_col]) & (df[id_col] <= df[id_col + '_40'])
-                    bcond5 = (df[idBool] == True) & (df[id_col + '_40'] < df[id_col]) & (df[id_col] <= df[id_col + '_50'])
-                    bcond6 = (df[idBool] == True) & (df[id_col + '_50'] < df[id_col]) & (df[id_col] <= df[id_col + '_60'])
-                    bcond7 = (df[idBool] == True) & (df[id_col + '_60'] < df[id_col]) & (df[id_col] <= df[id_col + '_70'])
-                    bcond8 = (df[idBool] == True) & (df[id_col + '_70'] < df[id_col]) & (df[id_col] <= df[id_col + '_80'])
-                    bcond9 = (df[idBool] == True) & (df[id_col + '_80'] < df[id_col]) & (df[id_col] <= df[id_col + '_90'])
-                    bcond10 = (df[idBool] == True) & (df[id_col + '_90'] < df[id_col]) & (df[id_col] < df['ubound'])
-                    binconds = [bcond1, bcond2, bcond3, bcond4, bcond5, bcond6, bcond7, bcond8, bcond9, bcond10]
-                    bvals = [id_col + '0-10', id_col + '10-20', id_col + '20-30', id_col + '30-40', id_col + '40-50',
-                             id_col + '50-60', id_col + '60-70', id_col + '70-80', id_col + '80-90', id_col + '90-100']
+                elif port_num in [4, 5, 6, 8, 10, 20, 25, 50, 100]:
+                    binconds, bvals = [], []
+                    ptiles = list(np.around(np.arange(0, 1, round(1/port_num, 2)), 2))[1:]
+                    p_cols = ['_' + c.split('%')[0] for c in [str(int(p*100))+'%' for p in ptiles]]
+                    for bin in range(0, port_num):
+                        if bin == 0:
+                            bcond = (df[idBool] == True) & (df['lbound'] < df[id_col]) & (df[id_col] <= df[id_col + p_cols[bin]])
+                            binconds.append(bcond)
+                            bvals.append(id_col + '0-'+p_cols[bin].split('_')[1])
+                        elif bin == port_num-1:
+                            bcond = (df[idBool] == True) & (df[id_col + p_cols[bin-1]] < df[id_col]) & (df[id_col] < df['ubound'])
+                            binconds.append(bcond)
+                            bvals.append(id_col + p_cols[bin-1].split('_')[1] + '-100')
+                        else:
+                            bcond = (df[idBool] == True) & (df[id_col + p_cols[bin-1]] < df[id_col]) & (df[id_col] <= df[id_col + p_cols[bin]])
+                            binconds.append(bcond)
+                            bvals.append(id_col + p_cols[bin-1].split('_')[1] + '-' + p_cols[bin].split('_')[1])
 
                 df[id_col + '_port'] = np.select(binconds, bvals, default='')
                 df = df.drop(columns=['lbound', 'ubound'])
                 return df
             else:
                 raise ValueError('\'port_num\' is not a standard type!')
+
 
         def _getNyseThresholds(df1, dfcrsp, fidList, fBool, freq, pDim, *args_):
             """
@@ -3091,7 +3039,7 @@ class FamaFrench:
                             # 'prior (j-k) return' sorts constructed every month {t} (or day {t}).
                             dfnyse_breaks = bivariateSort(df=dfnyse, id1=ffcharac_list[0], id2=ffcharac_list[1], dim_sort=pDim)
                         else:
-                            raise ValueError('len(pDim) exceeds 2')
+                            raise ValueError('len(pDim) exceeds 2!')
 
                     # NYSE, AMEX, Nasdaq: Merge 'dfnyse_breaks' w/ 'dfccm'
                     df2 = dfccm.merge(right=dfnyse_breaks, how='left', on=['date'])
@@ -3140,7 +3088,7 @@ class FamaFrench:
                         # "daily variance"/"monthly residual variance" sorts constructed every month {t}.
                         dfnyse_breaks = bivariateSort(df=dfnyse, id1=ffcharac_list[0], id2=ffcharac_list[1], dim_sort=pDim)
                     else:
-                        raise ValueError('len(pDim) exceeds 2')
+                        raise ValueError('len(pDim) exceeds 2!')
 
                     # NYSE, AMEX, Nasdaq: Merge 'dfccm' w/ 'dfnyse_breaks'.
                     df2 = dfccm.merge(right=dfnyse_breaks, how='left', on=['date'])
@@ -3284,7 +3232,7 @@ class FamaFrench:
                 elif pRetType == 'ew':
                     dfport_ret = df5.groupby(cols1)['retadj'].mean().to_frame().reset_index().rename(columns={'retadj': 'ewret'})
                 else:
-                    raise ValueError('\'pRetType\' is not one of \'wv\' or \'ew\'.')
+                    raise ValueError('\'pRetType\' is not one of \'wv\' or \'ew\'!')
                 dfport_ret[cols_port] = dfport_ret.filter(regex='_port$').apply(lambda x: x.add('_')).sum(axis=1).str.rstrip('_')
 
                 # Average (value-weighted) anomaly characteristics within each portfolio.
@@ -3579,7 +3527,7 @@ class FamaFrench:
                         hml_portTable = hml_portTable.rename(columns=cols_dict, level=1)
                         portTable['HML'] = reorder_columns(hml_portTable, cols_order).loc[:, portLevel]
 
-                for f in set(['RMW', 'CMA', 'MOM', 'ST_Rev', 'LT_Rev']):
+                for f in ['RMW', 'CMA', 'MOM', 'ST_Rev', 'LT_Rev']:
                     if f in self.factorsId:
                         if f == 'RMW':
                             flist = ['me', 'op']
@@ -3824,7 +3772,7 @@ class FamaFrench:
                     raise Error('Need # of elements in \'pDim\' to match the # of elements in \'sortCharacsId \'!')
                 else:
                     portCharacsTable = self.getPortfolios('Characs', False, self.freqType, dt_start - relativedelta(years=3), dt_end, pDim)
-                    for charac in set(list(self.mainCharacsId)):
+                    for charac in list(self.mainCharacsId):
                         portCharacsTable[charac] = portCharacsTable[charac].loc[dt_start:]
                     return portCharacsTable
             else:
@@ -3892,7 +3840,7 @@ class FamaFrench:
                 ffFactorsTable['smb'] = utils.portRetAvg(ffFactorsTable.loc[:, ['SMB_bm', 'SMB_op', 'SMB_inv']])
                 ffFactorsTable = ffFactorsTable.drop(columns=['SMB_bm', 'SMB_op', 'SMB_inv'])
 
-        for f in set(['HML', 'RMW', 'CMA', 'MOM', 'ST_Rev', 'LT_Rev']):
+        for f in ['HML', 'RMW', 'CMA', 'MOM', 'ST_Rev', 'LT_Rev']:
             if f in self.factorsId:
                 if f == 'HML':
                     flist = ['me', 'bm']
@@ -4007,7 +3955,7 @@ class FamaFrench:
                 characsTable = self.getCharacs(False, dt_start - relativedelta(years=3), dt_end, pDim)
                 print('*********************************** Summary Statistics: Firm Characteristics ***********************************')
                 print('          *********************************** ' + ' x '.join(self.sortCharacsId) + ' (' + ' x '.join(str(d) for d in pDim) + ') ************************************\n')
-                for c in set(list(self.mainCharacsId)):
+                for c in list(self.mainCharacsId):
                     print('   ************************** (Characteristic: ' + c + ') ***************************')
                     characsTable[c] = characsTable[c].loc[dt_start:]
                     _ = utils.get_statsTable(dataType, dataFreq, characsTable[c])
@@ -4078,8 +4026,7 @@ class FamaFrench:
                 raise ValueError('Ken French library: \'kfFreq\' is not a standard type.\n '
                                  'Please specify one of the following: \'D\', \'W\', \'M\', or \'A\'')
         else:
-            raise ValueError(
-                'Ken French library: \'kfType\' is not one of \'Returns\', \'Factors\', \'NumFirms\', or \'Characs\'.')
+            raise ValueError('Ken French library: \'kfType\' is not one of \'Returns\', \'Factors\', \'NumFirms\', or \'Characs\'.')
 
         if kfType == 'Factors':
             if utils.any_in(['CMA', 'RMW'], self.factorsId) is False:
@@ -4211,7 +4158,7 @@ class FamaFrench:
                         else:
                             cols_idx = ['Lo 10', 'Dec 2', 'Dec 3', 'Dec 4', 'Dec 5', 'Dec 6', 'Dec 7', 'Dec 8', 'Dec 9', 'Hi 10']
                     else:
-                        raise ValueError('\'kfDim\' is not a standard type.')
+                        raise ValueError('\'kfDim\' is not a standard type!')
 
                 elif len(self.sortCharacsIdtmp) >= 2:
                     if (len(self.sortCharacsIdtmp) == 2) and (self.sortCharacsIdtmp == ['ME', 'BM']):
@@ -4223,7 +4170,7 @@ class FamaFrench:
                                 kfDataset = str(np.prod(kfDim)) + '_Portfolios_' + str(kfDim[0]) + 'x' + str(kfDim[1]) + capitalize_nth(freq_kf, 1)
                                 dfkf_dict = web.DataReader(kfDataset, 'famafrench', dt_start)
                             except RemoteDataError:
-                                raise Error('Dataset does not exist in Ken French\'s online library.')
+                                raise Error('Dataset does not exist in Ken French\'s online library!')
 
                     elif len(self.sortCharacsIdtmp) == 2 and self.sortCharacsIdtmp != ['ME', 'BM']:
                         if 'BM' in self.sortCharacsIdtmp:
@@ -4250,7 +4197,7 @@ class FamaFrench:
                                                 self.sortCharacsIdtmp[1] + '_' + str(kfDim[0]) + 'x' + str(kfDim[1]) + capitalize_nth(freq_kf, 1)
                                     dfkf_dict = web.DataReader(kfDataset, 'famafrench', dt_start)
                                 except RemoteDataError:
-                                    raise Error('Dataset does not exist in Ken French\'s online library.')
+                                    raise Error('Dataset does not exist in Ken French\'s online library!')
 
                     elif len(self.sortCharacsIdtmp) == 3:
                         if 'BM' in self.sortCharacsIdtmp:
@@ -4266,9 +4213,9 @@ class FamaFrench:
                                             '_' + str(kfDim[0]) + 'x' + str(kfDim[1]) + 'x' + str(kfDim[2]) + capitalize_nth(freq_kf, 1)
                                 dfkf_dict = web.DataReader(kfDataset, 'famafrench', dt_start)
                             except RemoteDataError:
-                                raise Error('Dataset does not exist in Ken French\'s online library.')
+                                raise Error('Dataset does not exist in Ken French\'s online library!')
                     else:
-                        raise Error('Dataset does not exist in Ken French\'s online library.')
+                        raise Error('Dataset does not exist in Ken French\'s online library!')
 
                 dfkf = {}
                 if kfType == 'Returns':
@@ -4702,7 +4649,7 @@ class FamaFrench:
                 kfAvgCharacsTable = self.kfLibrary('Characs', freq, dt_start, dt_end, dim, printkfName=False)
                 # Remove days landing on Saturday or Sunday which can be found in Ken French's online datasets.
                 if freq == 'D':
-                    for charac in set(list(self.mainCharacsId)):
+                    for charac in list(self.mainCharacsId):
                         kfAvgCharacsTable[charac] = kfAvgCharacsTable[charac][(pd.to_datetime(kfAvgCharacsTable[charac].index).weekday < 5)]
                 return kfAvgCharacsTable
         else:
@@ -4840,11 +4787,11 @@ class FamaFrench:
             portTable = portTable[portTable.index.isin(kfportTable.index)]
             min_date, max_date = portTable.index.min(), portTable.index.max()
 
-            dfcorrTable = pd.DataFrame([{c: round(portTable[c].corr(kfportTable[c]), 3) for c in set(portTable.columns)}], columns=portTable.columns, index=['corr:'])
-            dfmeanTable = pd.DataFrame([{c: [formatting(kfType, round(portTable[c].mean() * scale, 2)), formatting(kfType, round(kfportTable[c].mean() * scale, 2))]
-                                         for c in set(portTable.columns)}], columns=portTable.columns, index=['[wrds, kflib]:'])
-            dfstdevTable = pd.DataFrame([{c: [formatting(kfType, round(portTable[c].std() * scale, 2)), formatting(kfType, round(kfportTable[c].std() * scale, 2))]
-                                          for c in set(portTable.columns)}], columns=portTable.columns, index=['[wrds, kflib]:'])
+            dfcorrTable = pd.DataFrame([{c: round(portTable[c].corr(kfportTable[c]), 3) for c in portTable.columns}], columns=portTable.columns, index=['corr:'])
+            dfmeanTable = pd.DataFrame([{c: [formatting(kfType, round(portTable[c].mean() * scale, 2)), formatting(kfType, round(portTable[c].mean() * scale, 2))]
+                                         for c in portTable.columns}], columns=kfportTable.columns, index=['[wrds, kflib]:'])
+            dfstdevTable = pd.DataFrame([{c: [formatting(kfType, round(portTable[c].std() * scale, 2)), formatting(kfType, round(portTable[c].std() * scale, 2))]
+                                          for c in portTable.columns}], columns=kfportTable.columns, index=['[wrds, kflib]:'])
             print('*********************************** Factor Returns:', min_date, 'to', max_date, '***********************************\n')
             print('    *********************** Observation frequency: ' + kfFreq + ' ************************')
             print('Fama-French factors: Correlation matrix:\n', dfcorrTable, '\n')
@@ -4867,8 +4814,8 @@ class FamaFrench:
                 scale = 1
             else:
                 portTable = self.getCharacs(False, dt_start - relativedelta(years=3), dt_end, kfDim)
-                for charac in set(list(self.mainCharacsId)):
-                    portTable[charac ] = portTable[charac].loc[dt_start:]
+                for charac in list(self.mainCharacsId):
+                    portTable[charac] = portTable[charac].loc[dt_start:]
                 kfportTable = self.getkfCharacs(kfFreq, dt_start, dt_end, kfDim)
                 scale = 1
 
@@ -4889,14 +4836,18 @@ class FamaFrench:
                             pbuckets = ['0-10', '10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90', '90-100']
 
                         def univariateSortTable(dType, pTable, kfpTable, pSorts, pDim):
-                            cols_idx = [id1 + value1 for id1, value1 in
-                                        zip(list(map(str.lower, self.sortCharacsId)) * pDim, pSorts)]
+                            cols_idx = [id1 + value1 for id1, value1 in zip(list(map(str.lower, self.sortCharacsId)) * pDim, pSorts)]
+
+                            # NOTE: We can replace the column labels in 'kfpTable' w/ those in cols_idx because the order of the columns
+                            #       in Ken French's data perfectly matches the ordering constructed here.
+                            #       e.g. Decile sorts, [lo 10, dec 2, dec 3, dec 4, dec 5, dec 6, dec 7, dec 8, dec 9, hi 10]
+                            #            is the same as [0-10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-90, 90-100]
                             kfpTable.columns = cols_idx
-                            corrTable = pd.DataFrame([{c: round(pTable[c].corr(kfpTable[c]), 3) for c in set(cols_idx)}], index=['corr:'])
+                            corrTable = pd.DataFrame([{c: round(pTable[c].corr(kfpTable[c]), 3) for c in cols_idx}], index=['corr:'])
                             meanTable = pd.DataFrame([{c: [formatting(dType, round(pTable[c].mean() * scale, 2)), formatting(dType, round(kfpTable[c].mean() * scale, 2))]
-                                                       for c in set(cols_idx)}], index=['[wrds, kflib]:'])
+                                                       for c in cols_idx}], index=['[wrds, kflib]:'])
                             stdevTable = pd.DataFrame([{c: [formatting(dType, round(pTable[c].std() * scale, 2)), formatting(dType, round(kfpTable[c].std() * scale, 2))]
-                                                        for c in set(cols_idx)}], index=['[wrds, kflib]:'])
+                                                        for c in cols_idx}], index=['[wrds, kflib]:'])
                             return corrTable, meanTable, stdevTable
 
                         dfcorrTable, dfmeanTable, dfstdevTable = {}, {}, {}
@@ -4922,7 +4873,7 @@ class FamaFrench:
                                     print('   ******************************* NOT AVAILABLE *****************************\n')
                                     continue
                         else:
-                            for charac in set(list(self.mainCharacsId)):
+                            for charac in list(self.mainCharacsId):
                                 try:
                                     # Restrict index in 'portTable' to coincide w/ that of 'kfportTable'.
                                     # Get 'min' and 'max' date:
@@ -4983,7 +4934,7 @@ class FamaFrench:
                                     col_idx = getattr(col_idx, 'replace')('hi' + col_id_tmp, col_id.lower() + '70-100')
                                     return col_idx
 
-                                for c in set(kfpTable.columns):
+                                for c in kfpTable.columns:
                                     row, col = c.split()[0], c.split()[1]
                                     if 'var' in row and self.sortCharacsId[0] == 'RESVAR':
                                         row = row.replace('var', 'resvar')
@@ -5007,8 +4958,7 @@ class FamaFrench:
                             if kfDim == [5, 5]:
                                 pbuckets = [['0-20', '20-40', '40-60', '60-80', '80-100']] * 2
                             else:
-                                pbuckets = [['0-10', '10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90',
-                                             '90-100']] * 2
+                                pbuckets = [['0-10', '10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90', '90-100']] * 2
 
                             def bivariateSortTable(dType, pTable, kfpTable, pSorts, pDim):
                                 rows_idx = [id1 + value1 for id1, value1 in zip(list(map(str.lower, [self.sortCharacsId[0]])) * pDim[0], pSorts[0])]
@@ -5055,7 +5005,7 @@ class FamaFrench:
                                         idx_df = getattr(idx_df, 'replace')('hi' + id_df_tmp, id_df.lower() + '90-100')
                                     return idx_df
 
-                                for c in set(kfpTable.columns):
+                                for c in kfpTable.columns:
                                     row, col = c.split()[0], c.split()[1]
                                     if 'var' in row and self.sortCharacsId[0] == 'RESVAR':
                                         row = row.replace('var', 'resvar')
@@ -5097,7 +5047,7 @@ class FamaFrench:
                                     print('   ******************************* NOT AVAILABLE *****************************\n')
                                     continue
                         else:
-                            for charac in set(list(self.mainCharacsId)):
+                            for charac in list(self.mainCharacsId):
                                 try:
                                     # Restrict index in 'portTable' to coincide w/ that of 'kfportTable'.
                                     # Get 'min' and 'max' date:
@@ -5119,7 +5069,7 @@ class FamaFrench:
                                     continue
                         return dfcorrTable, dfmeanTable, dfstdevTable
                     else:
-                        raise ValueError('\'kfDim\' is not a standard type')
+                        raise ValueError('\'kfDim\' is not a standard type!')
             # Trivariate sort
             elif len(kfDim) == 3:
                 # (i) median splits x quartile sorts x quartile sorts
@@ -5130,9 +5080,9 @@ class FamaFrench:
                         level0_idx = [id1 + value1 for id1, value1 in zip(list(map(str.lower, [self.sortCharacsId[0]])) * pDim[0], pSorts[0])]
                         rows_idx = [id2 + value2 for id2, value2 in zip(list(map(str.lower, [self.sortCharacsId[1]])) * pDim[1], pSorts[1])]
                         cols_idx = [id3 + value3 for id3, value3 in zip(list(map(str.lower, [self.sortCharacsId[2]])) * pDim[2], pSorts[2])]
-                        corrTable = {level0: pd.DataFrame(index=rows_idx, columns=cols_idx) for level0 in set(level0_idx)}
-                        meanTable = {level0: pd.DataFrame(index=rows_idx, columns=cols_idx) for level0 in set(level0_idx)}
-                        stdevTable = {level0: pd.DataFrame(index=rows_idx, columns=cols_idx) for level0 in set(level0_idx)}
+                        corrTable = {level0: pd.DataFrame(index=rows_idx, columns=cols_idx) for level0 in level0_idx}
+                        meanTable = {level0: pd.DataFrame(index=rows_idx, columns=cols_idx) for level0 in level0_idx}
+                        stdevTable = {level0: pd.DataFrame(index=rows_idx, columns=cols_idx) for level0 in level0_idx}
 
                         def labelReplace(pDim_sort, idx_df, id_df):
                             if pDim_sort == 2:
@@ -5156,7 +5106,7 @@ class FamaFrench:
                                 idx_df = getattr(idx_df, 'replace')('hi' + id_df.lower(), id_df.lower() + '75-100')
                             return idx_df
 
-                        for c in set(kfpTable.columns):
+                        for c in kfpTable.columns:
                             level0, row, col = c.split()[0], c.split()[1], c.split()[2]
                             if 'var' in level0 and self.sortCharacsId[0] == 'RESVAR':
                                 level0 = level0.replace('var', 'resvar')
@@ -5206,7 +5156,7 @@ class FamaFrench:
                                 print('   ******************************* NOT AVAILABLE *****************************\n')
                                 continue
                     else:
-                        for charac in set(list(self.mainCharacsId)):
+                        for charac in list(self.mainCharacsId):
                             try:
                                 # Restrict index in 'portTable' to coincide w/ that of 'kfportTable'.
                                 # Get 'min' and 'max' date:
@@ -5234,8 +5184,8 @@ class FamaFrench:
                                 continue
                     return dfcorrTable, dfmeanTable, dfstdevTable
                 else:
-                    raise ValueError('\'kfDim\' is not a standard type')
+                    raise ValueError('\'kfDim\' is not a standard type!')
             else:
-                raise ValueError('\'kfDim\' is not of standard length: should be 1, 2, or 3.')
+                raise ValueError('\'kfDim\' is not of standard length: should be 1, 2, or 3!')
         else:
             raise ValueError('\'kfType\' is not one of \'Returns\', \'Factors\', \'NumFirms\', or \'Characs\'.')
