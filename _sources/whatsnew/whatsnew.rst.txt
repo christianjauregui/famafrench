@@ -10,7 +10,4 @@ What's New?!
 
 Look out for new features and/or improvements as new releases are made public!
 
-The current release (:ref:`changes/changes:Release 0.1.1`) as of April 25, 2020 is the initial release. 
-
-
-   
+The current release (:ref:`changes/changes:Release 0.1.2`) is as of May 1, 2020.   
