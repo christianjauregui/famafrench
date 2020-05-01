@@ -76,9 +76,9 @@ Contents
 ************
 How to Cite
 ************
-This package (and its release as of April 25, 2020) should be cited using Zenodo. For example, for the 0.1.1 release, 
+This package (and its release as of May 1, 2020) should be cited using Zenodo. For example, for the 0.1.2 release, 
 
-   [*] Christian Jauregui. (2020, April 25). christianjauregui/famafrench: Release 0.1.1 (Initial Release). Zenodo. https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY
+   [*] Christian Jauregui. (2020, May 1). christianjauregui/famafrench: Release 0.1.2. Zenodo. https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY
 
       .. image:: https://sandbox.zenodo.org/badge/doi/10.5072/zenodo.530964.svg
          :target: https://sandbox.zenodo.org/record/530964#.XqUJn5NKhTY
@@ -95,9 +95,10 @@ This package (and its release as of April 25, 2020) should be cited using Zenodo
 
 	Future versions will verify the aforementioned adjustments are accounted for in the package's construction of daily portfolio returns. 
 
+
 .. todo::
 	* Include option to construct the `Fama and French (2018) <https://www.sciencedirect.com/science/article/abs/pii/S0304405X18300515>`_ cash-based profitability factor, ``RMWc``.
-        * Within the instance method used for constructing market betas and rolling residual variances, :meth:`getFactorResults`, extend the `Dimson (1979) <https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138>`_ methodology based on `Scholes and Williams (1977) <https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411>`_ to other factor quantities of risk beyond the `market (CAPM)` beta (eg, `SMB` and `HML` quantities of risk).
+        * Within the instance method used for constructing market betas and rolling residual variances, :meth:`fama.getFactorRegResults`, extend the `Dimson (1979) <https://www.sciencedirect.com/science/article/abs/pii/0304405X79900138>`_ methodology based on `Scholes and Williams (1977) <https://www.sciencedirect.com/science/article/abs/pii/0304405X77900411>`_ to other factor quantities of risk beyond the `market (CAPM)` beta (eg, `SMB` and `HML` quantities of risk).
         * Verify the `pandas-datareader <https://pandas-datareader.readthedocs.io/en/latest/>`_ Python library is still unable to pull monthly and annual datafiles for the `Short-Term Reversal` or `Long-Term Reversal` Fama-French-style factors made public through `Ken French's online library <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>`_. 
         * When applicable, constructed portfolios, specifically portfolio returns, number of firms in each portfolio, and `average` anomaly portfolio characteristics are compared with those provided by Ken French for the same frequency and over the same period. The sample `Pearson correlations`, sample `means`, and sample `standard deviations` for the following portfolios **can be improved**:
    		
@@ -109,6 +110,15 @@ This package (and its release as of April 25, 2020) should be cited using Zenodo
 		- `25 Portfolios Formed on Size and Market Beta <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/tw_5_ports_me_BETA.html>`_
 		
 	 To improve the statistical metrics, adjustments in how the aforementioned anomaly characteristics are computed or estimated will be incorporated in future releases. 
+
+
+.. todo::
+	
+	* `Recommendations by` `Martin Lettau <https://sites.google.com/view/martinlettau/home>`_: 
+		
+		- Enable the user to query information for a selected set of individual stocks. For example, for **IBM**, the package could provide the user with returns at a given frequency over a given sample period, as well as firm characteristics (eg `market equity`, `book-to-market`, prior (2-12) `momentum` returns, `accruals`, etc). 
+		- In addition, the package could provide a list of all relevant firm characteristics for empirical asset pricing available through Compustat Fundamentals Annual. 
+
 	
         
 *******************
