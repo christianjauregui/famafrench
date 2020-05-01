@@ -13,8 +13,8 @@ lru_cached_method
     Wrapper for methodtools.lru_cache(maxsize) that allows for sphinx documentation
     recognition of decorated instance methods.
 get_kfpriorfactors_directly
-    Directly download zipped datafiles from Ken French's online data library without
-    the use of the 'pandas-datareader' package. This method is used for a select few
+    Directly download zipped datafiles from Ken French's online data library without the
+    use of the 'pandas-datareader' package. This method is used for a select few
     number of datafiles for which 'pandas-datareader' returns an error.
 timing
     Wrapper for class methods that are to be timed for speed and performance measurement.
