@@ -25,7 +25,7 @@ import datetime as dt
 from importlib import reload
 reload(ff)
 
-startDate = dt.date(1950, 1, 1)  # "default" startDate
+startDate = dt.date(1960, 1, 1)  # "default" startDate
 endDate = dt.date.today()  # "default" endDate
 #startDate = dt.date(1970, 1, 1)
 #endDate = dt.date(2019, 12, 31)
