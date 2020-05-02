@@ -215,26 +215,31 @@
 <span id="applications"></span><h1>Applications and Examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h1>
 <p>Below are some examples of how the package can be used to construct datasets from <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a> as well as many other similar datasets. Throughout, the constructed datasets are compared to those provided by <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html">Ken French</a>.</p>
 <p>Let’s start by importing this package as well as other required Python libraries:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
-<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">famafrench.famafrench</span> <span class="k">as</span> <span class="nn">ff</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">famafrench.famafrench</span> <span class="k">as</span> <span class="nn">ff</span>
+</pre></div>
+</div>
+<p>A required attribute is the absolute path directory where pickled datafiles will be saved. Starting from the current working directory, we will create a folder <code class="docutils literal notranslate"><span class="pre">pickled_db</span></code> and save all pickled files there. To do that, let’s define the string variable <code class="docutils literal notranslate"><span class="pre">pickled_dir</span></code> as follows:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">pickled_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/pickled_db/&#39;</span>
 </pre></div>
 </div>
 <p>Let’s create all our datasets from 1960 to the present, or the most recent date for which there is stock returns data in CRSP and fundamentals data in Compustat. We set <code class="xref py py-attr docutils literal notranslate"><span class="pre">runQuery</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> and query all datafiles directly from <cite>wrds-cloud</cite>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">In [4]: </span><span class="n">endDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-<span class="gp">In [5]: </span><span class="n">runQuery</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [6]: </span><span class="n">endDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="gp">In [7]: </span><span class="n">runQuery</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
 <div class="section" id="fama-french-3-factors">
 <h2>Fama-French 3 Factors<a class="headerlink" href="#fama-french-3-factors" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fama-french-3-factors-daily">
 <h3>Fama-French 3 Factors : Daily<a class="headerlink" href="#fama-french-3-factors-daily" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ff3_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ff3_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
 
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff3_D.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -265,7 +270,7 @@
 
 <span class="go">[17 rows x 4 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Compare daily Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [13]: </span><span class="c1"># Compare daily Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff3_D.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -295,13 +300,13 @@
 </div>
 <div class="section" id="fama-french-3-factors-weekly">
 <h3>Fama-French 3 Factors : Weekly<a class="headerlink" href="#fama-french-3-factors-weekly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ff3_W</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ff3_W</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
 
 
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff3_W.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -333,7 +338,7 @@
 
 <span class="go">[17 rows x 4 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Compare weekly Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [13]: </span><span class="c1"># Compare weekly Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff3_W.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [03:03&lt;00:00, 91.92s/it]</span>
@@ -358,12 +363,12 @@
 </div>
 <div class="section" id="fama-french-3-factors-monthly">
 <h3>Fama-French 3 Factors : Monthly<a class="headerlink" href="#fama-french-3-factors-monthly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ff3_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ff3_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
 
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff3_M.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -395,7 +400,7 @@
 
 <span class="go">[17 rows x 4 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Compare monthly Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [13]: </span><span class="c1"># Compare monthly Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff3_M.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:05&lt;00:00,  2.79s/it]</span>
@@ -420,12 +425,12 @@
 </div>
 <div class="section" id="fama-french-3-factors-annual">
 <h3>Fama-French 3 Factors : Annual<a class="headerlink" href="#fama-french-3-factors-annual" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ff3_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ff3_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">)</span>
 
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff3_A.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -456,7 +461,7 @@
 
 <span class="go">[17 rows x 4 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Compare annual Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [13]: </span><span class="c1"># Compare annual Fama-French 3 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff3_A.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:03&lt;00:00,  1.95s/it]</span>
@@ -484,13 +489,13 @@
 <h2>Fama-French 5 Factors<a class="headerlink" href="#fama-french-5-factors" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fama-french-5-factors-daily">
 <h3>Fama-French 5 Factors : Daily<a class="headerlink" href="#fama-french-5-factors-daily" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ff5_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ff5_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff5_D.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -522,7 +527,7 @@
 
 <span class="go">[17 rows x 6 columns]</span>
 
-<span class="gp">In [12]: </span><span class="c1"># Compare daily Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [14]: </span><span class="c1"># Compare daily Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff5_D.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14&lt;00:00,  2.84s/it]</span>
@@ -551,13 +556,13 @@
 </div>
 <div class="section" id="fama-french-5-factors-weekly">
 <h3>Fama-French 5 Factors : Weekly<a class="headerlink" href="#fama-french-5-factors-weekly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ff5_W</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ff5_W</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff5_W.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -592,13 +597,13 @@
 </div>
 <div class="section" id="fama-french-5-factors-monthly">
 <h3>Fama-French 5 Factors : Monthly<a class="headerlink" href="#fama-french-5-factors-monthly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ff5_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ff5_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff5_M.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -629,7 +634,7 @@
 
 <span class="go">[17 rows x 6 columns]</span>
 
-<span class="gp">In [12]: </span><span class="c1"># Compare monthly Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [14]: </span><span class="c1"># Compare monthly Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff5_M.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14&lt;00:00,  2.84s/it]</span>
@@ -658,13 +663,13 @@
 </div>
 <div class="section" id="fama-french-5-factors-annual">
 <h3>Fama-French 5 Factors : Annual<a class="headerlink" href="#fama-french-5-factors-annual" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ff5_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;OP&#39;</span><span class="p">,</span> <span class="s1">&#39;INV&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ff5_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff5_A.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -695,7 +700,7 @@
 
 <span class="go">[17 rows x 6 columns]</span>
 
-<span class="gp">In [12]: </span><span class="c1"># Compare annual Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [14]: </span><span class="c1"># Compare annual Fama-French 5 factors constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ff5_A.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -732,13 +737,13 @@
 <h2>Momentum, Short-Term Reversal, and Long-Term Reversal Factor<a class="headerlink" href="#momentum-short-term-reversal-and-long-term-reversal-factor" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="mom-st-rev-and-lt-rev-daily">
 <h3><code class="docutils literal notranslate"><span class="pre">MOM</span></code>, <code class="docutils literal notranslate"><span class="pre">ST_Rev</span></code>, and <code class="docutils literal notranslate"><span class="pre">LT_Rev</span></code> : Daily<a class="headerlink" href="#mom-st-rev-and-lt-rev-daily" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ST_Rev&#39;</span><span class="p">,</span> <span class="s1">&#39;LT_Rev&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_1_1&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_13_60&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ffprior_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ST_Rev&#39;</span><span class="p">,</span> <span class="s1">&#39;LT_Rev&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_1_1&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_13_60&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ffprior_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ffprior_D.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -770,7 +775,7 @@
 
 <span class="go">[17 rows x 5 columns]</span>
 
-<span class="gp">In [12]: </span><span class="c1"># Compare daily Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [14]: </span><span class="c1"># Compare daily Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ffprior_D.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -805,14 +810,14 @@
 </div>
 <div class="section" id="mom-st-rev-and-lt-rev-monthly">
 <h3><code class="docutils literal notranslate"><span class="pre">MOM</span></code>, <code class="docutils literal notranslate"><span class="pre">ST_Rev</span></code>, and <code class="docutils literal notranslate"><span class="pre">LT_Rev</span></code> : Monthly<a class="headerlink" href="#mom-st-rev-and-lt-rev-monthly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ST_Rev&#39;</span><span class="p">,</span> <span class="s1">&#39;LT_Rev&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_1_1&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_13_60&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ffprior_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ST_Rev&#39;</span><span class="p">,</span> <span class="s1">&#39;LT_Rev&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_1_1&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_13_60&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ffprior_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ffprior_M.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -844,7 +849,7 @@
 
 <span class="go">[17 rows x 5 columns]</span>
 
-<span class="gp">In [12]: </span><span class="c1"># Compare monthly Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [14]: </span><span class="c1"># Compare monthly Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ffprior_M.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -879,14 +884,14 @@
 </div>
 <div class="section" id="mom-st-rev-and-lt-rev-annual">
 <h3><code class="docutils literal notranslate"><span class="pre">MOM</span></code>, <code class="docutils literal notranslate"><span class="pre">ST_Rev</span></code>, and <code class="docutils literal notranslate"><span class="pre">LT_Rev</span></code> : Annual<a class="headerlink" href="#mom-st-rev-and-lt-rev-annual" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
-<span class="gp">In [7]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">]</span>
-<span class="gp">In [8]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ST_Rev&#39;</span><span class="p">,</span> <span class="s1">&#39;LT_Rev&#39;</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_1_1&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_13_60&#39;</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="n">ffprior_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="gp">In [9]: </span><span class="n">ffsortCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">]</span>
+<span class="gp">In [10]: </span><span class="n">ffFactors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MKT-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ST_Rev&#39;</span><span class="p">,</span> <span class="s1">&#39;LT_Rev&#39;</span><span class="p">]</span>
+<span class="gp">In [11]: </span><span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_2_12&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_1_1&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIOR_13_60&#39;</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="n">ffprior_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 
 
-<span class="gp">In [11]: </span><span class="c1"># Summary statistics</span>
+<span class="gp">In [13]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ffprior_A.getFamaFrenchStats(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...</span>
@@ -917,7 +922,7 @@
 
 <span class="go">[17 rows x 5 columns]</span>
 
-<span class="gp">In [12]: </span><span class="c1"># Compare annual Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
+<span class="gp">In [14]: </span><span class="c1"># Compare annual Fama-French factors based on prior returns constructed here to those provided in Ken French&#39;s online library</span>
 <span class="go">         _, _, _, = ffprior_A.comparePortfolios(&#39;Factors&#39;, ffFreq, startDate, endDate)</span>
 
 <span class="go">Constructing Fama-French return factor(s): 100%|██████████| 4/4 [00:30&lt;00:00,  7.54s/it]</span>
@@ -947,18 +952,18 @@
 </div>
 <div class="section" id="portfolios-sorted-on-size-me">
 <h2>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code><a class="headerlink" href="#portfolios-sorted-on-size-me" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="portfolios-sorted-on-size-me-daily">
 <h3>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> : Daily<a class="headerlink" href="#portfolios-sorted-on-size-me-daily" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-<span class="gp">In [8]: </span><span class="n">ff_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<span class="gp">In [10]: </span><span class="n">ff_D</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>(3 x 1) Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">           ff_D.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">           ff_D.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">           ff_D.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1039,7 +1044,7 @@
 
 
 
-<span class="gp">In [11]: </span><span class="c1"># daily portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># daily portfolios</span>
 <span class="go">         _, _, _, = ff_D.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 
 <span class="go">*********************************** ME (3) ************************************</span>
@@ -1062,8 +1067,8 @@
 </pre></div>
 </div>
 <p><strong>(5 x 1) Quintile Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_D.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_D.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_D.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1139,7 +1144,7 @@
 <span class="go">mad              66.1      348.14      813.84     1951.76     15408.9</span>
 
 
-<span class="gp">In [11]: </span><span class="c1"># daily portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># daily portfolios</span>
 <span class="go">         _, _, _, = ff_D.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 
 <span class="go">*********************************** ME (5) ************************************</span>
@@ -1166,8 +1171,8 @@
 </pre></div>
 </div>
 <p><strong>(10 x 1) Decile Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_D.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_D.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_D.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1242,7 +1247,7 @@
 <span class="go">kurt             2.55        1.23  ...        2.49        3.02</span>
 <span class="go">mad             38.24      152.32  ...      5118.3       26766</span>
 
-<span class="gp">In [11]: </span><span class="c1"># daily portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># daily portfolios</span>
 <span class="go">         _, _, _, = ff_D.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 
 <span class="go">*********************************** ME (10) ************************************</span>
@@ -1273,13 +1278,13 @@
 </div>
 <div class="section" id="portfolios-sorted-on-size-me-monthly">
 <h3>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> : Monthly<a class="headerlink" href="#portfolios-sorted-on-size-me-monthly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
-<span class="gp">In [8]: </span><span class="n">ff_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">In [10]: </span><span class="n">ff_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>(3 x 1) Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1358,7 +1363,7 @@
 <span class="go">kurt             2.95        1.28        1.65</span>
 <span class="go">mad             97.69      823.31     10934.1</span>
 
-<span class="gp">In [11]: </span><span class="c1"># monthly portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># monthly portfolios</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1420,8 +1425,8 @@
 </pre></div>
 </div>
 <p><strong>(5 x 1) Quintile Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1496,7 +1501,7 @@
 <span class="go">kurt             2.85        0.79        2.16        2.11        1.17</span>
 <span class="go">mad             66.24      348.75      814.97     1954.89     15433.2</span>
 
-<span class="gp">In [11]: </span><span class="c1"># monthly portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># monthly portfolios</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1565,8 +1570,8 @@
 </pre></div>
 </div>
 <p><strong>(10 x 1) Decile Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1647,7 +1652,7 @@
 
 <span class="go">[17 rows x 10 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># monthly portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># monthly portfolios</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1728,13 +1733,13 @@
 </div>
 <div class="section" id="portfolios-sorted-on-size-me-annual">
 <h3>Portfolios Sorted on <cite>Size</cite> <code class="docutils literal notranslate"><span class="pre">ME</span></code> : Annual<a class="headerlink" href="#portfolios-sorted-on-size-me-annual" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
-<span class="gp">In [8]: </span><span class="n">ff_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="gp">In [10]: </span><span class="n">ff_A</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>(3 x 1) Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_A.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_A.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_A.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1812,7 +1817,7 @@
 <span class="go">kurt             2.97        0.68        1.17</span>
 <span class="go">mad             95.67      821.98       10941</span>
 
-<span class="gp">In [11]: </span><span class="c1"># annual portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># annual portfolios</span>
 <span class="go">         _, _, _, = ff_A.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_A.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 
@@ -1843,8 +1848,8 @@
 </pre></div>
 </div>
 <p><strong>(5 x 1) Quintile Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_A.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_A.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_A.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -1919,7 +1924,7 @@
 <span class="go">kurt             2.79        0.69        0.48        0.81        0.86</span>
 <span class="go">mad             64.76      341.51      796.06     1928.27     15466.1</span>
 
-<span class="gp">In [11]: </span><span class="c1"># annual portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># annual portfolios</span>
 <span class="go">         _, _, _, = ff_A.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_A.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 
@@ -1954,8 +1959,8 @@
 </pre></div>
 </div>
 <p><strong>(10 x 1) Decile Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">        ff_A.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">        ff_A.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">        ff_A.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -2036,7 +2041,7 @@
 
 <span class="go">[17 rows x 10 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># annual portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># annual portfolios</span>
 <span class="go">        _, _, _, = ff_A.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">        _, _, _, = ff_A.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 
@@ -2076,18 +2081,18 @@
 </div>
 <div class="section" id="portfolios-sorted-on-book-to-market-bm">
 <h2>Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code><a class="headerlink" href="#portfolios-sorted-on-book-to-market-bm" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[</span><span class="s1">&#39;BM&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffportCharac</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[</span><span class="s1">&#39;BM&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="portfolios-sorted-on-book-to-market-bm-monthly">
 <h3>Portfolios Sorted on <cite>Book-to-Market</cite> <code class="docutils literal notranslate"><span class="pre">BM</span></code> : Monthly<a class="headerlink" href="#portfolios-sorted-on-book-to-market-bm-monthly" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
-<span class="gp">In [8]: </span><span class="n">ff_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">ffFreq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="gp">In [10]: </span><span class="n">ff_M</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">FamaFrench</span><span class="p">(</span><span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">ffFreq</span><span class="p">,</span> <span class="n">ffsortCharac</span><span class="p">,</span> <span class="n">ffFactors</span><span class="p">,</span> <span class="n">ffportCharac</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>(3 x 1) Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -2186,7 +2191,7 @@
 <span class="go">kurt             1.32        3.03        6.58</span>
 <span class="go">mad              0.09        0.21        0.38</span>
 
-<span class="gp">In [11]: </span><span class="c1"># monthly portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># monthly portfolios</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -2254,8 +2259,8 @@
 </pre></div>
 </div>
 <p><strong>(5 x 1) Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -2351,7 +2356,7 @@
 <span class="go">kurt             0.51        3.54        3.42        4.42        9.34</span>
 <span class="go">mad              0.08        0.15        0.21        0.26        0.46</span>
 
-<span class="gp">In [11]: </span><span class="c1"># monthly portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># monthly portfolios</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -2426,8 +2431,8 @@
 </pre></div>
 </div>
 <p><strong>(10 x 1) Sorts</strong>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
-<span class="gp">In [10]: </span><span class="c1"># Summary statistics</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">sortingDim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">In [12]: </span><span class="c1"># Summary statistics</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         ff_M.getFamaFrenchStats(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>
@@ -2531,7 +2536,7 @@
 
 <span class="go">[17 rows x 10 columns]</span>
 
-<span class="gp">In [11]: </span><span class="c1"># monthly portfolios</span>
+<span class="gp">In [13]: </span><span class="c1"># monthly portfolios</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Returns&#39;, ffFreq, startDate, endDate, sortingDim, &#39;vw&#39;)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;NumFirms&#39;, ffFreq, startDate, endDate, sortingDim)</span>
 <span class="go">         _, _, _, = ff_M.comparePortfolios(&#39;Characs&#39;, ffFreq, startDate, endDate, sortingDim)</span>

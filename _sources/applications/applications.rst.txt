@@ -16,17 +16,24 @@ Let's start by importing this package as well as other required Python libraries
 
 .. code-block:: ipython
    
-   In [1]: import datetime as dt
-   In [2]: import famafrench.famafrench as ff
+   In [1]: import os
+   In [2]: import datetime as dt
+   In [3]: import famafrench.famafrench as ff
+
+A required attribute is the absolute path directory where pickled datafiles will be saved. Starting from the current working directory, we will create a folder ``pickled_db`` and save all pickled files there. To do that, let's define the string variable ``pickled_dir`` as follows:
+
+.. code-block:: ipython
+   
+   In [4]: pickled_dir = os.getcwd() + '/pickled_db/'
 
 
 Let's create all our datasets from 1960 to the present, or the most recent date for which there is stock returns data in CRSP and fundamentals data in Compustat. We set :attr:`runQuery` to ``True`` and query all datafiles directly from `wrds-cloud`. 
 
 .. code-block:: ipython
 
-   In [3]: startDate = dt.date(1960, 1, 1)
-   In [4]: endDate = dt.date.today()
-   In [5]: runQuery = True
+   In [5]: startDate = dt.date(1960, 1, 1)
+   In [6]: endDate = dt.date.today()
+   In [7]: runQuery = True
 
 
 
@@ -39,12 +46,12 @@ Fama-French 3 Factors : Daily
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'D'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
-   In [9]: ff3_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors) 
+   In [8]: ffFreq = 'D'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [11]: ff3_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors) 
    
-   In [10]: # Summary statistics
+   In [12]: # Summary statistics
 	    ff3_D.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
    
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -75,7 +82,7 @@ Fama-French 3 Factors : Daily
 
    [17 rows x 4 columns] 
    
-   In [11]: # Compare daily Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
+   In [13]: # Compare daily Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff3_D.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -108,13 +115,13 @@ Fama-French 3 Factors : Weekly
 
 .. code-block:: ipython
 
-   In [6]: ffFreq = 'W'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
-   In [9]: ff3_W = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors) 
+   In [8]: ffFreq = 'W'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [11]: ff3_W = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors) 
 
 
-   In [10]: # Summary statistics
+   In [12]: # Summary statistics
 	    ff3_W.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -146,7 +153,7 @@ Fama-French 3 Factors : Weekly
 
    [17 rows x 4 columns] 
 
-   In [11]: # Compare weekly Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
+   In [13]: # Compare weekly Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff3_W.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    Constructing Fama-French return factor(s): 100%|██████████| 2/2 [03:03<00:00, 91.92s/it]
@@ -174,12 +181,12 @@ Fama-French 3 Factors : Monthly
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'M'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
-   In [9]: ff3_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors) 
+   In [8]: ffFreq = 'M'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [11]: ff3_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors) 
 
-   In [10]: # Summary statistics
+   In [12]: # Summary statistics
 	    ff3_M.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -211,7 +218,7 @@ Fama-French 3 Factors : Monthly
 
    [17 rows x 4 columns] 
 
-   In [11]: # Compare monthly Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
+   In [13]: # Compare monthly Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff3_M.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:05<00:00,  2.79s/it]
@@ -239,12 +246,12 @@ Fama-French 3 Factors : Annual
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'A'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
-   In [9]: ff3_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors) 
+   In [8]: ffFreq = 'A'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [11]: ff3_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors) 
 
-   In [10]: # Summary statistics
+   In [12]: # Summary statistics
 	    ff3_A.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -275,7 +282,7 @@ Fama-French 3 Factors : Annual
 
    [17 rows x 4 columns] 
 
-   In [11]: # Compare annual Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
+   In [13]: # Compare annual Fama-French 3 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff3_A.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:03<00:00,  1.95s/it]
@@ -306,13 +313,13 @@ Fama-French 5 Factors : Daily
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'D'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
-   In [9]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
-   In [10]: ff5_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'D'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
+   In [11]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
+   In [12]: ff5_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
 
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ff5_D.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -344,7 +351,7 @@ Fama-French 5 Factors : Daily
 
    [17 rows x 6 columns] 
    
-   In [12]: # Compare daily Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
+   In [14]: # Compare daily Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff5_D.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14<00:00,  2.84s/it]
@@ -375,13 +382,13 @@ Fama-French 5 Factors : Weekly
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'W'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
-   In [9]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
-   In [10]: ff5_W = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'W'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
+   In [11]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
+   In [12]: ff5_W = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
 
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ff5_W.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -418,13 +425,13 @@ Fama-French 5 Factors : Monthly
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'M'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
-   In [9]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
-   In [10]: ff5_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'M'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
+   In [11]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
+   In [12]: ff5_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
 
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ff5_M.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -455,7 +462,7 @@ Fama-French 5 Factors : Monthly
 
    [17 rows x 6 columns] 
    
-   In [12]: # Compare monthly Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
+   In [14]: # Compare monthly Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff5_M.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    Constructing Fama-French return factor(s): 100%|██████████| 5/5 [00:14<00:00,  2.84s/it]
@@ -486,13 +493,13 @@ Fama-French 5 Factors : Annual
 
 .. code-block:: ipython
    
-   In [6]: ffFreq = 'A'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
-   In [9]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
-   In [10]: ff5_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'A'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
+   In [11]: ffportCharac = ['ME', 'BM', 'OP', 'INV']
+   In [12]: ff5_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
 
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ff5_A.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -523,7 +530,7 @@ Fama-French 5 Factors : Annual
   
    [17 rows x 6 columns] 
    
-   In [12]: # Compare annual Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
+   In [14]: # Compare annual Fama-French 5 factors constructed here to those provided in Ken French's online library 	   
             _, _, _, = ff5_A.comparePortfolios('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -564,13 +571,13 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 
 .. code-block:: ipython
 
-   In [6]: ffFreq = 'D'
-   In [7]: ffsortCharac = ['ME', 'PRIOR_2_12']
-   In [8]: ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
-   In [9]: ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
-   In [10]: ffprior_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'D'
+   In [9]: ffsortCharac = ['ME', 'PRIOR_2_12']
+   In [10]: ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
+   In [11]: ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
+   In [12]: ffprior_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
    
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ffprior_D.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -602,7 +609,7 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 
    [17 rows x 5 columns] 
 
-   In [12]: # Compare daily Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
+   In [14]: # Compare daily Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
 	    _, _, _, = ffprior_D.comparePortfolios('Factors', ffFreq, startDate, endDate)
 	    
    CRSP (daily) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -640,14 +647,14 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 
 .. code-block:: ipython
 
-   In [6]: ffFreq = 'M'
-   In [7]: ffsortCharac = ['ME', 'PRIOR_2_12']
-   In [8]: ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
-   In [9]: ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
-   In [10]: ffprior_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'M'
+   In [9]: ffsortCharac = ['ME', 'PRIOR_2_12']
+   In [10]: ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
+   In [11]: ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
+   In [12]: ffprior_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
 
    
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ffprior_M.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -679,7 +686,7 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 
    [17 rows x 5 columns] 
 
-   In [12]: # Compare monthly Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
+   In [14]: # Compare monthly Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
 	    _, _, _, = ffprior_M.comparePortfolios('Factors', ffFreq, startDate, endDate)
 	    
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -718,14 +725,14 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 
 .. code-block:: ipython
 
-   In [6]: ffFreq = 'A'
-   In [7]: ffsortCharac = ['ME', 'PRIOR_2_12']
-   In [8]: ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
-   In [9]: ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
-   In [10]: ffprior_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
+   In [8]: ffFreq = 'A'
+   In [9]: ffsortCharac = ['ME', 'PRIOR_2_12']
+   In [10]: ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
+   In [11]: ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
+   In [12]: ffprior_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac) 
 
    
-   In [11]: # Summary statistics
+   In [13]: # Summary statistics
 	    ffprior_A.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
 
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -756,7 +763,7 @@ Momentum, Short-Term Reversal, and Long-Term Reversal Factor
 
    [17 rows x 5 columns] 
 
-   In [12]: # Compare annual Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
+   In [14]: # Compare annual Fama-French factors based on prior returns constructed here to those provided in Ken French's online library
 	    _, _, _, = ffprior_A.comparePortfolios('Factors', ffFreq, startDate, endDate)
 	    
    Constructing Fama-French return factor(s): 100%|██████████| 4/4 [00:30<00:00,  7.54s/it]
@@ -787,7 +794,7 @@ Portfolios Sorted on `Size` ``ME``
 
 .. code-block:: ipython
 
-   In [6]: ffFactors, ffsortCharac, ffportCharac = [], ['ME'], ['ME']
+   In [8]: ffFactors, ffsortCharac, ffportCharac = [], ['ME'], ['ME']
 
 
 Portfolios Sorted on `Size` ``ME`` : Daily
@@ -795,15 +802,15 @@ Portfolios Sorted on `Size` ``ME`` : Daily
 
 .. code-block:: ipython
 
-   In [7]: ffFreq = 'D'
-   In [8]: ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+   In [9]: ffFreq = 'D'
+   In [10]: ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 **(3 x 1) Sorts**:
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [3]    
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [3]    
+   In [12]: # Summary statistics
 	      ff_D.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	      ff_D.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
               ff_D.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -884,7 +891,7 @@ Portfolios Sorted on `Size` ``ME`` : Daily
 
 
         
-   In [11]: # daily portfolios 
+   In [13]: # daily portfolios 
             _, _, _, = ff_D.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 
    *********************************** ME (3) ************************************
@@ -910,8 +917,8 @@ Portfolios Sorted on `Size` ``ME`` : Daily
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [5]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [5]      
+   In [12]: # Summary statistics
 	    ff_D.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_D.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_D.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -987,7 +994,7 @@ Portfolios Sorted on `Size` ``ME`` : Daily
    mad              66.1      348.14      813.84     1951.76     15408.9 
 
         
-   In [11]: # daily portfolios 
+   In [13]: # daily portfolios 
             _, _, _, = ff_D.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 
    *********************************** ME (5) ************************************
@@ -1019,8 +1026,8 @@ Portfolios Sorted on `Size` ``ME`` : Daily
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [10]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [10]      
+   In [12]: # Summary statistics
 	    ff_D.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_D.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_D.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1095,7 +1102,7 @@ Portfolios Sorted on `Size` ``ME`` : Daily
    kurt             2.55        1.23  ...        2.49        3.02
    mad             38.24      152.32  ...      5118.3       26766
    
-   In [11]: # daily portfolios 
+   In [13]: # daily portfolios 
             _, _, _, = ff_D.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 
    *********************************** ME (10) ************************************
@@ -1129,15 +1136,15 @@ Portfolios Sorted on `Size` ``ME`` : Monthly
 
 .. code-block:: ipython
    
-   In [7]: ffFreq = 'M'
-   In [8]: ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+   In [9]: ffFreq = 'M'
+   In [10]: ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 **(3 x 1) Sorts**:
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [3]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [3]      
+   In [12]: # Summary statistics
 	    ff_M.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_M.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1216,7 +1223,7 @@ Portfolios Sorted on `Size` ``ME`` : Monthly
    kurt             2.95        1.28        1.65
    mad             97.69      823.31     10934.1 
 
-   In [11]: # monthly portfolios 
+   In [13]: # monthly portfolios 
             _, _, _, = ff_M.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_M.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim)
 	    _, _, _, = ff_M.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1281,8 +1288,8 @@ Portfolios Sorted on `Size` ``ME`` : Monthly
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [5]   
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [5]   
+   In [12]: # Summary statistics
 	    ff_M.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_M.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1357,7 +1364,7 @@ Portfolios Sorted on `Size` ``ME`` : Monthly
    kurt             2.85        0.79        2.16        2.11        1.17
    mad             66.24      348.75      814.97     1954.89     15433.2 
    
-   In [11]: # monthly portfolios 
+   In [13]: # monthly portfolios 
             _, _, _, = ff_M.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_M.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim)
 	    _, _, _, = ff_M.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1429,8 +1436,8 @@ Portfolios Sorted on `Size` ``ME`` : Monthly
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [10]   
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [10]   
+   In [12]: # Summary statistics
 	    ff_M.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw'
 	    ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_M.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1511,7 +1518,7 @@ Portfolios Sorted on `Size` ``ME`` : Monthly
 
    [17 rows x 10 columns] 
    
-   In [11]: # monthly portfolios 
+   In [13]: # monthly portfolios 
             _, _, _, = ff_M.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_M.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim)
 	    _, _, _, = ff_M.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1594,15 +1601,15 @@ Portfolios Sorted on `Size` ``ME`` : Annual
 
 .. code-block:: ipython
 
-   In [7]: ffFreq = 'A'
-   In [8]: ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+   In [9]: ffFreq = 'A'
+   In [10]: ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 **(3 x 1) Sorts**:
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [3]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [3]      
+   In [12]: # Summary statistics
 	    ff_A.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_A.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_A.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1680,7 +1687,7 @@ Portfolios Sorted on `Size` ``ME`` : Annual
    kurt             2.97        0.68        1.17
    mad             95.67      821.98       10941 
    
-   In [11]: # annual portfolios 
+   In [13]: # annual portfolios 
             _, _, _, = ff_A.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_A.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
 
@@ -1714,8 +1721,8 @@ Portfolios Sorted on `Size` ``ME`` : Annual
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [5]   
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [5]   
+   In [12]: # Summary statistics
 	    ff_A.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_A.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_A.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1790,7 +1797,7 @@ Portfolios Sorted on `Size` ``ME`` : Annual
    kurt             2.79        0.69        0.48        0.81        0.86
    mad             64.76      341.51      796.06     1928.27     15466.1 
    
-   In [11]: # annual portfolios 
+   In [13]: # annual portfolios 
             _, _, _, = ff_A.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_A.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
 
@@ -1828,8 +1835,8 @@ Portfolios Sorted on `Size` ``ME`` : Annual
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [10]   
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [10]   
+   In [12]: # Summary statistics
 	   ff_A.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	   ff_A.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
            ff_A.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -1910,7 +1917,7 @@ Portfolios Sorted on `Size` ``ME`` : Annual
 
    [17 rows x 10 columns] 
    
-   In [11]: # annual portfolios 
+   In [13]: # annual portfolios 
            _, _, _, = ff_A.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	   _, _, _, = ff_A.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
 
@@ -1952,7 +1959,7 @@ Portfolios Sorted on `Book-to-Market` ``BM``
 
 .. code-block:: ipython
 
-   In [6]: ffFactors, ffsortCharac, ffportCharac = [], ['BM'], ['ME', 'BM']
+   In [8]: ffFactors, ffsortCharac, ffportCharac = [], ['BM'], ['ME', 'BM']
 
 
 
@@ -1962,15 +1969,15 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
 
 .. code-block:: ipython
    
-   In [7]: ffFreq = 'M'
-   In [8]: ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+   In [9]: ffFreq = 'M'
+   In [10]: ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 **(3 x 1) Sorts**:
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [3]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [3]      
+   In [12]: # Summary statistics
 	    ff_M.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_M.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -2069,7 +2076,7 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
    kurt             1.32        3.03        6.58
    mad              0.09        0.21        0.38 
 	
-   In [11]: # monthly portfolios 
+   In [13]: # monthly portfolios 
             _, _, _, = ff_M.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_M.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim)
 	    _, _, _, = ff_M.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -2141,8 +2148,8 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [5]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [5]      
+   In [12]: # Summary statistics
 	    ff_M.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_M.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -2238,7 +2245,7 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
    kurt             0.51        3.54        3.42        4.42        9.34
    mad              0.08        0.15        0.21        0.26        0.46 
  
-   In [11]: # monthly portfolios 
+   In [13]: # monthly portfolios 
             _, _, _, = ff_M.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_M.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim)
 	    _, _, _, = ff_M.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -2315,8 +2322,8 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
 
 .. code-block:: ipython
 
-   In [9]: sortingDim = [10]      
-   In [10]: # Summary statistics
+   In [11]: sortingDim = [10]      
+   In [12]: # Summary statistics
 	    ff_M.getFamaFrenchStats('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    ff_M.getFamaFrenchStats('NumFirms', ffFreq, startDate, endDate, sortingDim)
             ff_M.getFamaFrenchStats('Characs', ffFreq, startDate, endDate, sortingDim)
@@ -2420,7 +2427,7 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Monthly
 
    [17 rows x 10 columns] 
    
-   In [11]: # monthly portfolios 
+   In [13]: # monthly portfolios 
             _, _, _, = ff_M.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, 'vw')
 	    _, _, _, = ff_M.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim)
 	    _, _, _, = ff_M.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim)
