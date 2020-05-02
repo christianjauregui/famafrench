@@ -3,6 +3,6 @@ include LICENSE.txt
 include docs/requirements.txt
 
 
-include examples/*.py
-include famafrench/tests/*.py
+recursive-exclude tests *
+recursive-exclude famafrench/pickled_db *
 
