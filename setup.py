@@ -125,7 +125,6 @@ setup(
     # Requirements
     packages=find_packages(exclude=['contrib',
                                     'docs',
-                                    'examples',
                                     'tests*',
                                     '*pickle',
                                     '*txt',
