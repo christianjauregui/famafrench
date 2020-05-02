@@ -37,7 +37,7 @@ endDate = dt.date.today()  # "default" endDate
 #endDate = dt.date(2019, 12, 31)
 
 # pickled_dir
-pickled_dir = os.getcwd() + 'famafrench/pickled_db/'
+pickled_dir = os.getcwd() + '/famafrench/pickled_db/'
 
 #%%
 #**********************************************************************************************#

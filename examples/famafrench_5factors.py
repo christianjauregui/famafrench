@@ -34,7 +34,7 @@ ffFactors = ['MKT-RF', 'SMB', 'HML', 'RMW', 'CMA']
 ffportCharac = ['ME', 'BM', 'OP', 'INV']
 
 # pickled_dir
-pickled_dir = os.getcwd() + 'famafrench/pickled_db/'
+pickled_dir = os.getcwd() + '/famafrench/pickled_db/'
 
 #%%
 #********************************************************************************************#
