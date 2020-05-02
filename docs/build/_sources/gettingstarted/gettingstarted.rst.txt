@@ -71,6 +71,12 @@ Instances of the :class:`FamaFrench<FamaFrench>` object will vary depending on w
 
 For both types of instances, the frequency of portfolios :attr:`freqType` as well as the starting and end dates must be specified. Both starting and ending dates must be in :class:`datetime.date` format. In addition, attribute :attr:`runQuery` is set to ``True`` or ``False`` depending on whether the user prefers to query all datafiles from `wrds-cloud` from scratch or whether previously queried and locally-saved datafiles are pickled in constructing the instance. The latter choice is particularly useful when updating data following a new set of observation points released by WRDS. Making use of previously queried and locally-saved datafiles significantly speeds up run-time and execution of code. 
 
+A required attribute is the absolute path directory where pickled datafiles will be saved. Starting from the current working directory, we will create a folder ``pickled_db`` and save all pickled files there. To do that, let's define the string variable ``pickled_dir`` as follows:
+
+.. code-block:: ipython
+   
+   In [1]: import os
+   In [2]: pickled_dir = os.getcwd() + '/pickled_db/'
 
 For example, to construct the **Fama-French 3 factors**: the `Market Premium` ``MKT-RF``, `Small Minus Big` ``SMB``, and `High Minus Low` ``HML``, at the monthly frequency (from 1960 to the present, or the most recent date for which there is stock returns data available in CRPS and fundamentals data in Compustat), we execute the following lines of Python code:
 
@@ -78,18 +84,18 @@ For example, to construct the **Fama-French 3 factors**: the `Market Premium` ``
 
 .. code-block:: ipython
     
-   In [1]: import datetime as dt
-   In [2]: import famafrench.famafrench as ff
+   In [3]: import datetime as dt
+   In [4]: import famafrench.famafrench as ff
    
-   In [3]: startDate = dt.date(1960, 1, 1)
-   In [4]: endDate = dt.date.today()
-   In [5]: runQuery = True
-   In [6]: ffFreq = 'M'
-   In [7]: ffsortCharac = ['ME', 'BM']
-   In [8]: ffFactors = ['MKT-RF', 'SMB', 'HML']
-   In [9]: ff3 = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors) 
+   In [5]: startDate = dt.date(1960, 1, 1)
+   In [6]: endDate = dt.date.today()
+   In [7]: runQuery = True
+   In [8]: ffFreq = 'M'
+   In [9]: ffsortCharac = ['ME', 'BM']
+   In [10]: ffFactors = ['MKT-RF', 'SMB', 'HML']
+   In [11]: ff3 = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors) 
 
-   In [10]: factorsTableM = ff3.getFFfactors(startDate, endDate)
+   In [12]: factorsTableM = ff3.getFFfactors(startDate, endDate)
    
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    CRSP delisted returns (monthly) dataset currently NOT saved locally. Querying from wrds-cloud...
@@ -98,8 +104,8 @@ For example, to construct the **Fama-French 3 factors**: the `Market Premium` ``
    Constructing Fama-French return factor(s): 100%|██████████| 2/2 [00:03<00:00,  1.73s/it]
    Historical risk-free interest rate (monthly) dataset currently NOT saved locally. Querying from wrds-cloud...
    
-   In [11]: factorsTableM.head()
-   Out[11]: 
+   In [13]: factorsTableM.head()
+   Out[13]: 
                     mkt    mkt-rf       smb       hml
    date                                              
    1960-01-31 -0.066497 -0.069797  0.017755  0.025267
@@ -117,9 +123,9 @@ We can compare the constructed factors to those provided by `Ken French <https:/
 
 .. code-block:: ipython
     
-   In [12]: kffactorsTableM = ff3.getkfFFfactors(ffFreq, startDate, endDate)
-   In [13]: kffactorsTableM.head()
-   Out[13]: 
+   In [14]: kffactorsTableM = ff3.getkfFFfactors(ffFreq, startDate, endDate)
+   In [15]: kffactorsTableM.head()
+   Out[15]: 
                   mkt  mkt-rf     smb     hml
    1960-01-31 -0.0665 -0.0698  0.0209  0.0273
    1960-02-29  0.0146  0.0117  0.0051 -0.0199
@@ -127,7 +133,7 @@ We can compare the constructed factors to those provided by `Ken French <https:/
    1960-04-30 -0.0152 -0.0171  0.0031 -0.0223
    1960-05-31  0.0339  0.0312  0.0121 -0.0376
 
-   In [14]: _, _, _, = ff3.comparePortfolios('Factors', ffFreq, startDate, endDate)
+   In [16]: _, _, _, = ff3.comparePortfolios('Factors', ffFreq, startDate, endDate)
    
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    CRSP delisted returns (monthly) dataset currently NOT saved locally. Querying from wrds-cloud...
@@ -161,28 +167,28 @@ We can compare the constructed factors to those provided by `Ken French <https:/
  
 .. code-block:: ipython
     
-   In [1]: import datetime as dt
-   In [2]: import famafrench.famafrench as ff
+   In [3]: import datetime as dt
+   In [4]: import famafrench.famafrench as ff
    
-   In [3]: startDate = dt.date(1960, 1, 1)
-   In [4]: endDate = dt.date.today()
-   In [5]: runQuery = True
-   In [6]: ffFreq = 'M'
-   In [7]: sortingDim = [2, 3]
-   In [8]: retType = 'vw'
+   In [5]: startDate = dt.date(1960, 1, 1)
+   In [6]: endDate = dt.date.today()
+   In [7]: runQuery = True
+   In [8]: ffFreq = 'M'
+   In [9]: sortingDim = [2, 3]
+   In [10]: retType = 'vw'
 
-   In [9]: ffsortCharac = ['ME', 'BM']
-   In [10]: ffFactors = []
-   In [11]: me_bm_2x3 = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors) 
+   In [11]: ffsortCharac = ['ME', 'BM']
+   In [12]: ffFactors = []
+   In [13]: me_bm_2x3 = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors) 
 
-   In [12]: returnsTableM = me_bm_2x3.getPortfolioReturns(False, startDate, endDate, sortingDim, retType)  
+   In [14]: returnsTableM = me_bm_2x3.getPortfolioReturns(False, startDate, endDate, sortingDim, retType)  
    
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    Compustat (annual) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    
-   In [13]: returnsTableM.head()
-   Out [13]: 
+   In [15]: returnsTableM.head()
+   Out[15]: 
                me0-50_bm0-30  me0-50_bm30-70  ...  me50-100_bm30-70  me50-100_bm70-100
    date 
    1960-01-31      -0.065363       -0.053950  ...         -0.045400          -0.071003                                                             
@@ -191,9 +197,9 @@ We can compare the constructed factors to those provided by `Ken French <https:/
    1960-04-30      -0.010691       -0.016785  ...         -0.020938          -0.014375
    1960-05-31       0.043435        0.035750  ...          0.010110          -0.017830
    
-   In [14]: kfreturnsTableM = me_bm_2x3.getkfPortfolioReturns(ffFreq, startDate, endDate, sortingDim, retType) 
-   In [15]: kfreturnsTableM.head()
-   Out [15]:
+   In [16]: kfreturnsTableM = me_bm_2x3.getkfPortfolioReturns(ffFreq, startDate, endDate, sortingDim, retType) 
+   In [17]: kfreturnsTableM.head()
+   Out[17]:
                small lobm   me1 bm2  small hibm  big lobm   me2 bm2  big hibm
    1960-01-31   -0.057876 -0.031988   -0.029368 -0.082071 -0.043931 -0.055931
    1960-02-29    0.020772  0.014530    0.005015  0.013139  0.022903 -0.010929
@@ -201,7 +207,7 @@ We can compare the constructed factors to those provided by `Ken French <https:/
    1960-04-30    0.000545 -0.021162   -0.029614 -0.015721 -0.013525 -0.030143
    1960-05-31    0.053034  0.018239    0.023730  0.043100  0.018242 -0.002716
    
-   In [16]:  _, _, _, = me_bm_2x3.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, retType) 
+   In [18]:  _, _, _, = me_bm_2x3.comparePortfolios('Returns', ffFreq, startDate, endDate, sortingDim, retType) 
    
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
@@ -232,9 +238,9 @@ We can compare the constructed factors to those provided by `Ken French <https:/
 
 .. code-block:: ipython
     
-   In [16]: firmsTableM = me_bm_2x3.getNumFirms(False, startDate, endDate, sortingDim)  
-   In [17]: firmsTableM.head()
-   Out [17]: 
+   In [19]: firmsTableM = me_bm_2x3.getNumFirms(False, startDate, endDate, sortingDim)  
+   In [20]: firmsTableM.head()
+   Out[20]: 
                me0-50_bm0-30  me0-50_bm30-70  ...  me50-100_bm30-70  me50-100_bm70-100
    date                                       ...                                     
    1960-01-31             21              49  ...                69                 27
@@ -243,9 +249,9 @@ We can compare the constructed factors to those provided by `Ken French <https:/
    1960-04-30             21              49  ...                69                 27
    1960-05-31             21              49  ...                69                 27
    
-   In [18]: kffirmsTableM = me_bm_2x3.getkfNumFirms(ffFreq, startDate, endDate, sortingDim) 
-   In [19]: kffirmsTableM.head()
-   Out [19]:
+   In [21]: kffirmsTableM = me_bm_2x3.getkfNumFirms(ffFreq, startDate, endDate, sortingDim) 
+   In [22]: kffirmsTableM.head()
+   Out[22]:
                small lobm  me1 bm2  small hibm  big lobm  me2 bm2  big hibm
    1960-01-31          66      193         223       228      199        72
    1960-02-29          66      193         222       228      199        72
@@ -253,7 +259,7 @@ We can compare the constructed factors to those provided by `Ken French <https:/
    1960-04-30          66      190         221       228      199        72
    1960-05-31          66      187         221       228      199        72
    
-   In [20]:  _, _, _, = me_bm_2x3.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim) 
+   In [23]:  _, _, _, = me_bm_2x3.comparePortfolios('NumFirms', ffFreq, startDate, endDate, sortingDim) 
    
    *********************************** ME x BM (2 x 3) ************************************
        *********************** Observation frequency: M ************************
@@ -281,8 +287,8 @@ We can compare the constructed factors to those provided by `Ken French <https:/
 
 .. code-block:: ipython
     
-   In [16]: characsTableM = me_bm_2x3.getCharacs(False, startDate, endDate, sortingDim)  
-   In [17]: for charac in list(me_bm_2x3.mainCharacsId):
+   In [24]: characsTableM = me_bm_2x3.getCharacs(False, startDate, endDate, sortingDim)  
+   In [25]: for charac in list(me_bm_2x3.mainCharacsId):
 		print(charac, '\n', characsTableM[charac].head())
    
    ME
@@ -308,8 +314,8 @@ We can compare the constructed factors to those provided by `Ken French <https:/
   
    [5 rows x 6 columns]
    
-   In [18]: kfcharacsTableM = me_bm_2x3.getkfCharacs(ffFreq, startDate, endDate, sortingDim) 
-   In [19]: for charac in list(me_bm_2x3.mainCharacsId):
+   In [26]: kfcharacsTableM = me_bm_2x3.getkfCharacs(ffFreq, startDate, endDate, sortingDim) 
+   In [27]: for charac in list(me_bm_2x3.mainCharacsId):
 		print(charac, '\n', kfcharacsTableM[charac].head())
    ME
 
@@ -328,7 +334,7 @@ We can compare the constructed factors to those provided by `Ken French <https:/
    1960-04-30      0.4181   0.8440      1.7532    0.3412   0.7209    1.6762
    1960-05-31      0.4175   0.8428      1.7422    0.3395   0.7201    1.6721
    
-   In [20]:  _, _, _, = me_bm_2x3.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim) 
+   In [28]:  _, _, _, = me_bm_2x3.comparePortfolios('Characs', ffFreq, startDate, endDate, sortingDim) 
    
    CRSP (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...
    CRSP delisted returns (monthly) dataset currently NOT saved locally w/ required dates. Querying from wrds-cloud...

@@ -181,6 +181,8 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;FamaFrench&quot;</span><span class="p">]</span>
 
 <span class="c1"># Standard Imports</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">errno</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">sqlalchemy</span>
@@ -245,7 +247,9 @@
 <span class="s2">    `wrds-cloud &lt;https://wrds-www.wharton.upenn.edu/&gt;`_.   </span>
 <span class="s2">        </span>
 <span class="s2">    Attributes</span>
-<span class="s2">    -----------    </span>
+<span class="s2">    -----------  </span>
+<span class="s2">    pickled_dir : str</span>
+<span class="s2">        Absolute path directory where pickled datasets will be saved.     </span>
 <span class="s2">    runQuery: bool</span>
 <span class="s2">        Flag for choosing whether to query datafiles from `wrds-cloud &lt;https://wrds-www.wharton.upenn.edu/&gt;`_ or import locally-pickled files. </span>
 <span class="s2">    freqType: str </span>
@@ -298,8 +302,6 @@
 <span class="s2">        Flag for choosing whether to run any estimation procedures for the first time/re-estimate procedures </span>
 <span class="s2">        by querying `wrds-cloud &lt;https://wrds-www.wharton.upenn.edu/&gt;`_ datafiles</span>
 <span class="s2">        `or` import locally-pickled files storing existing estimates.   </span>
-<span class="s2">    pickled_directory :  str, default `</span><span class="se">\&#39;</span><span class="s2">./famafrench/pickled_db/</span><span class="se">\&#39;</span><span class="s2">`</span>
-<span class="s2">        Local directory extention where pickled datasets will be saved to. </span>
 <span class="s2">    runFactorReg : bool, default True</span>
 <span class="s2">        Flag for initializing the estimation of market beta&#39;s and/or rolling residual variances required </span>
 <span class="s2">        for sorting portfolios on ``BETA`` and/or ``RESVAR``. </span>
@@ -307,7 +309,7 @@
 
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="c1"># Constructor for the &#39;FamaFrench&#39; object parent class</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="p">,</span> <span class="n">factorsId</span><span class="p">,</span> <span class="n">mainCharacsId</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">runEstimation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pickled_directory</span><span class="o">=</span><span class="s1">&#39;./famafrench/pickled_db/&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pickled_dir</span><span class="p">,</span> <span class="n">runQuery</span><span class="p">,</span> <span class="n">freqType</span><span class="p">,</span> <span class="n">sortCharacsId</span><span class="p">,</span> <span class="n">factorsId</span><span class="p">,</span> <span class="n">mainCharacsId</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">runEstimation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor for the &#39;FamaFrench&#39; object parent class</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -334,8 +336,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="o">=</span> <span class="n">runQuery</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">runEstimation</span> <span class="o">=</span> <span class="n">runEstimation</span>
 
-        <span class="c1"># Pickled datasets are saved in a local directory w/ the given name.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">=</span> <span class="n">pickled_directory</span>
+        <span class="c1"># Pickled datasets are saved in the directory w/ a specific absolute path:</span>
+        <span class="k">for</span> <span class="n">subdir</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;daily/&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly/&#39;</span><span class="p">,</span> <span class="s1">&#39;weekly/&#39;</span><span class="p">,</span> <span class="s1">&#39;quarterly/&#39;</span><span class="p">,</span> <span class="s1">&#39;annual/&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">subdir</span><span class="p">)):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">subdir</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>  <span class="c1"># Guard against race condition</span>
+                    <span class="k">if</span> <span class="n">exc</span><span class="o">.</span><span class="n">errno</span> <span class="o">!=</span> <span class="n">errno</span><span class="o">.</span><span class="n">EEXIST</span><span class="p">:</span>
+                        <span class="k">raise</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">=</span> <span class="n">pickled_dir</span>
 
 
 <div class="viewcode-block" id="FamaFrench.queryComp"><a class="viewcode-back" href="../../wrdscloudquery/generated/famafrench.FamaFrench.queryComp.html#famafrench.FamaFrench.queryComp">[docs]</a>    <span class="nd">@utils</span><span class="o">.</span><span class="n">lru_cached_method</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
@@ -468,7 +477,7 @@
             <span class="k">return</span> <span class="n">comp_sqlQuery</span>
 
         <span class="c1"># Load local file if it exists (and dates can be found), else query from wrds-cloud.</span>
-        <span class="n">comp_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="s1">&#39;annual/comp_annual.pickle&#39;</span><span class="p">)</span>
+        <span class="n">comp_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="s1">&#39;annual/comp_annual.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">comp_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">comp_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfcomp</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -773,7 +782,7 @@
             <span class="k">return</span> <span class="n">crsp_sqlQuery</span>
 
         <span class="c1"># Load local file if it exists (and dates can be found), else query from wrds-cloud.</span>
-        <span class="n">crsp_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crsp_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+        <span class="n">crsp_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crsp_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">crsp_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">crsp_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfcrsp</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -943,7 +952,7 @@
             <span class="k">return</span> <span class="n">crspdlret_sqlQuery</span>
 
         <span class="c1"># Load local file if it exists (and dates can be found), else query from wrds-cloud.</span>
-        <span class="n">crspdlret_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crspdelist_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+        <span class="n">crspdlret_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crspdelist_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">crspdlret_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">crspdlret_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfcrspdlret</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -1120,7 +1129,7 @@
             <span class="k">return</span> <span class="n">rf1m_sqlQuery</span>
 
         <span class="c1"># Load local file if it exists (and dates can be found), else query from wrds-cloud.</span>
-        <span class="n">rf1m_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFulldir</span> <span class="o">+</span> <span class="s1">&#39;/rf1m_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFulldir</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+        <span class="n">rf1m_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFulldir</span> <span class="o">+</span> <span class="s1">&#39;/rf1m_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFulldir</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">rf1m_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">rf1m_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">rf1m</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -1340,7 +1349,7 @@
             <span class="k">return</span> <span class="n">crsprollvar_sqlQuery</span>
 
         <span class="c1"># Load local file if it exists (and dates can be found), else query from wrds-cloud.</span>
-        <span class="n">crsprollvar_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crsprollvar_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+        <span class="n">crsprollvar_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crsprollvar_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">crsprollvar_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">crsprollvar_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfcrsprollvar</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -1659,7 +1668,7 @@
         <span class="c1"># Need to query AT A MINIMUM (minus) -&#39;roll_window&#39; days before &#39;dt_start&#39; so we have a non-missing estimation for &#39;dt_start&#39;:</span>
         <span class="n">dt_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt_start</span> <span class="o">-</span> <span class="n">Day</span><span class="p">(</span><span class="n">roll_window</span><span class="p">))</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
 
-        <span class="n">crsp_ret_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crspretFactorReg_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+        <span class="n">crsp_ret_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crspretFactorReg_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runEstimation</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">crsp_ret_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">crsp_ret_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfcrsp_ret</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -1734,7 +1743,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">ffmodel</span><span class="se">\&#39;</span><span class="s1"> should be the Market model (i.e. CAPM) or the Fama-French 3 model:</span><span class="se">\n</span><span class="s1"> use </span><span class="se">\&#39;</span><span class="s1">capm</span><span class="se">\&#39;</span><span class="s1"> or </span><span class="se">\&#39;</span><span class="s1">ff3</span><span class="se">\&#39;</span><span class="s1">.&#39;</span><span class="p">)</span>
 
-        <span class="n">ff_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">ffmodel</span> <span class="o">+</span> <span class="s1">&#39;factors_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+        <span class="n">ff_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">ffmodel</span> <span class="o">+</span> <span class="s1">&#39;factors_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runEstimation</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">ff_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ff_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfportSort_tableList</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -2241,7 +2250,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">freqTypeFull</span> <span class="o">=</span> <span class="s1">&#39;monthly&#39;</span>
 
-            <span class="n">resvar_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crspff3resvar_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+            <span class="n">resvar_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/crspff3resvar_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runEstimation</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">resvar_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
                 <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">resvar_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
                 <span class="n">dfresvarff3</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -2335,7 +2344,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">freqTypeFull</span><span class="p">,</span> <span class="n">freqtmp</span> <span class="o">=</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span>
 
-            <span class="n">beta_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/beta_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
+            <span class="n">beta_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;/beta_&#39;</span> <span class="o">+</span> <span class="n">freqTypeFull</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runEstimation</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">beta_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
                 <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">beta_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
                 <span class="n">dfbeta</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>
@@ -2554,7 +2563,7 @@
 <span class="s2">                       &quot;&quot;&quot;</span>
 
         <span class="c1"># Load local file if it exists, else query from wrds-cloud.</span>
-        <span class="n">ccm_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_directory</span> <span class="o">+</span> <span class="s1">&#39;ccm.pickle&#39;</span><span class="p">)</span>
+        <span class="n">ccm_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pickled_dir</span> <span class="o">+</span> <span class="s1">&#39;ccm.pickle&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">runQuery</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">ccm_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="n">file_to_pickle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ccm_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
             <span class="n">dfccm</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_pickle</span><span class="p">)</span>

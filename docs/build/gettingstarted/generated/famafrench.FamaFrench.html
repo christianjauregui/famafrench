@@ -175,11 +175,22 @@
 <h1>famafrench.FamaFrench<a class="headerlink" href="#famafrench-famafrench" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="famafrench.FamaFrench">
-<em class="property">class </em><code class="sig-prename descclassname">famafrench.</code><code class="sig-name descname">FamaFrench</code><span class="sig-paren">(</span><em class="sig-param">runQuery</em>, <em class="sig-param">freqType</em>, <em class="sig-param">sortCharacsId</em>, <em class="sig-param">factorsId</em>, <em class="sig-param">mainCharacsId=None</em>, <em class="sig-param">runEstimation=False</em>, <em class="sig-param">pickled_directory='./famafrench/pickled_db/'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/famafrench/famafrench.html#FamaFrench"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#famafrench.FamaFrench" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">famafrench.</code><code class="sig-name descname">FamaFrench</code><span class="sig-paren">(</span><em class="sig-param">pickled_dir</em>, <em class="sig-param">runQuery</em>, <em class="sig-param">freqType</em>, <em class="sig-param">sortCharacsId</em>, <em class="sig-param">factorsId</em>, <em class="sig-param">mainCharacsId=None</em>, <em class="sig-param">runEstimation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/famafrench/famafrench.html#FamaFrench"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#famafrench.FamaFrench" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class providing tools for constructing and replicating datasets from
 <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French’s online library</a>
 via queries to CRSP, Compustat Fundamentals Annual, and other sources accessed through
 <a class="reference external" href="https://wrds-www.wharton.upenn.edu/">wrds-cloud</a>.</p>
+<dl class="attribute">
+<dt id="famafrench.FamaFrench.pickled_dir">
+<code class="sig-name descname">pickled_dir</code><a class="headerlink" href="#famafrench.FamaFrench.pickled_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Absolute path directory where pickled datasets will be saved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="famafrench.FamaFrench.runQuery">
 <code class="sig-name descname">runQuery</code><a class="headerlink" href="#famafrench.FamaFrench.runQuery" title="Permalink to this definition">¶</a></dt>
@@ -291,17 +302,6 @@ by querying <a class="reference external" href="https://wrds-www.wharton.upenn.e
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a>, default False</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="famafrench.FamaFrench.pickled_directory">
-<code class="sig-name descname">pickled_directory</code><a class="headerlink" href="#famafrench.FamaFrench.pickled_directory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Local directory extention where pickled datasets will be saved to.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str, default <cite>‘./famafrench/pickled_db/’</cite></p>
 </dd>
 </dl>
 </dd></dl>

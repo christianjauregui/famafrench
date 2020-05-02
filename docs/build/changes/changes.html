@@ -98,7 +98,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Change Log</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#version-0-beta">Version 0 (Beta)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#release-0-1-1">Release 0.1.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#release-0-1-2">Release 0.1.2</a></li>
 </ul>
 </li>
@@ -172,21 +171,9 @@
 <span id="changes"></span><h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="version-0-beta">
 <h2>Version 0 (Beta)<a class="headerlink" href="#version-0-beta" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="release-0-1-1">
-<h3>Release 0.1.1<a class="headerlink" href="#release-0-1-1" title="Permalink to this headline">¶</a></h3>
-<p>Initial release as of April 25, 2020.</p>
-</div>
 <div class="section" id="release-0-1-2">
 <h3>Release 0.1.2<a class="headerlink" href="#release-0-1-2" title="Permalink to this headline">¶</a></h3>
-<p>Current release as of May 1, 2020.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Resolved <code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code> for deprecated <code class="docutils literal notranslate"><span class="pre">pandas.np</span></code> module used to fill missing values (i.e. <code class="docutils literal notranslate"><span class="pre">nan</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>): replaced the use of <code class="docutils literal notranslate"><span class="pre">value=pd.np.nan</span></code> w/ <code class="docutils literal notranslate"><span class="pre">value=np.nan</span></code> in <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html#pandas.DataFrame.fillna" title="(in pandas v1.0.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame.fillna</span></code></a>.</p></li>
-<li><p>Fixed a bug that used the wrong instance method on a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.html#pandas.DatetimeIndex" title="(in pandas v1.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DatetimeIndex</span></code></a>. To check if a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.html#pandas.DatetimeIndex" title="(in pandas v1.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DatetimeIndex</span></code></a> value landed on a Saturday or Sunday, incorrect use of <code class="docutils literal notranslate"><span class="pre">pandas.DatetimeIndex.weekday_name</span></code> is replaced w/ <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.day_name.html#pandas.DatetimeIndex.day_name" title="(in pandas v1.0.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DatetimeIndex.day_name()</span></code></a>. The aforementioned is required when comparing datasets constructed at a weekly frequency to those from Ken French’s online library (e.g. <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html">Weekly Fama-French 3 Factors</a>).</p></li>
-<li><p>Fixed a bug that <strong>did not</strong> exclude data for an <cite>incomplete</cite> final calendar year in the construction of annual datasets. For example, annual datasets constructed from a given start date to the present should end in 2019, not 2020.</p></li>
-<li><p>Added options to construct portfolios based on sorts not included in Ken French’s online data library. A single anomaly characteristic or multiple anomaly characteristics can now be split into 4 (i.e. quartiles), 6, 8, 20, 25, or 100 (i.e. percentiles) buckets.</p></li>
-</ul>
-</div></blockquote>
+<p>Initial release as of May 1, 2020.</p>
 </div>
 </div>
 </div>
