@@ -18,10 +18,10 @@ __________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html
 
 """
-
+import os
+import datetime as dt
 import famafrench.famafrench as ff
 from importlib import reload
-import datetime as dt
 
 # Example of how to re-load a distribution module/package
 reload(ff)
@@ -35,6 +35,8 @@ ffsortCharac = ['ME', 'BM']
 ffFactors = ['MKT-RF', 'SMB', 'HML']
 ffportCharac = ['ME', 'BM']
 
+# pickled_dir
+pickled_dir = os.getcwd() + 'famafrench/pickled_db/'
 
 #%%
 #********************************************************************************************#
@@ -42,7 +44,7 @@ ffportCharac = ['ME', 'BM']
 #********************************************************************************************#
 runQuery = True
 ffFreq = 'D'
-ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_D.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
@@ -59,7 +61,7 @@ _, _, _, = ff_D.comparePortfolios('Factors', ffFreq, startDate, endDate)
 #********************************************************************************************#
 runQuery = True
 ffFreq = 'W'
-ff_W = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_W = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_W.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
@@ -76,7 +78,7 @@ _, _, _, = ff_W.comparePortfolios('Factors', ffFreq, startDate, endDate)
 #********************************************************************************************#
 runQuery = True
 ffFreq = 'M'
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_M.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
@@ -93,7 +95,7 @@ _, _, _, = ff_M.comparePortfolios('Factors', ffFreq, startDate, endDate)
 #********************************************************************************************#
 runQuery = False
 ffFreq = 'A'
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_A.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)

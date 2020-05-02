@@ -29,9 +29,9 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_lt_rev_
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_lt_rev_factor_daily.html
 
 """
-
-import famafrench.famafrench as ff
+import os
 import datetime as dt
+import famafrench.famafrench as ff
 
 startDate = dt.date(1960, 1, 1)  # "default" startDate
 endDate = dt.date.today()  # "default" endDate
@@ -42,6 +42,8 @@ ffsortCharac = ['ME', 'PRIOR_2_12']
 ffFactors = ['MKT-RF', 'MOM', 'ST_Rev', 'LT_Rev']
 ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
 
+# pickled_dir
+pickled_dir = os.getcwd() + 'famafrench/pickled_db/'
 
 #%%
 #********************************************************************************************#
@@ -49,7 +51,7 @@ ffportCharac = ['ME', 'PRIOR_2_12', 'PRIOR_1_1', 'PRIOR_13_60']
 #********************************************************************************************#
 runQuery = True
 ffFreq = 'D'
-ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_D.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
@@ -66,7 +68,7 @@ _, _, _, = ff_D.comparePortfolios('Factors', ffFreq, startDate, endDate)
 #********************************************************************************************#
 runQuery = True
 ffFreq = 'M'
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_M.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)
@@ -83,7 +85,7 @@ _, _, _, = ff_M.comparePortfolios('Factors', ffFreq, startDate, endDate)
 #********************************************************************************************#
 runQuery = False
 ffFreq = 'A'
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # Summary statistics
 ff_A.getFamaFrenchStats('Factors', ffFreq, startDate, endDate)

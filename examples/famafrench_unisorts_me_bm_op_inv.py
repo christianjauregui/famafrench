@@ -19,15 +19,17 @@ __________________________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
 
 """
-
-import famafrench.famafrench as ff
+import os
 import datetime as dt
+import famafrench.famafrench as ff
 
 startDate = dt.date(1960, 1, 1)  # "default" startDate
 endDate = dt.date.today()  # "default" endDate
 #startDate = dt.date(1970, 1, 1)
 #endDate = dt.date(2019, 12, 31)
 
+# pickled_dir
+pickled_dir = os.getcwd() + 'famafrench/pickled_db/'
 
 #%%
 #**************************************************************************#
@@ -42,7 +44,7 @@ endDate = dt.date.today()  # "default" endDate
 runQuery = True
 ffFreq = 'D'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME'], ['ME']
-ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['ME']
 sortingDim = [3]
@@ -75,7 +77,7 @@ ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME'], ['ME']
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['ME']
 sortingDim = [3]
@@ -114,7 +116,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME'], ['ME']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['ME']
 sortingDim = [3]
@@ -156,7 +158,7 @@ ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'D'
 ffFactors, ffsortCharac, ffportCharac = [], ['BM'], ['ME', 'BM']
-ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['BM']
 sortingDim = [3]
@@ -187,7 +189,7 @@ ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFactors, ffsortCharac, ffportCharac = [], ['BM'], ['ME', 'BM']
 ffFreq = 'M'
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['BM']
 sortingDim = [3]
@@ -224,7 +226,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['BM'], ['ME', 'BM']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['BM']
 sortingDim = [3]
@@ -265,7 +267,7 @@ ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'D'
 ffFactors, ffsortCharac, ffportCharac = [], ['OP'], ['ME', 'OP']
-ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['OP']
 sortingDim = [3]
@@ -293,7 +295,7 @@ ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['OP'], ['ME', 'OP']
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['OP']
 sortingDim = [3]
@@ -330,7 +332,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['OP'], ['ME', 'OP']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['OP']
 sortingDim = [3]
@@ -370,7 +372,7 @@ ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'D'
 ffFactors, ffsortCharac, ffportCharac = [], ['INV'], ['ME', 'INV']
-ff_D = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_D = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['INV']
 sortingDim = [3]
@@ -398,7 +400,7 @@ ff_D.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['INV'], ['ME', 'INV']
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['INV']
 sortingDim = [3]
@@ -435,7 +437,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['INV'], ['ME', 'INV']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 3 daily portfolios (3x1) sorted on ['INV']
 sortingDim = [3]

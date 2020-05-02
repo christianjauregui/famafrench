@@ -27,15 +27,17 @@ ________________________________________________________________________________
 https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/32_ports_me_op_inv.html
 
 """
-
-import famafrench.famafrench as ff
+import os
 import datetime as dt
+import famafrench.famafrench as ff
 
 startDate = dt.date(1960, 1, 1)  # "default" startDate
 endDate = dt.date.today()  # "default" endDate
 #startDate = dt.date(1970, 1, 1)
 #endDate = dt.date(2019, 12, 31)
 
+# pickled_dir
+pickled_dir = os.getcwd() + 'famafrench/pickled_db/'
 
 #%%
 #**********************************************************************************************#
@@ -50,7 +52,7 @@ endDate = dt.date.today()  # "default" endDate
 runQuery = True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME', 'BM', 'OP'], ['ME', 'BM', 'OP', 'INV']
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 32 portfolios (2x4x4) sorted on ['ME', 'BM', 'OP']
 sortingDim = [2, 4, 4]
@@ -69,7 +71,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME', 'BM', 'OP'], ['ME', 'BM', 'OP', 'INV']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 32 portfolios (2x4x4) sorted on ['ME', 'BM', 'OP']
 sortingDim = [2, 4, 4]
@@ -94,7 +96,7 @@ ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME', 'BM', 'INV'], ['ME', 'BM', 'OP', 'INV']
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 32 portfolios (2x4x4) sorted on ['ME', 'BM', 'INV']
 sortingDim = [2, 4, 4]
@@ -113,7 +115,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME', 'BM', 'INV'], ['ME', 'BM', 'OP', 'INV']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 32 portfolios (2x4x4) sorted on ['ME', 'BM', 'INV']
 sortingDim = [2, 4, 4]
@@ -138,7 +140,7 @@ ff_A.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = True
 ffFreq = 'M'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME', 'OP', 'INV'], ['ME', 'BM', 'OP', 'INV']
-ff_M = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_M = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 32 portfolios (2x4x4) sorted on ['ME', 'OP', 'INV']
 sortingDim = [2, 4, 4]
@@ -157,7 +159,7 @@ ff_M.getFamaFrenchStats('Characs',  ffFreq, startDate, endDate, sortingDim)
 runQuery = False
 ffFreq = 'A'
 ffFactors, ffsortCharac, ffportCharac = [], ['ME', 'OP', 'INV'], ['ME', 'BM', 'OP', 'INV']
-ff_A = ff.FamaFrench(runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
+ff_A = ff.FamaFrench(pickled_dir, runQuery, ffFreq, ffsortCharac, ffFactors, ffportCharac)
 
 # - 32 portfolios (2x4x4) sorted on ['ME', 'OP', 'INV']
 sortingDim = [2, 4, 4]
