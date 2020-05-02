@@ -20,6 +20,8 @@ __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
 __all__ = ["Error", "FamaFrench"]
 
 # Standard Imports
+import os
+import errno
 import pickle
 import copy
 import sqlalchemy
@@ -84,7 +86,9 @@ class FamaFrench:
     `wrds-cloud <https://wrds-www.wharton.upenn.edu/>`_.   
         
     Attributes
-    -----------    
+    -----------  
+    pickled_dir : str
+        Absolute path directory where pickled datasets will be saved to.     
     runQuery: bool
         Flag for choosing whether to query datafiles from `wrds-cloud <https://wrds-www.wharton.upenn.edu/>`_ or import locally-pickled files. 
     freqType: str 
@@ -137,8 +141,6 @@ class FamaFrench:
         Flag for choosing whether to run any estimation procedures for the first time/re-estimate procedures 
         by querying `wrds-cloud <https://wrds-www.wharton.upenn.edu/>`_ datafiles
         `or` import locally-pickled files storing existing estimates.   
-    pickled_directory :  str, default `\'./famafrench/pickled_db/\'`
-        Local directory extention where pickled datasets will be saved to. 
     runFactorReg : bool, default True
         Flag for initializing the estimation of market beta's and/or rolling residual variances required 
         for sorting portfolios on ``BETA`` and/or ``RESVAR``. 
@@ -146,7 +148,7 @@ class FamaFrench:
 
     """
     # Constructor for the 'FamaFrench' object parent class
-    def __init__(self, runQuery, freqType, sortCharacsId, factorsId, mainCharacsId=None, runEstimation=False, pickled_directory='./famafrench/pickled_db/'):
+    def __init__(self, pickled_dir, runQuery, freqType, sortCharacsId, factorsId, mainCharacsId=None, runEstimation=False):
         """
         Constructor for the 'FamaFrench' object parent class
         """
@@ -173,8 +175,15 @@ class FamaFrench:
         self.runQuery = runQuery
         self.runEstimation = runEstimation
 
-        # Pickled datasets are saved in a local directory w/ the given name.
-        self.pickled_directory = pickled_directory
+        # Pickled datasets are saved in the directory w/ a specific absolute path:
+        for subdir in ['', 'daily/', 'monthly/', 'weekly/', 'quarterly/', 'annual/']:
+            if not os.path.exists(os.path.dirname(pickled_dir + subdir)):
+                try:
+                    os.makedirs(os.path.dirname(pickled_dir + subdir))
+                except OSError as exc:  # Guard against race condition
+                    if exc.errno != errno.EEXIST:
+                        raise
+        self.pickled_dir = pickled_dir
 
 
     @utils.lru_cached_method(maxsize=32)
@@ -307,7 +316,7 @@ class FamaFrench:
             return comp_sqlQuery
 
         # Load local file if it exists (and dates can be found), else query from wrds-cloud.
-        comp_file = Path(self.pickled_directory + 'annual/comp_annual.pickle')
+        comp_file = Path(self.pickled_dir + 'annual/comp_annual.pickle')
         if self.runQuery is False and comp_file.is_file():
             file_to_pickle = open(comp_file, 'rb')
             dfcomp = pickle.load(file_to_pickle)
@@ -612,7 +621,7 @@ class FamaFrench:
             return crsp_sqlQuery
 
         # Load local file if it exists (and dates can be found), else query from wrds-cloud.
-        crsp_file = Path(self.pickled_directory + freqTypeFull + '/crsp_' + freqTypeFull + '.pickle')
+        crsp_file = Path(self.pickled_dir + freqTypeFull + '/crsp_' + freqTypeFull + '.pickle')
         if self.runQuery is False and crsp_file.is_file():
             file_to_pickle = open(crsp_file, 'rb')
             dfcrsp = pickle.load(file_to_pickle)
@@ -782,7 +791,7 @@ class FamaFrench:
             return crspdlret_sqlQuery
 
         # Load local file if it exists (and dates can be found), else query from wrds-cloud.
-        crspdlret_file = Path(self.pickled_directory + freqTypeFull + '/crspdelist_' + freqTypeFull + '.pickle')
+        crspdlret_file = Path(self.pickled_dir + freqTypeFull + '/crspdelist_' + freqTypeFull + '.pickle')
         if self.runQuery is False and crspdlret_file.is_file():
             file_to_pickle = open(crspdlret_file, 'rb')
             dfcrspdlret = pickle.load(file_to_pickle)
@@ -959,7 +968,7 @@ class FamaFrench:
             return rf1m_sqlQuery
 
         # Load local file if it exists (and dates can be found), else query from wrds-cloud.
-        rf1m_file = Path(self.pickled_directory + freqTypeFulldir + '/rf1m_' + freqTypeFulldir + '.pickle')
+        rf1m_file = Path(self.pickled_dir + freqTypeFulldir + '/rf1m_' + freqTypeFulldir + '.pickle')
         if self.runQuery is False and rf1m_file.is_file():
             file_to_pickle = open(rf1m_file, 'rb')
             rf1m = pickle.load(file_to_pickle)
@@ -1179,7 +1188,7 @@ class FamaFrench:
             return crsprollvar_sqlQuery
 
         # Load local file if it exists (and dates can be found), else query from wrds-cloud.
-        crsprollvar_file = Path(self.pickled_directory + freqTypeFull + '/crsprollvar_' + freqTypeFull + '.pickle')
+        crsprollvar_file = Path(self.pickled_dir + freqTypeFull + '/crsprollvar_' + freqTypeFull + '.pickle')
         if self.runQuery is False and crsprollvar_file.is_file():
             file_to_pickle = open(crsprollvar_file, 'rb')
             dfcrsprollvar = pickle.load(file_to_pickle)
@@ -1498,7 +1507,7 @@ class FamaFrench:
         # Need to query AT A MINIMUM (minus) -'roll_window' days before 'dt_start' so we have a non-missing estimation for 'dt_start':
         dt_start = (dt_start - Day(roll_window)).date()
 
-        crsp_ret_file = Path(self.pickled_directory + freqTypeFull + '/crspretFactorReg_' + freqTypeFull + '.pickle')
+        crsp_ret_file = Path(self.pickled_dir + freqTypeFull + '/crspretFactorReg_' + freqTypeFull + '.pickle')
         if self.runEstimation is False and crsp_ret_file.is_file():
             file_to_pickle = open(crsp_ret_file, 'rb')
             dfcrsp_ret = pickle.load(file_to_pickle)
@@ -1573,7 +1582,7 @@ class FamaFrench:
         else:
             raise TypeError('\'ffmodel\' should be the Market model (i.e. CAPM) or the Fama-French 3 model:\n use \'capm\' or \'ff3\'.')
 
-        ff_file = Path(self.pickled_directory + freqTypeFull + '/' + ffmodel + 'factors_' + freqTypeFull + '.pickle')
+        ff_file = Path(self.pickled_dir + freqTypeFull + '/' + ffmodel + 'factors_' + freqTypeFull + '.pickle')
         if self.runEstimation is False and ff_file.is_file():
             file_to_pickle = open(ff_file, 'rb')
             dfportSort_tableList = pickle.load(file_to_pickle)
@@ -2080,7 +2089,7 @@ class FamaFrench:
             else:
                 freqTypeFull = 'monthly'
 
-            resvar_file = Path(self.pickled_directory + freqTypeFull + '/crspff3resvar_' + freqTypeFull + '.pickle')
+            resvar_file = Path(self.pickled_dir + freqTypeFull + '/crspff3resvar_' + freqTypeFull + '.pickle')
             if self.runEstimation is False and resvar_file.is_file():
                 file_to_pickle = open(resvar_file, 'rb')
                 dfresvarff3 = pickle.load(file_to_pickle)
@@ -2174,7 +2183,7 @@ class FamaFrench:
             else:
                 freqTypeFull, freqtmp = 'monthly', 'M'
 
-            beta_file = Path(self.pickled_directory + freqTypeFull + '/beta_' + freqTypeFull + '.pickle')
+            beta_file = Path(self.pickled_dir + freqTypeFull + '/beta_' + freqTypeFull + '.pickle')
             if self.runEstimation is False and beta_file.is_file():
                 file_to_pickle = open(beta_file, 'rb')
                 dfbeta = pickle.load(file_to_pickle)
@@ -2393,7 +2402,7 @@ class FamaFrench:
                        """
 
         # Load local file if it exists, else query from wrds-cloud.
-        ccm_file = Path(self.pickled_directory + 'ccm.pickle')
+        ccm_file = Path(self.pickled_dir + 'ccm.pickle')
         if self.runQuery is False and ccm_file.is_file():
             file_to_pickle = open(ccm_file, 'rb')
             dfccm = pickle.load(file_to_pickle)
