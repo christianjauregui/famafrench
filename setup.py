@@ -126,7 +126,6 @@ setup(
     packages=find_packages(exclude=['contrib',
                                     'docs',
                                     'examples',
-                                    'famafrench/pickled_db',
                                     'tests*',
                                     '*pickle',
                                     '*txt',
