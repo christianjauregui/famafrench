@@ -88,7 +88,7 @@ class FamaFrench:
     Attributes
     -----------  
     pickled_dir : str
-        Absolute path directory where pickled datasets will be saved to.     
+        Absolute path directory where pickled datasets will be saved.     
     runQuery: bool
         Flag for choosing whether to query datafiles from `wrds-cloud <https://wrds-www.wharton.upenn.edu/>`_ or import locally-pickled files. 
     freqType: str 
