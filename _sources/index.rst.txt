@@ -37,7 +37,9 @@ Future plans are to continue to expand the toolbox to include additional factor-
       * `Mispricing (non-clustered) Factor` (UMO)
 
 
-Please reach out if you have any recommendations or suggestions for improvements. Collaborations are welcomed - reach out at **chris.jauregui@berkeley.edu**!
+Please reach out if you have any recommendations or suggestions for improvements. Collaborations are welcomed - reach out at **chris.jauregui@berkeley.edu**! 
+
+Github repository with my source code can be found `here <https://github.com/christianjauregui/famafrench>`_.
 
 Contents
 ========
