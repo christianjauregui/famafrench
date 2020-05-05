@@ -93,3 +93,6 @@ Please report any bugs or errors to [my github page](https://github.com/christia
 
 ## API
 For in-depth call syntaxes, please see the source code doctrings. 
+
+##Disclaimer
+This library and its affiliated content was created without **any involvement** by Kenneth R. French and Eugene F. Fama. 
