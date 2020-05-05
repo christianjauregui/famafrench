@@ -26,7 +26,7 @@ exec(open("famafrench/version.py").read())
 if '__version__' in locals():
     VERSION = __version__
 else:
-    VERSION = '0.1.2'
+    VERSION = '0.1.3'
 
 here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
