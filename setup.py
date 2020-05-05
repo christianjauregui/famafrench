@@ -117,7 +117,7 @@ setup(
     ],
 
     project_urls={
-        'Documentation': 'https://famafrench.readthedocs.io/en/latest/',
+        'Documentation': 'https://christianjauregui.github.io/famafrench/',
         'Source': 'https://github.com/christianjauregui/famafrench',
         'Tracker': 'https://github.com/christianjauregui/famafrench/issues',
     },
