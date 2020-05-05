@@ -85,6 +85,14 @@ This package (and its release as of May 5, 2020) should be cited using Zenodo. F
        .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3785913.svg
          :target: https://doi.org/10.5281/zenodo.3785913
 
+
+
+************
+Disclaimer
+************
+This library and its affiliated content was created without **any involvement** by Kenneth R. French and Eugene F. Fama. 
+
+
 *******************
 `Todo`
 *******************
