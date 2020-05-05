@@ -11,9 +11,9 @@ Change Log
 Version 0 (Beta)
 ################
 
-Release 0.1.2
+Release 0.1.3
 =============
-Initial release as of May 1, 2020.
+Initial release as of May 5, 2020.
 
    
 
