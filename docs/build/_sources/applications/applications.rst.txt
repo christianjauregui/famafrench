@@ -2516,17 +2516,17 @@ Portfolios Sorted on `Book-to-Market` ``BM`` : Annual
 
 **(3 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(5 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(10 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Operating Profitability` ``OP``
@@ -2539,17 +2539,17 @@ Portfolios Sorted on `Operating Profitability` ``OP`` : Monthly
 
 **(3 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(5 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(10 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Operating Profitability` ``OP`` : Annual
@@ -2558,17 +2558,17 @@ Portfolios Sorted on `Operating Profitability` ``OP`` : Annual
 
 **(3 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(5 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(10 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 
@@ -2584,17 +2584,17 @@ Portfolios Sorted on `Investment` ``INV`` : Monthly
 
 **(3 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(5 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_. 
 
 
 **(10 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Investment` ``INV`` : Annual
@@ -2603,53 +2603,53 @@ Portfolios Sorted on `Investment` ``INV`` : Annual
 
 **(3 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(5 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 **(10 x 1) Sorts**:
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_unisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Size` ``ME`` & `Book-to-Market` ``BM``
 ############################################################
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_bisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Size` ``ME`` & `Operating Profitability` ``OP``
 ######################################################################
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_bisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Size` ``ME`` & `Investment` ``INV``
 ######################################################################
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_bisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Book-to-Market` ``BM`` & `Operating Profitability` ``OP``
 ################################################################################
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_bisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Book-to-Market` ``BM`` & `Investment` ``INV``
 ################################################################################
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_bisorts_me_bm_op_inv.py>`_.
 
 
 Portfolios Sorted on `Operating Profitability` ``OP`` & `Investment` ``INV``
 ################################################################################
 
-See example code 
+See example code `here <https://github.com/christianjauregui/famafrench/blob/master/examples/famafrench_bisorts_me_bm_op_inv.py>`_.
 
 
 
