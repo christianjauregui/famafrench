@@ -78,12 +78,12 @@ Contents
 ************
 How to Cite
 ************
-This package (and its release as of May 1, 2020) should be cited using Zenodo. For example, for the 0.1.2 release, 
+This package (and its release as of May 5, 2020) should be cited using Zenodo. For example, for the 0.1.3 release, 
 
-   [*] Christian Jauregui. (2020, May 1). christianjauregui/famafrench: Release 0.1.2 (Version 0.1.2). Zenodo. http://doi.org/10.5281/zenodo.3785599
+   [*] Christian Jauregui. (2020, May 5). christianjauregui/famafrench: Release 0.1.3 (Version 0.1.3). Zenodo. http://doi.org/10.5281/zenodo.3785913
       
-       .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3785599.svg
-         :target: https://doi.org/10.5281/zenodo.3785599
+       .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3785913.svg
+         :target: https://doi.org/10.5281/zenodo.3785913
 
 *******************
 `Todo`
