@@ -39,7 +39,7 @@ for use with the [`Pandas-Py`](https://github.com/pandas-dev/pandas) package.
 | `version.py`      | Module w/ package's version number.                                                                                                              |
 
 ## Installation
-The latest release is **Release 0.1.3** as of May 5, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#)).
+The latest release is **Release 0.1.4** as of May 12, 2020 (see [documentation](https://christianjauregui.github.io/famafrench/changes/changes.html#)).
 
 ### Python Package Index (`pip`)
 Releases are available via [PyPI](https://pypi.org/project/famafrench/) and can be installed with `pip`.  
