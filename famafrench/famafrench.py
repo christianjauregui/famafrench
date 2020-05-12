@@ -47,7 +47,7 @@ nyse_cal = mcal.get_calendar('NYSE')
 np.seterr(divide='raise')  # warn/error if taking np.log() if non-positive number.
 pd.options.mode.chained_assignment = 'raise'
 pd.options.mode.use_inf_as_na = True
-pd.set_option("display.max_columns", 15)
+#pd.set_option("display.max_columns", 15)
 
 # Reloads the .env file in your home directory.
 load_dotenv()
