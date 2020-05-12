@@ -32,7 +32,7 @@ copyright = '2020, Christian Jauregui'
 author = 'Christian Jauregui'
 
 # The full version, including alpha/beta/rc tags
-version = '0.1.3'
+version = '0.1.4'
 release = version
 
 # -- General configuration ---------------------------------------------------
