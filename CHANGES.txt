@@ -1,6 +1,6 @@
 v0.1.3: May 5, 2020 -- Initial release.
 
 v0.1.4: Mat 11, 2020 -- Current release.
-	* Fixed logical error that improperly computed the average size of firms for a portfolio. 
-	  Instead of using the current period's market value of equity 'ME', the June 'ME' used to
-	  sort portfolios on size was used. 
+   
+   * Fixed logical error that improperly computed the average (equal-weighted) size of firms for a portfolio:
+     June ME - which is used to sort portfolios - was used instead of the current period's market value of equity ME.  
