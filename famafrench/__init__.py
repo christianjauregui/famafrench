@@ -20,7 +20,7 @@ ________
                    getting environment variables with user- and account-specific WRDS credentials
                    for securely accessing wrds-cloud datafiles.
 
-`famafrench.py` : Construct and replicate Fama/French style datasets found in Ken French's online data library.
+`famafrench.py` : Construct and replicate Fama-French style datasets found in Ken French's online data library.
 
 `utils.py` : Utility/Auxiliary functions and routines used in module`famafrench.py`
 """
