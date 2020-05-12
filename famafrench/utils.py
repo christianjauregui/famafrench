@@ -26,8 +26,8 @@ priormonthToDay
     a daily strategy (see online documentation provided on Ken French's website).
 grouped_vwAvg
      Calculate weighted (net) portfolio return for a given portfolio with weights within a
-     group or set of groups. This function is FASTER THAN groupby(...).apply(...) because
-     it avoids non-optimized aggregation.
+     group or set of groups. This function is FASTER THAN groupby(...).apply(...) because it
+     avoids non-optimized aggregation.
 portRetAvg
     Compute a simple average across different columns.
 get_statsTable
