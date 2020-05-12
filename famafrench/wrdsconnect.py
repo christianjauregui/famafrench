@@ -11,7 +11,7 @@ Description
 ___________
 wrdsConnection
     Object class used to set up a remote connection to `wrds-cloud`.
-    This class largely builds on the "Connection" class in the `WRDS-Py` library.
+    This largely builds on the "Connection" class in the `WRDS-Py` library.
 """
 
 __author__ = 'Christian Jauregui <chris.jauregui@berkeley.edu'
