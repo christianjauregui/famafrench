@@ -22,6 +22,10 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
 import os
 import datetime as dt
 import famafrench.famafrench as ff
+from importlib import reload
+
+# Example of how to re-load a distribution module/package
+reload(ff)
 
 startDate = dt.date(1960, 1, 1)  # "default" startDate
 endDate = dt.date.today()  # "default" endDate
