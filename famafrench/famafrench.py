@@ -47,6 +47,7 @@ nyse_cal = mcal.get_calendar('NYSE')
 np.seterr(divide='raise')  # warn/error if taking np.log() if non-positive number.
 pd.options.mode.chained_assignment = 'raise'
 pd.options.mode.use_inf_as_na = True
+pd.set_option("display.max_columns", 15)
 
 # Reloads the .env file in your home directory.
 load_dotenv()
@@ -3021,8 +3022,7 @@ class FamaFrench:
                     else:
                         cols_prior = ['l' + str(j_per) + '_retadj', 'prior_' + j_month + '_' + k_month]
 
-                    dfcrsp_prior = dfcrsp[['date', 'permno', 'ffyear', 'shrcd', 'exchcd', 'retadj', 'port_weight', 'me_t',
-                                           'sBoolcrsp'] + cols_prior + crsplist]
+                    dfcrsp_prior = dfcrsp[['date', 'permno', 'ffyear', 'shrcd', 'exchcd', 'retadj', 'port_weight', 'me_t', 'sBoolcrsp'] + cols_prior + crsplist]
                     dfcrsp_prior_nyse = dfcrsp_prior[dfcrsp_prior['sBoolcrsp']]
                     dfcrsp_prior_nyse = dfcrsp_prior_nyse.drop(columns=['sBoolcrsp'])
 
@@ -3199,13 +3199,11 @@ class FamaFrench:
                     cols0 = [c for c in list(map(str.lower, self.mainCharacsId))]
                 if (len(prior_list) != 0) or (fBool and (fidList in ['MOM', 'ST_Rev', 'LT_Rev'])):
                     # Store portfolio assignments as of June of year {t} (for the period from July of year {t} to June of year {t+1}).
-                    df4 = df2[['date', 'permno', 'ffyear', 'shrcd', 'exchcd', 'retadj', 'port_weight', 'me_t', 'sBool'] + \
-                              [ffcharac + '_port' for ffcharac in ffcharac_list] + cols0]
+                    df4 = df2[['date', 'permno', 'ffyear', 'shrcd', 'exchcd', 'retadj', 'port_weight', 'me_t', 'sBool'] + [ffcharac + '_port' for ffcharac in ffcharac_list] + cols0]
 
                 elif ('VAR' in fidList) or (('RESVAR' in fidList) and (self.runFactorReg is False)):
                     cols0 = [x for x in cols0 if x not in ['me', vartype]]
-                    df4 = df2[['date', 'permno', 'shrcd', 'exchcd', 'retadj', 'me', 'me_t', vartype, 'sBool'] + \
-                              [ffcharac + '_port' for ffcharac in ffcharac_list] + cols0]
+                    df4 = df2[['date', 'permno', 'shrcd', 'exchcd', 'retadj', 'me', 'me_t', vartype, 'sBool'] + [ffcharac + '_port' for ffcharac in ffcharac_list] + cols0]
                 else:
                     # Store portfolio assignments as of June of year {t} (for the period from July of year {t} to June of year {t+1}).
                     cols1 = ['permno', 'date', 'sBool'] + [ffcharac + '_port' for ffcharac in ffcharac_list] + cols0
@@ -3253,8 +3251,9 @@ class FamaFrench:
                         This routine is executed in a dictionary comprehension.
                         """
                         if charac == 'me':
+                            # We use the current period's market value of equity 'me', NOT the 'me' used to sort portfolios (i.e. June of year {t-1} 'me')
                             weightType = 'ewavg'
-                            dfgroupwavg = df0.groupby(groupby_cols)[charac].mean().to_frame().reset_index().rename(columns={charac: weightType + '_' + charac})
+                            dfgroupwavg = df0.groupby(groupby_cols)['me_t'].mean().to_frame().reset_index().rename(columns={'me_t': weightType + '_me'})
                         else:
                             weightType = 'vwavg'
                             dfgroupwavg = utils.grouped_vwAvg(df0, charac, weights, groupby_cols).to_frame().reset_index().rename(columns={charac: weightType + '_' + charac})
@@ -4218,8 +4217,7 @@ class FamaFrench:
                         except RemoteDataError:
                             try:
                                 kfDataset = str(np.prod(kfDim)) + '_Portfolios_' + self.sortCharacsIdtmp[0] + '_' + \
-                                            self.sortCharacsIdtmp[1] + '_' + self.sortCharacsIdtmp[2] + \
-                                            '_' + str(kfDim[0]) + 'x' + str(kfDim[1]) + 'x' + str(kfDim[2]) + capitalize_nth(freq_kf, 1)
+                                            self.sortCharacsIdtmp[1] + '_' + self.sortCharacsIdtmp[2] + '_' + str(kfDim[0]) + 'x' + str(kfDim[1]) + 'x' + str(kfDim[2]) + capitalize_nth(freq_kf, 1)
                                 dfkf_dict = web.DataReader(kfDataset, 'famafrench', dt_start)
                             except RemoteDataError:
                                 raise Error('Dataset does not exist in Ken French\'s online library!')
@@ -4953,10 +4951,8 @@ class FamaFrench:
                                     col = colLabelReplace(col, self.sortCharacsId[1])
                                     try:
                                         corrTable.at[row, col] = round(pTable[row + '_' + col].corr(kfpTable[c]), 3)
-                                        meanTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].mean() * scale, 2)),
-                                                                  formatting(dType, round(kfpTable[c].mean() * scale, 2))]
-                                        stdevTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].std() * scale, 2)),
-                                                                   formatting(dType, round(kfpTable[c].std() * scale, 2))]
+                                        meanTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].mean() * scale, 2)), formatting(dType, round(kfpTable[c].mean() * scale, 2))]
+                                        stdevTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].std() * scale, 2)), formatting(dType, round(kfpTable[c].std() * scale, 2))]
                                     except KeyError:
                                         print('Portfolio \'' + row + '_' + col + '\' is not found in \'portTable\'.')
                                         continue
@@ -5024,10 +5020,8 @@ class FamaFrench:
                                     col = labelReplace(pDim[1], col, self.sortCharacsId[1])
                                     try:
                                         corrTable.at[row, col] = round(pTable[row + '_' + col].corr(kfpTable[c]), 3)
-                                        meanTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].mean() * scale, 2)),
-                                                                  formatting(dType, round(kfpTable[c].mean() * scale, 2))]
-                                        stdevTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].std() * scale, 2)),
-                                                                   formatting(dType, round(kfpTable[c].std() * scale, 2))]
+                                        meanTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].mean() * scale, 2)), formatting(dType, round(kfpTable[c].mean() * scale, 2))]
+                                        stdevTable.at[row, col] = [formatting(dType, round(pTable[row + '_' + col].std() * scale, 2)), formatting(dType, round(kfpTable[c].std() * scale, 2))]
                                     except KeyError:
                                         print('Portfolio \'' + row + '_' + col + '\' is not found in \'portTable\'.')
                                         continue
@@ -5177,14 +5171,11 @@ class FamaFrench:
                                 print('    *********************** Observation frequency: ' + kfFreq + ' ************************')
                                 print('    ************************* (Characteristic: ' + charac + '):', min_date, 'to', max_date, '***************************\n')
                                 print('Correlation matrix:\n')
-                                {print(level0 + ':\n', dfcorrTable[charac][level0], '\n') for level0 in
-                                 list(dfcorrTable[charac].keys())}
+                                {print(level0 + ':\n', dfcorrTable[charac][level0], '\n') for level0 in list(dfcorrTable[charac].keys())}
                                 print('Average matrix:\n')
-                                {print(level0 + ':\n', dfmeanTable[charac][level0], '\n') for level0 in
-                                 list(dfmeanTable[charac].keys())}
+                                {print(level0 + ':\n', dfmeanTable[charac][level0], '\n') for level0 in list(dfmeanTable[charac].keys())}
                                 print('Std Deviation matrix:\n')
-                                {print(level0 + ':\n', dfstdevTable[charac][level0], '\n') for level0 in
-                                 list(dfstdevTable[charac].keys())}
+                                {print(level0 + ':\n', dfstdevTable[charac][level0], '\n') for level0 in list(dfstdevTable[charac].keys())}
                             except (KeyError, UnboundLocalError):
                                 print('*********************************** ' + ' x '.join(self.sortCharacsId) + ' (' + ' x '.join(str(d) for d in kfDim) + ') ************************************')
                                 print('    *********************** Observation frequency: ' + kfFreq + ' ************************')
