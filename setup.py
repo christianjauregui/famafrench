@@ -100,7 +100,7 @@ setup(
         'econometrics',
         'equities',
         'equity-returns',
-        'expected-returns'
+        'expected-returns',
         'factor-investing',
         'factor-model',
         'factor-returns',
