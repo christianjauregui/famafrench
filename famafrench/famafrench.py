@@ -445,9 +445,7 @@ class FamaFrench:
             #       To be consistent w/ summary statistics for characteristics provided by Ken French's online library,
             #       values for 'op' outside the 99th percentile are set to missing.
             dfcomp['op'] = np.where((dfcomp['op'] <= dfcomp['op'].quantile(0.99)), dfcomp['op'], np.nan)
-            dfcomp_list.append('op')
-            dfcomp_list.append('revt')
-            dfcomp_list.append('xp_allnan')
+            dfcomp_list.extend(['op', 'revt', 'xp_allnan'])
 
         if ('INV' in set(self.sortCharacsId).union(set(self.mainCharacsId))) or (utils.any_in(['RMW', 'CMA'], set(self.factorsId).union(set(self.factorsIdtemp)))):
             # Create "asset growth (i.e. investment)" - 'inv' following Fama and French (2015):
@@ -483,8 +481,7 @@ class FamaFrench:
             dfcomp['csho_adj'] = np.where(((dfcomp['csho'] * dfcomp['adjex_f']) > 0), (dfcomp['csho'] * dfcomp['adjex_f']), np.nan)
             dfcomp['owcap_adj'] = ((dfcomp['act'] - dfcomp['che']) - (dfcomp['lct'].fillna(0) - dfcomp['dlc'].fillna(0))) / dfcomp['csho_adj']
             dfcomp['d_owcap_adj'] = (dfcomp['owcap_adj'] - dfcomp.groupby(['gvkey'])['owcap_adj'].shift(1))
-            dfcomp_list.append('d_owcap_adj')
-            dfcomp_list.append('csho_adj')
+            dfcomp_list.extend(['d_owcap_adj', 'csho_adj'])
 
         if 'NI' in set(self.sortCharacsId).union(set(self.mainCharacsId)):
             # Create "net income shares" - 'ni' - following Fama and French (2015):
